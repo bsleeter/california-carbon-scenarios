@@ -36,9 +36,9 @@ All output results from the 32 scenarios described in this report are available 
 * Carbon Stocks by Scenario (Mean and 95% Confidence Intervals)
 * Carbon Fluxes by Scenario (Mean and 95% Confidence Intervals)
 
-## Code and data availability
-The model, source code, and data required to replicate this study, as well as the output data supporting the conclusions of the study are available through the USGS ScienceBase repository.
+## Running the Model
 The LUCAS model runs within the Syncro-Sim software application. All simulations were run using Syncro-Sim software version 2.0.18, under the Mono framework for Linux. The STSM and SF modules used in this study were version 3.1.18. We ran the simulations on the Comet system at the San Diego Super-computing Center under the NSF Extreme Science and Engineering Discovery Environment (XSEDE) program through allocation TG-DEB17001767.
+
 The following steps are required to run the model used in this analysis:
 
 * Download and install the latest Windows or LINUX version of the Syncro-Sim software, available at http://www.apexrms.com.
@@ -46,7 +46,12 @@ The following steps are required to run the model used in this analysis:
 * Use the Syncro-Sim software to open the “California Carbon Model.ssim” file and select a scenario to run.
 * Alternatively, the model can be built from scratch using the R programming language with the rsyncrosim package installed. To follow this approach, download the “California Carbon Model R Code.zip” data package and run the necessary R scripts.
 
+## Code and data availability
+The model, source code, and data required to replicate this study, as well as the output data supporting the conclusions of the study are available through the USGS ScienceBase repository and archived in this GitHub repository. The repository has the following structure:
 
+* The **"model-build"** folder contains all the files and R code to build the model from scratch. Users wishing to do this should run the two R scripts in order. The model can then be run using the Windows UI, from the Command Line, or directly from R using the rSyncroSim package.
+* The **"global-change-biology"** folder contains all the files required to produce the final manuscript and its supplemental material. The manuscript was written using RMarkdown. 
+* The **"base-model"** folder contains a ready-to-run model with all 32 scenarios available.
 
 
 

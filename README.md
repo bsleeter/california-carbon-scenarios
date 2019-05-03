@@ -6,13 +6,13 @@ Projections of carbon storage and flux in California under 32 alternative future
 Benjamin M. Sleeter<sup>1</sup>*, David C. Marvin<sup>2,3</sup>, D. Richard Cameron<sup>2</sup>, Paul C. Selmants<sup>4</sup>, Leroy Westerling<sup>5</sup>, Jason Kreitler<sup>6</sup>, Colin J. Daniel<sup>7</sup>, Jinxun Liu<sup>4</sup>, Tamara S. Wilson<sup>4</sup>
 
 #### Affiliations
-<sup>1</sup>U.S. Geological Survey, Seattle, WA, USA; bsleeter@usgs.gov; (253) 343-3363
-<sup>2</sup>The Nature Conservancy, San Francisco, CA, USA
-<sup>3</sup>Salo Sciences, San Francisco, CA, USA
-<sup>4</sup>U.S. Geological Survey, Menlo Park, CA, USA
-<sup>5</sup>University of California Merced, California, USA
-<sup>6</sup>U.S. Geological Survey, Boise, ID, USA
-<sup>7</sup>Apex Resource Management Solutions Ltd., Ottawa, ON, CAN
+<sup>1</sup>U.S. Geological Survey, Seattle, WA, USA; bsleeter@usgs.gov; (253) 343-3363  
+<sup>2</sup>The Nature Conservancy, San Francisco, CA, USA  
+<sup>3</sup>Salo Sciences, San Francisco, CA, USA  
+<sup>4</sup>U.S. Geological Survey, Menlo Park, CA, USA  
+<sup>5</sup>University of California Merced, California, USA  
+<sup>6</sup>U.S. Geological Survey, Boise, ID, USA  
+<sup>7</sup>Apex Resource Management Solutions Ltd., Ottawa, ON, CAN  
 
 **Keywords**: land use, climate change, carbon balance, California, scenarios, disturbance
 

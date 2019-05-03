@@ -1,0 +1,2201 @@
+Timestep,Flux,Mean,Lower,Upper
+2002,Emission (AgExpand),0.7,0.6,0.8
+2002,Emission (Biomass),9.4,9.4,9.4
+2002,Emission (Clearcut),0.5,0.4,0.5
+2002,Emission (Fire),3,2.9,3.1
+2002,Emission (Orchard Removal),0.1,0,0.1
+2002,Emission (Urban),1.4,1.2,1.5
+2002,Harvest (AgExpand),0.1,0.1,0.2
+2002,Harvest (Clearcut),3.7,3.3,4
+2002,Harvest (Grain),8.7,8.7,8.7
+2002,Harvest (Straw),6.6,6.6,6.6
+2002,Harvest (Thinning),0.8,0.7,0.9
+2002,Harvest (Urban),0.3,0.2,0.3
+2002,Leaching,2.3,2.3,2.3
+2002,LULCC,37.5,37,38
+2002,Mortality,14.7,14.4,14.9
+2002,Mortality (Fire),1.9,1.8,2.1
+2002,Mortality (Harvest),1.8,1.7,2
+2002,Mortality (Insects),2.1,2,2.1
+2002,NECB,-27.3,-27.8,-26.9
+2002,NEP,10.1,10.1,10.1
+2002,NPP,136.2,136.2,136.2
+2002,Rh,126,126,126
+2003,Emission (AgExpand),0.3,0.2,0.4
+2003,Emission (Biomass),9.4,9.4,9.4
+2003,Emission (Clearcut),0.4,0.3,0.4
+2003,Emission (Fire),3.8,3.7,4
+2003,Emission (Orchard Removal),0.1,0,0.1
+2003,Emission (Urban),0.7,0.6,0.9
+2003,Harvest (AgExpand),0,0,0.1
+2003,Harvest (Clearcut),3.1,2.8,3.4
+2003,Harvest (Grain),9.3,9.3,9.4
+2003,Harvest (Straw),7.1,7,7.1
+2003,Harvest (Thinning),0.8,0.7,0.9
+2003,Harvest (Urban),0.1,0.1,0.2
+2003,Leaching,2.3,2.3,2.3
+2003,LULCC,37.5,37,37.9
+2003,Mortality,15.2,14.9,15.4
+2003,Mortality (Fire),2.7,2.5,2.9
+2003,Mortality (Harvest),1.5,1.4,1.7
+2003,Mortality (Insects),5.3,5.2,5.3
+2003,NECB,-6.3,-6.7,-5.8
+2003,NEP,31.2,31.1,31.2
+2003,NPP,155.9,155.8,155.9
+2003,Rh,124.7,124.6,124.7
+2004,Emission (AgExpand),0.3,0.2,0.4
+2004,Emission (Biomass),9.3,9.3,9.3
+2004,Emission (Clearcut),0.4,0.4,0.5
+2004,Emission (Fire),1.5,1.4,1.6
+2004,Emission (Orchard Removal),0.1,0,0.1
+2004,Emission (Urban),0.8,0.6,0.9
+2004,Harvest (AgExpand),0,0,0.1
+2004,Harvest (Clearcut),3.4,3,3.7
+2004,Harvest (Grain),10.3,10.2,10.3
+2004,Harvest (Straw),7.8,7.8,7.8
+2004,Harvest (Thinning),1,0.9,1.1
+2004,Harvest (Urban),0.1,0.1,0.2
+2004,Leaching,2.3,2.3,2.3
+2004,LULCC,37.3,36.9,37.8
+2004,Mortality,13.6,13.4,13.8
+2004,Mortality (Fire),1,0.9,1.1
+2004,Mortality (Harvest),1.7,1.5,1.9
+2004,Mortality (Insects),5.4,5.3,5.5
+2004,NECB,7.2,6.8,7.7
+2004,NEP,44.6,44.5,44.7
+2004,NPP,165.6,165.5,165.7
+2004,Rh,121,121,121.1
+2005,Emission (AgExpand),0.5,0.4,0.6
+2005,Emission (Biomass),9.4,9.4,9.4
+2005,Emission (Clearcut),0.5,0.4,0.5
+2005,Emission (Fire),0.6,0.6,0.7
+2005,Emission (Orchard Removal),0.1,0,0.1
+2005,Emission (Urban),0.8,0.7,1
+2005,Harvest (AgExpand),0.1,0,0.1
+2005,Harvest (Clearcut),4,3.6,4.4
+2005,Harvest (Grain),12.2,12.1,12.2
+2005,Harvest (Straw),9.2,9.2,9.3
+2005,Harvest (Thinning),0.8,0.7,0.8
+2005,Harvest (Urban),0.1,0.1,0.2
+2005,Leaching,2.3,2.3,2.3
+2005,LULCC,40.5,40.1,41
+2005,Mortality,13.4,13.2,13.6
+2005,Mortality (Fire),0.4,0.3,0.5
+2005,Mortality (Harvest),2,1.8,2.2
+2005,Mortality (Insects),2.5,2.5,2.5
+2005,NECB,38.6,38.1,39.1
+2005,NEP,79.1,79,79.2
+2005,NPP,198.2,198,198.3
+2005,Rh,119.1,119,119.1
+2006,Emission (AgExpand),0.5,0.4,0.5
+2006,Emission (Biomass),9.5,9.5,9.5
+2006,Emission (Clearcut),0.4,0.4,0.4
+2006,Emission (Fire),4.9,4.7,5.1
+2006,Emission (Orchard Removal),0.1,0,0.1
+2006,Emission (Urban),0.8,0.7,1
+2006,Harvest (AgExpand),0.1,0,0.1
+2006,Harvest (Clearcut),3.2,2.9,3.5
+2006,Harvest (Grain),11.7,11.7,11.7
+2006,Harvest (Straw),8.6,8.6,8.7
+2006,Harvest (Thinning),0.9,0.8,1
+2006,Harvest (Urban),0.1,0.1,0.2
+2006,Leaching,2.3,2.3,2.3
+2006,LULCC,43,42.5,43.5
+2006,Mortality,15.8,15.6,16.1
+2006,Mortality (Fire),3.2,3,3.5
+2006,Mortality (Harvest),1.6,1.4,1.8
+2006,Mortality (Insects),1.2,1.2,1.2
+2006,NECB,4.5,4,5
+2006,NEP,47.5,47.4,47.6
+2006,NPP,168.6,168.5,168.8
+2006,Rh,121.1,121,121.1
+2007,Emission (AgExpand),0.6,0.5,0.7
+2007,Emission (Biomass),9.3,9.3,9.3
+2007,Emission (Clearcut),0.4,0.4,0.5
+2007,Emission (Fire),5,4.8,5.1
+2007,Emission (Orchard Removal),0.1,0,0.2
+2007,Emission (Urban),0.6,0.5,0.7
+2007,Harvest (AgExpand),0.1,0,0.1
+2007,Harvest (Clearcut),3.4,3.1,3.8
+2007,Harvest (Grain),8.2,8.1,8.2
+2007,Harvest (Straw),5.5,5.5,5.5
+2007,Harvest (Thinning),0.9,0.8,1
+2007,Harvest (Urban),0.1,0,0.1
+2007,Leaching,2.3,2.3,2.3
+2007,LULCC,36.4,35.9,36.9
+2007,Mortality,15.8,15.5,16
+2007,Mortality (Fire),3.3,3.1,3.5
+2007,Mortality (Harvest),1.7,1.5,1.9
+2007,Mortality (Insects),1.5,1.4,1.5
+2007,NECB,-50.1,-50.5,-49.5
+2007,NEP,-13.7,-13.7,-13.6
+2007,NPP,108.2,108.1,108.3
+2007,Rh,121.9,121.9,121.9
+2008,Emission (AgExpand),0.6,0.5,0.7
+2008,Emission (Biomass),9.2,9.2,9.3
+2008,Emission (Clearcut),0.6,0.6,0.7
+2008,Emission (Fire),14.4,14,14.8
+2008,Emission (Orchard Removal),0.2,0.1,0.4
+2008,Emission (Urban),0.6,0.5,0.7
+2008,Harvest (AgExpand),0.1,0,0.1
+2008,Harvest (Clearcut),5,4.6,5.4
+2008,Harvest (Grain),8.6,8.6,8.7
+2008,Harvest (Straw),5.8,5.8,5.9
+2008,Harvest (Thinning),1.1,1,1.2
+2008,Harvest (Urban),0.1,0,0.1
+2008,Leaching,2.3,2.3,2.3
+2008,LULCC,48.7,48,49.3
+2008,Mortality,23.3,22.8,23.8
+2008,Mortality (Fire),10.1,9.7,10.6
+2008,Mortality (Harvest),2.5,2.3,2.7
+2008,Mortality (Insects),0.6,0.6,0.6
+2008,NECB,-28.7,-29.4,-28.1
+2008,NEP,19.9,19.8,20
+2008,NPP,138.5,138.4,138.6
+2008,Rh,118.6,118.6,118.6
+2009,Emission (AgExpand),0.4,0.4,0.5
+2009,Emission (Biomass),9.1,9.1,9.1
+2009,Emission (Clearcut),0.5,0.4,0.5
+2009,Emission (Fire),2.6,2.4,2.7
+2009,Emission (Orchard Removal),0.7,0.3,1.2
+2009,Emission (Urban),0.4,0.3,0.5
+2009,Harvest (AgExpand),0.1,0,0.1
+2009,Harvest (Clearcut),3.9,3.6,4.3
+2009,Harvest (Grain),8.9,8.9,9
+2009,Harvest (Straw),6,5.9,6
+2009,Harvest (Thinning),0.7,0.6,0.8
+2009,Harvest (Urban),0.1,0,0.1
+2009,Leaching,2.3,2.3,2.3
+2009,LULCC,35.7,35,36.4
+2009,Mortality,14.1,13.9,14.4
+2009,Mortality (Fire),1.7,1.6,1.9
+2009,Mortality (Harvest),2,1.8,2.2
+2009,Mortality (Insects),1.1,1,1.1
+2009,NECB,-19.2,-19.9,-18.6
+2009,NEP,16.4,16.3,16.6
+2009,NPP,132.6,132.4,132.7
+2009,Rh,116.1,116.1,116.2
+2010,Emission (AgExpand),0.5,0.4,0.6
+2010,Emission (Biomass),9.2,9.2,9.2
+2010,Emission (Clearcut),0.3,0.2,0.3
+2010,Emission (Fire),0.4,0.3,0.4
+2010,Emission (Orchard Removal),0.8,0.3,1.3
+2010,Emission (Urban),0.5,0.4,0.6
+2010,Harvest (AgExpand),0.1,0,0.1
+2010,Harvest (Clearcut),2.1,1.8,2.4
+2010,Harvest (Grain),13.8,13.7,13.9
+2010,Harvest (Straw),9.9,9.8,9.9
+2010,Harvest (Thinning),0.3,0.3,0.4
+2010,Harvest (Urban),0.1,0,0.1
+2010,Leaching,2.3,2.3,2.3
+2010,LULCC,40,39.4,40.7
+2010,Mortality,11.9,11.7,12
+2010,Mortality (Fire),0.2,0.2,0.3
+2010,Mortality (Harvest),1,0.9,1.2
+2010,Mortality (Insects),2.2,2.1,2.3
+2010,NECB,60.1,59.5,60.8
+2010,NEP,100.1,99.9,100.4
+2010,NPP,209.4,209.1,209.6
+2010,Rh,109.2,109.2,109.3
+2011,Emission (AgExpand),0.3,0.3,0.4
+2011,Emission (Biomass),9.2,9.2,9.2
+2011,Emission (Clearcut),0.3,0.2,0.3
+2011,Emission (Fire),0.6,0.5,0.6
+2011,Emission (Orchard Removal),0.8,0.3,1.3
+2011,Emission (Urban),0.3,0.2,0.4
+2011,Harvest (AgExpand),0,0,0.1
+2011,Harvest (Clearcut),2.1,1.8,2.4
+2011,Harvest (Grain),11.2,11.1,11.3
+2011,Harvest (Straw),7.7,7.6,7.7
+2011,Harvest (Thinning),0.3,0.3,0.4
+2011,Harvest (Urban),0,0,0.1
+2011,Leaching,2.3,2.3,2.3
+2011,LULCC,35.1,34.5,35.7
+2011,Mortality,11.9,11.8,12.1
+2011,Mortality (Fire),0.3,0.3,0.4
+2011,Mortality (Harvest),1,0.9,1.2
+2011,Mortality (Insects),1.5,1.4,1.5
+2011,NECB,-4.1,-4.8,-3.5
+2011,NEP,31,30.8,31.1
+2011,NPP,144.4,144.2,144.6
+2011,Rh,113.4,113.4,113.5
+2012,Emission (AgExpand),0.3,0.3,0.4
+2012,Emission (Biomass),9.2,9.2,9.2
+2012,Emission (Clearcut),0.3,0.2,0.3
+2012,Emission (Fire),4.2,4,4.4
+2012,Emission (Orchard Removal),0.9,0.4,1.5
+2012,Emission (Urban),0.3,0.2,0.4
+2012,Harvest (AgExpand),0,0,0.1
+2012,Harvest (Clearcut),2.1,1.8,2.4
+2012,Harvest (Grain),10.9,10.8,11
+2012,Harvest (Straw),7.4,7.4,7.5
+2012,Harvest (Thinning),0.3,0.3,0.4
+2012,Harvest (Urban),0,0,0.1
+2012,Leaching,2.3,2.3,2.3
+2012,LULCC,38.4,37.7,39.1
+2012,Mortality,14.4,14.2,14.7
+2012,Mortality (Fire),2.8,2.6,3
+2012,Mortality (Harvest),1.1,0.9,1.2
+2012,Mortality (Insects),1.8,1.7,1.8
+2012,NECB,-6.2,-6.9,-5.4
+2012,NEP,32.2,32.1,32.4
+2012,NPP,155.9,155.7,156.1
+2012,Rh,123.7,123.6,123.8
+2013,Emission (AgExpand),0.4,0.1,0.8
+2013,Emission (Biomass),8.9,8.9,8.9
+2013,Emission (Clearcut),0.4,0.1,0.6
+2013,Emission (Fire),3.7,3.5,3.8
+2013,Emission (Orchard Removal),1,0.4,1.6
+2013,Emission (Urban),0.7,0.4,1.4
+2013,Harvest (AgExpand),0.1,0,0.2
+2013,Harvest (Clearcut),3.1,1.1,5
+2013,Harvest (Grain),6.5,6.4,6.5
+2013,Harvest (Straw),3.8,3.8,3.8
+2013,Harvest (Thinning),0.7,0.2,1.1
+2013,Harvest (Urban),0.1,0,0.2
+2013,Leaching,2.3,2.3,2.3
+2013,LULCC,31.6,28.8,34.7
+2013,Mortality,14.3,13.3,15.3
+2013,Mortality (Fire),2.5,2.3,2.7
+2013,Mortality (Harvest),1.5,0.6,2.5
+2013,Mortality (Insects),1.2,1.1,1.2
+2013,NECB,-89.8,-92.9,-87
+2013,NEP,-58.2,-58.3,-58.2
+2013,NPP,63.7,63.6,63.8
+2013,Rh,121.9,121.8,122
+2014,Emission (AgExpand),0.4,0.2,0.8
+2014,Emission (Biomass),8.9,8.9,8.9
+2014,Emission (Clearcut),0.4,0.1,0.6
+2014,Emission (Fire),4.6,4.4,4.8
+2014,Emission (Orchard Removal),1,0.4,1.6
+2014,Emission (Urban),0.8,0.4,1.2
+2014,Harvest (AgExpand),0.1,0,0.2
+2014,Harvest (Clearcut),3.1,1.2,5
+2014,Harvest (Grain),8.9,8.8,9
+2014,Harvest (Straw),5.8,5.7,5.8
+2014,Harvest (Thinning),0.7,0.2,1.1
+2014,Harvest (Urban),0.1,0,0.2
+2014,Leaching,2.3,2.3,2.3
+2014,LULCC,37,34.1,39.9
+2014,Mortality,14.9,14,15.9
+2014,Mortality (Fire),3.2,3,3.5
+2014,Mortality (Harvest),1.5,0.6,2.5
+2014,Mortality (Insects),2.2,2.2,2.3
+2014,NECB,-22.5,-25.5,-19.6
+2014,NEP,14.5,14.3,14.7
+2014,NPP,142.4,142.1,142.7
+2014,Rh,127.9,127.8,128
+2015,Emission (AgExpand),0.4,0.1,0.8
+2015,Emission (Biomass),8.8,8.7,8.8
+2015,Emission (Clearcut),0.4,0.1,0.6
+2015,Emission (Fire),6.7,6.5,7
+2015,Emission (Orchard Removal),1.1,0.5,1.8
+2015,Emission (Urban),0.8,0.4,1.4
+2015,Harvest (AgExpand),0.1,0,0.2
+2015,Harvest (Clearcut),3.1,1.2,5.1
+2015,Harvest (Grain),7.8,7.7,7.8
+2015,Harvest (Straw),4.8,4.8,4.9
+2015,Harvest (Thinning),0.7,0.2,1.1
+2015,Harvest (Urban),0.1,0,0.2
+2015,Leaching,2.3,2.3,2.3
+2015,LULCC,37,34,39.9
+2015,Mortality,16.3,15.3,17.3
+2015,Mortality (Fire),4.8,4.4,5.1
+2015,Mortality (Harvest),1.5,0.6,2.5
+2015,Mortality (Insects),16.9,16.7,17.2
+2015,NECB,-44.6,-47.5,-41.6
+2015,NEP,-7.6,-7.7,-7.5
+2015,NPP,113.1,112.9,113.4
+2015,Rh,120.7,120.6,120.9
+2016,Emission (AgExpand),0.4,0.1,0.8
+2016,Emission (Biomass),8.7,8.5,8.8
+2016,Emission (Clearcut),0.4,0.1,0.6
+2016,Emission (Fire),2.3,2.2,2.5
+2016,Emission (Orchard Removal),1.4,0.6,2.3
+2016,Emission (Urban),0.8,0.4,1.5
+2016,Harvest (AgExpand),0.1,0,0.2
+2016,Harvest (Clearcut),3.1,1.1,5
+2016,Harvest (Grain),10.5,7.4,12.6
+2016,Harvest (Straw),7.1,4.6,8.8
+2016,Harvest (Thinning),0.7,0.2,1.1
+2016,Harvest (Urban),0.1,0,0.2
+2016,Leaching,2.2,2.2,2.2
+2016,LULCC,37.9,30.3,43.7
+2016,Mortality,12.9,11.9,13.9
+2016,Mortality (Fire),1.5,1.3,1.6
+2016,Mortality (Harvest),1.5,0.6,2.5
+2016,Mortality (Insects),29.4,28.8,29.8
+2016,NECB,18.4,-29.7,52.4
+2016,NEP,56.2,3.5,92.7
+2016,NPP,159.6,105.8,198.2
+2016,Rh,103.4,98.9,106.2
+2017,Emission (AgExpand),0.4,0.2,0.8
+2017,Emission (Biomass),8.4,8.2,8.6
+2017,Emission (Clearcut),0.4,0.1,0.6
+2017,Emission (Fire),3.3,1.1,6.5
+2017,Emission (Orchard Removal),1.8,0.7,3
+2017,Emission (Urban),0.8,0.4,1.5
+2017,Harvest (AgExpand),0.1,0,0.2
+2017,Harvest (Clearcut),3,1.1,5
+2017,Harvest (Grain),9,7.1,11.6
+2017,Harvest (Straw),5.9,4.3,8
+2017,Harvest (Thinning),0.7,0.2,1.1
+2017,Harvest (Urban),0.1,0,0.2
+2017,Leaching,2.2,2.2,2.2
+2017,LULCC,36.1,30,43
+2017,Mortality,13.2,11.4,15.3
+2017,Mortality (Fire),2.1,0.7,4.3
+2017,Mortality (Harvest),1.5,0.6,2.5
+2017,Mortality (Insects),8.5,0.6,39.2
+2017,NECB,-24.4,-72.1,21.9
+2017,NEP,11.7,-37.9,60.3
+2017,NPP,122,75.2,169.3
+2017,Rh,110.3,104.7,114
+2018,Emission (AgExpand),0.4,0.2,0.8
+2018,Emission (Biomass),8.4,8.2,8.6
+2018,Emission (Clearcut),0.4,0.1,0.6
+2018,Emission (Fire),2.3,0.7,4.7
+2018,Emission (Orchard Removal),1.9,0.8,3
+2018,Emission (Urban),0.8,0.4,1.3
+2018,Harvest (AgExpand),0.1,0,0.2
+2018,Harvest (Clearcut),3.1,1.2,5
+2018,Harvest (Grain),9.8,8.2,13.1
+2018,Harvest (Straw),6.5,5.3,9.3
+2018,Harvest (Thinning),0.7,0.2,1.1
+2018,Harvest (Urban),0.1,0,0.2
+2018,Leaching,2.2,2.2,2.2
+2018,LULCC,36.7,30.6,45.2
+2018,Mortality,12.5,11,14.2
+2018,Mortality (Fire),1.5,0.5,3
+2018,Mortality (Harvest),1.5,0.6,2.5
+2018,Mortality (Insects),5.2,0.6,16.1
+2018,NECB,1.3,-35.7,37.5
+2018,NEP,38,0.5,79.7
+2018,NPP,145.6,110.1,186.4
+2018,Rh,107.6,101.8,111.7
+2019,Emission (AgExpand),0.5,0.2,0.8
+2019,Emission (Biomass),8.4,8.3,8.6
+2019,Emission (Clearcut),0.4,0.1,0.6
+2019,Emission (Fire),2.8,0.7,5.5
+2019,Emission (Orchard Removal),2,0.8,3.4
+2019,Emission (Urban),0.9,0.4,1.5
+2019,Harvest (AgExpand),0.1,0,0.2
+2019,Harvest (Clearcut),3.1,1.1,5
+2019,Harvest (Grain),11.2,7.3,13.6
+2019,Harvest (Straw),7.7,4.5,9.7
+2019,Harvest (Thinning),0.7,0.2,1.1
+2019,Harvest (Urban),0.1,0,0.2
+2019,Leaching,2.2,2.2,2.2
+2019,LULCC,40.1,31.6,47.9
+2019,Mortality,12.9,11.2,14.8
+2019,Mortality (Fire),1.8,0.4,3.5
+2019,Mortality (Harvest),1.5,0.6,2.5
+2019,Mortality (Insects),14.4,0.7,103.2
+2019,NECB,17.9,-39.8,46.7
+2019,NEP,57.9,-4.6,86.8
+2019,NPP,166.2,105.1,198.2
+2019,Rh,108.3,105.1,112.7
+2020,Emission (AgExpand),0.5,0.2,0.8
+2020,Emission (Biomass),8.4,7.6,8.6
+2020,Emission (Clearcut),0.4,0.1,0.6
+2020,Emission (Fire),2.1,0.8,4.2
+2020,Emission (Orchard Removal),2.2,0.9,3.8
+2020,Emission (Urban),0.9,0.4,1.6
+2020,Harvest (AgExpand),0.1,0,0.2
+2020,Harvest (Clearcut),3.1,1.1,5
+2020,Harvest (Grain),10.9,6.8,15.5
+2020,Harvest (Straw),7.5,4.1,11.2
+2020,Harvest (Thinning),0.7,0.2,1.1
+2020,Harvest (Urban),0.1,0,0.2
+2020,Leaching,2.2,2.2,2.2
+2020,LULCC,39,29.9,50.2
+2020,Mortality,12.3,10.7,14
+2020,Mortality (Fire),1.3,0.5,2.6
+2020,Mortality (Harvest),1.5,0.6,2.5
+2020,Mortality (Insects),25.6,0.8,222.2
+2020,NECB,2.7,-46.2,59.6
+2020,NEP,41.7,-12.5,106.6
+2020,NPP,152.9,97.9,221.2
+2020,Rh,111.2,105.3,116.5
+2021,Emission (AgExpand),0.5,0.2,0.8
+2021,Emission (Biomass),8.2,6.4,8.7
+2021,Emission (Clearcut),0.4,0.1,0.6
+2021,Emission (Fire),2.4,0.9,5
+2021,Emission (Orchard Removal),2.3,1,3.8
+2021,Emission (Urban),0.9,0.4,1.6
+2021,Harvest (AgExpand),0.1,0,0.2
+2021,Harvest (Clearcut),3,1.1,5
+2021,Harvest (Grain),10.4,9.2,11.6
+2021,Harvest (Straw),7.1,6.1,8.1
+2021,Harvest (Thinning),0.7,0.2,1.1
+2021,Harvest (Urban),0.1,0,0.2
+2021,Leaching,2.2,2,2.2
+2021,LULCC,38.3,32.4,43.3
+2021,Mortality,12.3,9.7,14.1
+2021,Mortality (Fire),1.5,0.5,3.1
+2021,Mortality (Harvest),1.5,0.6,2.5
+2021,Mortality (Insects),20.6,1.4,89.7
+2021,NECB,-1.3,-48.1,25.9
+2021,NEP,37,-10.7,64.8
+2021,NPP,145.5,107.9,170.5
+2021,Rh,108.6,99.4,119
+2022,Emission (AgExpand),0.5,0.2,0.8
+2022,Emission (Biomass),8.1,6.2,8.7
+2022,Emission (Clearcut),0.4,0.1,0.6
+2022,Emission (Fire),2.6,0.7,5.6
+2022,Emission (Orchard Removal),2.3,0.9,3.8
+2022,Emission (Urban),0.9,0.4,1.6
+2022,Harvest (AgExpand),0.1,0,0.2
+2022,Harvest (Clearcut),3.1,1.1,5.1
+2022,Harvest (Grain),9.9,6.5,14.1
+2022,Harvest (Straw),6.7,3.9,10.2
+2022,Harvest (Thinning),0.7,0.2,1.1
+2022,Harvest (Urban),0.1,0,0.2
+2022,Leaching,2.2,2,2.3
+2022,LULCC,37.6,28.8,44.9
+2022,Mortality,12.3,9.2,14.6
+2022,Mortality (Fire),1.6,0.4,3.3
+2022,Mortality (Harvest),1.6,0.6,2.5
+2022,Mortality (Insects),16.3,1.8,52
+2022,NECB,-6.9,-59.7,65.1
+2022,NEP,30.7,-28.1,107.4
+2022,NPP,142.4,86.5,204.5
+2022,Rh,111.7,94.5,119.9
+2023,Emission (AgExpand),0.5,0.2,0.8
+2023,Emission (Biomass),8,6.1,8.7
+2023,Emission (Clearcut),0.4,0.1,0.6
+2023,Emission (Fire),3.1,1,6.9
+2023,Emission (Orchard Removal),2.2,0.9,3.7
+2023,Emission (Urban),0.9,0.4,1.7
+2023,Harvest (AgExpand),0.1,0,0.2
+2023,Harvest (Clearcut),3.1,1.1,5
+2023,Harvest (Grain),9.8,7.5,11.8
+2023,Harvest (Straw),6.7,4.7,8.3
+2023,Harvest (Thinning),0.7,0.2,1.1
+2023,Harvest (Urban),0.1,0,0.2
+2023,Leaching,2.2,2.1,2.3
+2023,LULCC,37.8,32.2,45
+2023,Mortality,12.5,9.2,15.2
+2023,Mortality (Fire),1.9,0.6,4.2
+2023,Mortality (Harvest),1.5,0.6,2.5
+2023,Mortality (Insects),33,3,98.6
+2023,NECB,-8.7,-39.3,25.9
+2023,NEP,29,-4.6,66.9
+2023,NPP,141.4,101.9,180.3
+2023,Rh,112.4,106.4,119.1
+2024,Emission (AgExpand),0.5,0.2,0.8
+2024,Emission (Biomass),7.9,5.9,8.7
+2024,Emission (Clearcut),0.4,0.1,0.6
+2024,Emission (Fire),2.4,0.7,5.1
+2024,Emission (Orchard Removal),2.2,0.9,3.8
+2024,Emission (Urban),1,0.5,1.6
+2024,Harvest (AgExpand),0.1,0,0.2
+2024,Harvest (Clearcut),3.1,1.1,5.1
+2024,Harvest (Grain),11.3,7.9,15
+2024,Harvest (Straw),7.8,5.1,10.9
+2024,Harvest (Thinning),0.7,0.2,1.1
+2024,Harvest (Urban),0.1,0,0.2
+2024,Leaching,2.2,2.1,2.3
+2024,LULCC,39.6,29.1,48.4
+2024,Mortality,11.9,8.7,14.1
+2024,Mortality (Fire),1.4,0.4,3.1
+2024,Mortality (Harvest),1.5,0.6,2.5
+2024,Mortality (Insects),29.2,3.9,148.1
+2024,NECB,12.9,-32,64.8
+2024,NEP,52.5,-1.1,109
+2024,NPP,163.1,101.2,222.5
+2024,Rh,110.6,102.4,115.8
+2025,Emission (AgExpand),0.5,0.2,0.8
+2025,Emission (Biomass),7.8,5.9,8.7
+2025,Emission (Clearcut),0.4,0.1,0.6
+2025,Emission (Fire),3.3,1.4,5.8
+2025,Emission (Orchard Removal),2.2,0.9,3.9
+2025,Emission (Urban),1,0.5,1.7
+2025,Harvest (AgExpand),0.1,0,0.2
+2025,Harvest (Clearcut),3.1,1.1,5.1
+2025,Harvest (Grain),11.8,8.5,15.3
+2025,Harvest (Straw),8.3,5.5,11.1
+2025,Harvest (Thinning),0.7,0.2,1.1
+2025,Harvest (Urban),0.1,0,0.3
+2025,Leaching,2.2,2.1,2.2
+2025,LULCC,41.3,31.8,50.5
+2025,Mortality,12.2,9.3,14.4
+2025,Mortality (Fire),1.8,0.8,3.2
+2025,Mortality (Harvest),1.5,0.6,2.6
+2025,Mortality (Insects),27.6,3.3,78.3
+2025,NECB,15.6,-18.5,45
+2025,NEP,56.9,16,91.9
+2025,NPP,168.6,125.2,209.3
+2025,Rh,111.7,108.3,117.4
+2026,Emission (AgExpand),0.5,0.2,0.9
+2026,Emission (Biomass),7.7,6,8.5
+2026,Emission (Clearcut),0.4,0.1,0.6
+2026,Emission (Fire),2.5,0.9,6.8
+2026,Emission (Orchard Removal),2.2,0.9,3.8
+2026,Emission (Urban),1,0.5,1.7
+2026,Harvest (AgExpand),0.1,0,0.2
+2026,Harvest (Clearcut),3.1,1.1,5.1
+2026,Harvest (Grain),11.6,10.2,12.7
+2026,Harvest (Straw),8.1,7,9
+2026,Harvest (Thinning),0.7,0.2,1.1
+2026,Harvest (Urban),0.1,0,0.2
+2026,Leaching,2.2,2.1,2.2
+2026,LULCC,40.2,34.5,46.5
+2026,Mortality,11.7,9.1,15.3
+2026,Mortality (Fire),1.5,0.5,4.2
+2026,Mortality (Harvest),1.6,0.6,2.6
+2026,Mortality (Insects),14.5,3.1,37.6
+2026,NECB,6.6,-13,27.7
+2026,NEP,46.8,27.5,67.9
+2026,NPP,163.3,148.6,178.1
+2026,Rh,116.6,107.7,127.8
+2027,Emission (AgExpand),0.5,0.2,0.9
+2027,Emission (Biomass),7.6,6,8.4
+2027,Emission (Clearcut),0.4,0.1,0.6
+2027,Emission (Fire),3.4,1.1,10.3
+2027,Emission (Orchard Removal),2.2,0.9,3.8
+2027,Emission (Urban),1,0.5,1.7
+2027,Harvest (AgExpand),0.1,0,0.2
+2027,Harvest (Clearcut),3.1,1.1,5.1
+2027,Harvest (Grain),9.8,6.3,12.9
+2027,Harvest (Straw),6.7,3.7,9.1
+2027,Harvest (Thinning),0.7,0.2,1.1
+2027,Harvest (Urban),0.1,0,0.2
+2027,Leaching,2.2,2.1,2.2
+2027,LULCC,37.7,28.8,45.7
+2027,Mortality,12,9.1,16.3
+2027,Mortality (Fire),1.9,0.6,5.5
+2027,Mortality (Harvest),1.6,0.6,2.5
+2027,Mortality (Insects),24,1.4,135.4
+2027,NECB,-16.2,-76.5,30
+2027,NEP,21.5,-37.9,69.7
+2027,NPP,132.7,73.2,184.2
+2027,Rh,111.2,105.3,119.8
+2028,Emission (AgExpand),0.5,0.2,0.9
+2028,Emission (Biomass),7.4,5.9,8.3
+2028,Emission (Clearcut),0.4,0.1,0.6
+2028,Emission (Fire),2.8,1.1,5.5
+2028,Emission (Orchard Removal),2.2,0.8,3.8
+2028,Emission (Urban),1,0.5,1.6
+2028,Harvest (AgExpand),0.1,0,0.2
+2028,Harvest (Clearcut),3.1,1.1,5.1
+2028,Harvest (Grain),9.4,7.4,13.3
+2028,Harvest (Straw),6.3,4.6,9.5
+2028,Harvest (Thinning),0.7,0.2,1.1
+2028,Harvest (Urban),0.1,0,0.2
+2028,Leaching,2.2,2.1,2.3
+2028,LULCC,36.1,29.6,46.8
+2028,Mortality,11.5,8.9,13.8
+2028,Mortality (Fire),1.6,0.5,3.1
+2028,Mortality (Harvest),1.6,0.6,2.5
+2028,Mortality (Insects),15.3,1.8,84.8
+2028,NECB,-13.7,-38.1,39.8
+2028,NEP,22.4,-0.7,83.5
+2028,NPP,132.7,110.4,192.6
+2028,Rh,110.3,96.8,121
+2029,Emission (AgExpand),0.5,0.2,0.9
+2029,Emission (Biomass),7.4,5.7,8.4
+2029,Emission (Clearcut),0.4,0.1,0.6
+2029,Emission (Fire),3,1.2,5.4
+2029,Emission (Orchard Removal),2.2,0.9,3.8
+2029,Emission (Urban),0.9,0.5,1.6
+2029,Harvest (AgExpand),0.1,0,0.2
+2029,Harvest (Clearcut),3.1,1.1,5.2
+2029,Harvest (Grain),10.2,7.6,14.5
+2029,Harvest (Straw),6.8,4.8,10.4
+2029,Harvest (Thinning),0.7,0.2,1.1
+2029,Harvest (Urban),0.1,0,0.2
+2029,Leaching,2.2,2.1,2.3
+2029,LULCC,37.5,28.5,49.8
+2029,Mortality,11.6,8.8,14
+2029,Mortality (Fire),1.7,0.6,3.1
+2029,Mortality (Harvest),1.6,0.6,2.6
+2029,Mortality (Insects),11.1,2.9,33.4
+2029,NECB,-1.4,-44.5,48.8
+2029,NEP,36.1,-13.8,91.5
+2029,NPP,146.5,92.7,203.3
+2029,Rh,110.4,98.1,117.9
+2030,Emission (AgExpand),0.5,0.2,0.9
+2030,Emission (Biomass),7.4,5.7,8.4
+2030,Emission (Clearcut),0.4,0.1,0.6
+2030,Emission (Fire),3.1,1.1,5.6
+2030,Emission (Orchard Removal),2.2,0.9,3.8
+2030,Emission (Urban),0.9,0.5,1.8
+2030,Harvest (AgExpand),0.1,0,0.2
+2030,Harvest (Clearcut),3.1,1.1,5.1
+2030,Harvest (Grain),11.1,7.3,15.3
+2030,Harvest (Straw),7.6,4.5,11
+2030,Harvest (Thinning),0.7,0.2,1.1
+2030,Harvest (Urban),0.1,0,0.2
+2030,Leaching,2.2,2.1,2.3
+2030,LULCC,39.3,30.1,49.9
+2030,Mortality,11.6,9.4,13.5
+2030,Mortality (Fire),1.7,0.7,2.9
+2030,Mortality (Harvest),1.6,0.6,2.6
+2030,Mortality (Insects),10,2.2,31.2
+2030,NECB,8.2,-50.8,42.1
+2030,NEP,47.6,-18.3,85.5
+2030,NPP,160.4,100.1,207.1
+2030,Rh,112.8,103.6,128
+2031,Emission (AgExpand),0.5,0.2,0.9
+2031,Emission (Biomass),7.3,5.7,8.5
+2031,Emission (Clearcut),0.4,0.1,0.7
+2031,Emission (Fire),3.3,1.4,5.6
+2031,Emission (Orchard Removal),2.2,0.9,3.9
+2031,Emission (Urban),0.9,0.5,1.7
+2031,Harvest (AgExpand),0.1,0,0.2
+2031,Harvest (Clearcut),3.2,1.2,5.2
+2031,Harvest (Grain),10.5,7.8,14.5
+2031,Harvest (Straw),7,4.8,10.3
+2031,Harvest (Thinning),0.7,0.2,1.1
+2031,Harvest (Urban),0.1,0,0.2
+2031,Leaching,2.2,2.1,2.3
+2031,LULCC,38.4,29.8,49.7
+2031,Mortality,11.7,9.2,14.1
+2031,Mortality (Fire),1.8,0.8,3.2
+2031,Mortality (Harvest),1.6,0.6,2.6
+2031,Mortality (Insects),12.1,2.5,38.7
+2031,NECB,-7,-32.7,26.8
+2031,NEP,31.4,0.4,70.7
+2031,NPP,145.7,109.4,196.1
+2031,Rh,114.3,105.7,125.6
+2032,Emission (AgExpand),0.5,0.2,0.9
+2032,Emission (Biomass),7.3,5.7,8.5
+2032,Emission (Clearcut),0.4,0.1,0.7
+2032,Emission (Fire),2.6,1,5.3
+2032,Emission (Orchard Removal),2.2,0.9,4
+2032,Emission (Urban),1,0.5,1.7
+2032,Harvest (AgExpand),0.1,0,0.2
+2032,Harvest (Clearcut),3.2,1.2,5.2
+2032,Harvest (Grain),11.5,8.2,15.2
+2032,Harvest (Straw),7.9,5.1,10.9
+2032,Harvest (Thinning),0.7,0.2,1.1
+2032,Harvest (Urban),0.1,0,0.2
+2032,Leaching,2.2,2.2,2.3
+2032,LULCC,39.7,30.6,51.3
+2032,Mortality,11.4,8.9,14.1
+2032,Mortality (Fire),1.5,0.5,3.1
+2032,Mortality (Harvest),1.6,0.6,2.6
+2032,Mortality (Insects),9.3,1.6,23.2
+2032,NECB,13.1,-48.5,47.5
+2032,NEP,52.8,-14.2,89.1
+2032,NPP,164.3,101.5,201.8
+2032,Rh,111.5,102,121.5
+2033,Emission (AgExpand),0.5,0.2,0.9
+2033,Emission (Biomass),7.3,5.8,8.5
+2033,Emission (Clearcut),0.4,0.2,0.7
+2033,Emission (Fire),2.7,0.9,5.1
+2033,Emission (Orchard Removal),2.2,0.9,4.1
+2033,Emission (Urban),1,0.4,1.7
+2033,Harvest (AgExpand),0.1,0,0.2
+2033,Harvest (Clearcut),3.2,1.2,5.2
+2033,Harvest (Grain),10.3,7.9,14.3
+2033,Harvest (Straw),6.8,4.8,10.1
+2033,Harvest (Thinning),0.7,0.2,1.1
+2033,Harvest (Urban),0.1,0,0.2
+2033,Leaching,2.2,2.2,2.3
+2033,LULCC,37.5,29.8,49.8
+2033,Mortality,11.4,8.9,14
+2033,Mortality (Fire),1.5,0.5,2.9
+2033,Mortality (Harvest),1.6,0.6,2.6
+2033,Mortality (Insects),7,1,18.8
+2033,NECB,-11.4,-40.2,40.5
+2033,NEP,26.1,-5.3,82.9
+2033,NPP,140,98.8,195.4
+2033,Rh,113.9,102.3,133.7
+2034,Emission (AgExpand),0.5,0.2,0.9
+2034,Emission (Biomass),7.3,5.8,8.3
+2034,Emission (Clearcut),0.4,0.1,0.7
+2034,Emission (Fire),3.7,1.3,7.8
+2034,Emission (Orchard Removal),2.2,0.9,3.9
+2034,Emission (Urban),0.9,0.4,1.9
+2034,Harvest (AgExpand),0.1,0,0.2
+2034,Harvest (Clearcut),3.2,1.2,5.2
+2034,Harvest (Grain),9.6,8,10.9
+2034,Harvest (Straw),6.2,4.9,7.2
+2034,Harvest (Thinning),0.7,0.2,1.1
+2034,Harvest (Urban),0.1,0,0.2
+2034,Leaching,2.2,2.2,2.3
+2034,LULCC,36.9,31.7,42.5
+2034,Mortality,11.8,9.1,14.2
+2034,Mortality (Fire),2,0.7,4
+2034,Mortality (Harvest),1.6,0.6,2.6
+2034,Mortality (Insects),6,0.9,15.3
+2034,NECB,-19.2,-56.7,16.6
+2034,NEP,17.7,-18.4,55.1
+2034,NPP,133,106,166
+2034,Rh,115.3,106.4,127.2
+2035,Emission (AgExpand),0.5,0.2,0.9
+2035,Emission (Biomass),7.2,5.8,8.2
+2035,Emission (Clearcut),0.4,0.1,0.6
+2035,Emission (Fire),3.6,1.4,6.8
+2035,Emission (Orchard Removal),2.2,0.8,3.9
+2035,Emission (Urban),0.9,0.4,1.8
+2035,Harvest (AgExpand),0.1,0,0.2
+2035,Harvest (Clearcut),3.2,1.2,5.2
+2035,Harvest (Grain),8.9,6.4,10.3
+2035,Harvest (Straw),5.6,3.6,6.7
+2035,Harvest (Thinning),0.6,0.2,1.1
+2035,Harvest (Urban),0.1,0,0.2
+2035,Leaching,2.2,2.2,2.3
+2035,LULCC,35.4,29.6,41.2
+2035,Mortality,11.7,9.3,13.9
+2035,Mortality (Fire),1.9,0.8,3.7
+2035,Mortality (Harvest),1.6,0.6,2.6
+2035,Mortality (Insects),6.1,1.4,12.7
+2035,NECB,-22.2,-54.7,7.2
+2035,NEP,13.2,-21.3,41.7
+2035,NPP,125.7,92.6,145.2
+2035,Rh,112.5,99.2,122.1
+2036,Emission (AgExpand),0.5,0.2,0.9
+2036,Emission (Biomass),7.3,5.9,8.2
+2036,Emission (Clearcut),0.4,0.1,0.7
+2036,Emission (Fire),3.1,1,6
+2036,Emission (Orchard Removal),2.3,0.9,4.1
+2036,Emission (Urban),0.9,0.4,1.7
+2036,Harvest (AgExpand),0.1,0,0.2
+2036,Harvest (Clearcut),3.2,1.2,5.3
+2036,Harvest (Grain),10.4,8,12.8
+2036,Harvest (Straw),6.9,4.9,8.8
+2036,Harvest (Thinning),0.6,0.2,1.1
+2036,Harvest (Urban),0.1,0,0.2
+2036,Leaching,2.2,2.2,2.3
+2036,LULCC,38,30.9,44.7
+2036,Mortality,11.6,9.7,13.6
+2036,Mortality (Fire),1.7,0.6,3.3
+2036,Mortality (Harvest),1.6,0.6,2.6
+2036,Mortality (Insects),5.5,0.9,20.3
+2036,NECB,7.2,-27.4,40.1
+2036,NEP,45.2,6.6,80.9
+2036,NPP,158.2,113,189.6
+2036,Rh,113,103.7,120.7
+2037,Emission (AgExpand),0.5,0.2,0.9
+2037,Emission (Biomass),7.3,5.9,8.2
+2037,Emission (Clearcut),0.4,0.1,0.7
+2037,Emission (Fire),2.6,1,4.5
+2037,Emission (Orchard Removal),2.3,0.9,4.1
+2037,Emission (Urban),0.9,0.4,1.8
+2037,Harvest (AgExpand),0.1,0,0.2
+2037,Harvest (Clearcut),3.2,1.2,5.3
+2037,Harvest (Grain),10.2,7.3,14.3
+2037,Harvest (Straw),6.6,4.3,10
+2037,Harvest (Thinning),0.6,0.2,1
+2037,Harvest (Urban),0.1,0,0.2
+2037,Leaching,2.2,2.2,2.3
+2037,LULCC,36.9,28,46.6
+2037,Mortality,11.3,9,13.5
+2037,Mortality (Fire),1.4,0.5,2.6
+2037,Mortality (Harvest),1.6,0.6,2.7
+2037,Mortality (Insects),19.3,0.8,158.8
+2037,NECB,-4.3,-60.8,52
+2037,NEP,32.7,-29.4,95.2
+2037,NPP,145.7,84,211.9
+2037,Rh,113.1,104.8,121.6
+2038,Emission (AgExpand),0.5,0.2,0.9
+2038,Emission (Biomass),7.2,5.4,8.4
+2038,Emission (Clearcut),0.4,0.1,0.7
+2038,Emission (Fire),2.8,1,5.6
+2038,Emission (Orchard Removal),2.4,0.9,4.3
+2038,Emission (Urban),0.9,0.3,1.9
+2038,Harvest (AgExpand),0.1,0,0.2
+2038,Harvest (Clearcut),3.3,1.2,5.3
+2038,Harvest (Grain),10.5,7.9,16.2
+2038,Harvest (Straw),6.9,4.8,11.5
+2038,Harvest (Thinning),0.6,0.2,1.1
+2038,Harvest (Urban),0.1,0,0.2
+2038,Leaching,2.2,2.1,2.3
+2038,LULCC,37.9,30.3,52.3
+2038,Mortality,11.3,9,13.5
+2038,Mortality (Fire),1.5,0.5,2.9
+2038,Mortality (Harvest),1.6,0.6,2.7
+2038,Mortality (Insects),20.1,1,142.5
+2038,NECB,0.8,-37.2,81.1
+2038,NEP,38.7,-2.2,129.6
+2038,NPP,151.8,114.4,244.8
+2038,Rh,113.1,104.1,118.8
+2039,Emission (AgExpand),0.5,0.2,0.9
+2039,Emission (Biomass),7.2,4.8,8.5
+2039,Emission (Clearcut),0.4,0.2,0.7
+2039,Emission (Fire),3.5,1.2,7
+2039,Emission (Orchard Removal),2.5,1,4.4
+2039,Emission (Urban),0.9,0.3,2
+2039,Harvest (AgExpand),0.1,0,0.2
+2039,Harvest (Clearcut),3.3,1.2,5.4
+2039,Harvest (Grain),11.2,8.9,13.9
+2039,Harvest (Straw),7.4,5.6,9.7
+2039,Harvest (Thinning),0.6,0.2,1.1
+2039,Harvest (Urban),0.1,0,0.2
+2039,Leaching,2.2,2.1,2.3
+2039,LULCC,39.8,32.1,49.2
+2039,Mortality,11.7,7.7,14.7
+2039,Mortality (Fire),1.9,0.6,3.9
+2039,Mortality (Harvest),1.6,0.6,2.7
+2039,Mortality (Insects),8.5,1.1,32.2
+2039,NECB,11.3,-25.5,50.6
+2039,NEP,51.1,12.1,89.2
+2039,NPP,165.8,133.6,207
+2039,Rh,114.7,106.5,123.9
+2040,Emission (AgExpand),0.5,0.2,0.9
+2040,Emission (Biomass),7.2,4.8,8.5
+2040,Emission (Clearcut),0.4,0.2,0.7
+2040,Emission (Fire),3.6,1.1,8.1
+2040,Emission (Orchard Removal),2.5,1,4.6
+2040,Emission (Urban),0.9,0.3,1.9
+2040,Harvest (AgExpand),0.1,0,0.2
+2040,Harvest (Clearcut),3.3,1.2,5.3
+2040,Harvest (Grain),10.7,7.5,14.2
+2040,Harvest (Straw),7,4.4,9.8
+2040,Harvest (Thinning),0.6,0.2,1
+2040,Harvest (Urban),0.1,0,0.2
+2040,Leaching,2.2,2.1,2.3
+2040,LULCC,39,30.4,50.3
+2040,Mortality,11.7,8.2,14.7
+2040,Mortality (Fire),1.9,0.6,4
+2040,Mortality (Harvest),1.6,0.6,2.7
+2040,Mortality (Insects),8.3,0.9,23.3
+2040,NECB,-1.6,-62.3,37.5
+2040,NEP,37.4,-27.4,80
+2040,NPP,149.5,83.8,194.9
+2040,Rh,112.1,104.5,127.2
+2041,Emission (AgExpand),0.5,0.2,0.9
+2041,Emission (Biomass),7.2,4.7,8.6
+2041,Emission (Clearcut),0.4,0.2,0.7
+2041,Emission (Fire),2.9,1.2,5.1
+2041,Emission (Orchard Removal),2.6,1,4.7
+2041,Emission (Urban),0.9,0.3,1.8
+2041,Harvest (AgExpand),0.1,0,0.2
+2041,Harvest (Clearcut),3.3,1.2,5.4
+2041,Harvest (Grain),10.8,7.9,14.1
+2041,Harvest (Straw),7.1,4.7,9.7
+2041,Harvest (Thinning),0.6,0.2,1
+2041,Harvest (Urban),0.1,0,0.2
+2041,Leaching,2.2,2.1,2.3
+2041,LULCC,38.7,31.1,47.3
+2041,Mortality,11.5,7.7,14
+2041,Mortality (Fire),1.6,0.6,3
+2041,Mortality (Harvest),1.7,0.6,2.7
+2041,Mortality (Insects),10.6,1.5,32.8
+2041,NECB,6.8,-38.4,49.3
+2041,NEP,45.4,-2.8,92.7
+2041,NPP,160.1,111.3,208.8
+2041,Rh,114.7,107.2,120.8
+2042,Emission (AgExpand),0.5,0.2,0.9
+2042,Emission (Biomass),7.2,4.7,8.7
+2042,Emission (Clearcut),0.4,0.2,0.7
+2042,Emission (Fire),3.1,0.9,5.9
+2042,Emission (Orchard Removal),2.7,1.1,4.9
+2042,Emission (Urban),0.9,0.3,1.9
+2042,Harvest (AgExpand),0.1,0,0.2
+2042,Harvest (Clearcut),3.3,1.3,5.4
+2042,Harvest (Grain),10.4,7.5,13.6
+2042,Harvest (Straw),6.7,4.4,9.3
+2042,Harvest (Thinning),0.6,0.2,1.1
+2042,Harvest (Urban),0.1,0,0.2
+2042,Leaching,2.2,2.1,2.3
+2042,LULCC,38.1,29.5,50
+2042,Mortality,11.5,8.1,14.8
+2042,Mortality (Fire),1.7,0.5,3.4
+2042,Mortality (Harvest),1.6,0.6,2.7
+2042,Mortality (Insects),16.9,1.4,50.1
+2042,NECB,-2.3,-32.5,32.9
+2042,NEP,35.8,3.8,75.1
+2042,NPP,151.9,113.6,205.4
+2042,Rh,116.1,108.3,130.9
+2043,Emission (AgExpand),0.5,0.2,0.9
+2043,Emission (Biomass),7.2,4.8,8.6
+2043,Emission (Clearcut),0.4,0.1,0.7
+2043,Emission (Fire),3.2,0.9,8.5
+2043,Emission (Orchard Removal),2.8,1.1,4.8
+2043,Emission (Urban),0.9,0.3,1.9
+2043,Harvest (AgExpand),0.1,0,0.2
+2043,Harvest (Clearcut),3.3,1.2,5.4
+2043,Harvest (Grain),11.3,8.4,13.4
+2043,Harvest (Straw),7.5,5.1,9.2
+2043,Harvest (Thinning),0.6,0.2,1
+2043,Harvest (Urban),0.1,0,0.2
+2043,Leaching,2.2,2.2,2.3
+2043,LULCC,40.1,32.2,49.2
+2043,Mortality,11.7,7.8,15.9
+2043,Mortality (Fire),1.8,0.5,5.1
+2043,Mortality (Harvest),1.7,0.6,2.7
+2043,Mortality (Insects),16.6,1.6,68.6
+2043,NECB,16.5,-40.3,56.8
+2043,NEP,56.6,-4.7,100.5
+2043,NPP,172.9,113.7,215.2
+2043,Rh,116.3,106.4,132.6
+2044,Emission (AgExpand),0.5,0.2,0.9
+2044,Emission (Biomass),7.1,4.9,8.5
+2044,Emission (Clearcut),0.4,0.2,0.7
+2044,Emission (Fire),3.5,1.1,8.2
+2044,Emission (Orchard Removal),2.8,1.1,4.9
+2044,Emission (Urban),0.9,0.3,1.9
+2044,Harvest (AgExpand),0.1,0,0.2
+2044,Harvest (Clearcut),3.3,1.2,5.3
+2044,Harvest (Grain),9.6,7.2,11.4
+2044,Harvest (Straw),6.1,4.1,7.5
+2044,Harvest (Thinning),0.6,0.2,1
+2044,Harvest (Urban),0.1,0,0.2
+2044,Leaching,2.2,2.2,2.3
+2044,LULCC,37.1,30.1,44.5
+2044,Mortality,11.6,9.5,13.7
+2044,Mortality (Fire),1.8,0.6,3.8
+2044,Mortality (Harvest),1.6,0.6,2.7
+2044,Mortality (Insects),17.2,1.5,53.4
+2044,NECB,-17.3,-60.6,15
+2044,NEP,19.9,-27.3,52.7
+2044,NPP,136.4,95.1,169.8
+2044,Rh,116.5,109.8,124.4
+2045,Emission (AgExpand),0.5,0.2,0.9
+2045,Emission (Biomass),7.1,4.9,8.4
+2045,Emission (Clearcut),0.4,0.2,0.7
+2045,Emission (Fire),3.7,1.2,8.7
+2045,Emission (Orchard Removal),2.9,1.1,5.2
+2045,Emission (Urban),0.9,0.2,2.1
+2045,Harvest (AgExpand),0.1,0,0.2
+2045,Harvest (Clearcut),3.3,1.2,5.3
+2045,Harvest (Grain),11.1,7.4,14
+2045,Harvest (Straw),7.3,4.3,9.6
+2045,Harvest (Thinning),0.6,0.2,1
+2045,Harvest (Urban),0.1,0,0.2
+2045,Leaching,2.2,2.2,2.3
+2045,LULCC,40.2,29.7,49.1
+2045,Mortality,11.8,8.9,15.5
+2045,Mortality (Fire),2,0.7,4.8
+2045,Mortality (Harvest),1.6,0.6,2.7
+2045,Mortality (Insects),13.1,2.1,71.7
+2045,NECB,13.3,-24.8,44
+2045,NEP,53.5,8.3,88.8
+2045,NPP,169,117.6,209.1
+2045,Rh,115.5,106.6,122.8
+2046,Emission (AgExpand),0.5,0.2,0.9
+2046,Emission (Biomass),7,4.9,8.4
+2046,Emission (Clearcut),0.4,0.2,0.7
+2046,Emission (Fire),3.1,1.2,6.3
+2046,Emission (Orchard Removal),2.8,1.1,5.2
+2046,Emission (Urban),0.8,0.2,2
+2046,Harvest (AgExpand),0.1,0,0.2
+2046,Harvest (Clearcut),3.3,1.2,5.4
+2046,Harvest (Grain),9.2,6.1,13
+2046,Harvest (Straw),5.7,3.2,8.8
+2046,Harvest (Thinning),0.6,0.2,1
+2046,Harvest (Urban),0.1,0,0.2
+2046,Leaching,2.2,2.2,2.3
+2046,LULCC,35.7,28.5,45.3
+2046,Mortality,11.3,8.4,13.8
+2046,Mortality (Fire),1.7,0.7,3.5
+2046,Mortality (Harvest),1.6,0.6,2.7
+2046,Mortality (Insects),5.8,1.3,11.8
+2046,NECB,-24.4,-60.2,27.6
+2046,NEP,11.4,-26.6,68.5
+2046,NPP,129.3,83.9,191.6
+2046,Rh,118,109.9,127
+2047,Emission (AgExpand),0.5,0.2,0.9
+2047,Emission (Biomass),7,4.9,8.3
+2047,Emission (Clearcut),0.4,0.2,0.7
+2047,Emission (Fire),3.5,1.5,5.8
+2047,Emission (Orchard Removal),2.8,1.1,5
+2047,Emission (Urban),0.8,0.2,2
+2047,Harvest (AgExpand),0.1,0,0.2
+2047,Harvest (Clearcut),3.2,1.2,5.3
+2047,Harvest (Grain),8.6,7.1,11.5
+2047,Harvest (Straw),5.2,4,7.5
+2047,Harvest (Thinning),0.6,0.2,1
+2047,Harvest (Urban),0.1,0,0.2
+2047,Leaching,2.2,2.2,2.3
+2047,LULCC,35.1,28.6,41
+2047,Mortality,11.5,8.7,14
+2047,Mortality (Fire),1.9,0.8,3.2
+2047,Mortality (Harvest),1.6,0.6,2.7
+2047,Mortality (Insects),6.2,0.8,14.5
+2047,NECB,-23.8,-66.5,21.6
+2047,NEP,11.4,-28.8,59
+2047,NPP,130.7,104.9,175
+2047,Rh,119.4,107.2,135.3
+2048,Emission (AgExpand),0.5,0.2,0.9
+2048,Emission (Biomass),7,4.9,8.2
+2048,Emission (Clearcut),0.4,0.2,0.7
+2048,Emission (Fire),3,1.1,6.2
+2048,Emission (Orchard Removal),2.8,1.1,5
+2048,Emission (Urban),0.8,0.2,1.9
+2048,Harvest (AgExpand),0.1,0,0.2
+2048,Harvest (Clearcut),3.2,1.2,5.3
+2048,Harvest (Grain),9.1,7.9,11.5
+2048,Harvest (Straw),5.6,4.7,7.5
+2048,Harvest (Thinning),0.6,0.1,1
+2048,Harvest (Urban),0.1,0,0.2
+2048,Leaching,2.2,2.2,2.3
+2048,LULCC,35.5,29.3,42.8
+2048,Mortality,11.3,8.1,14
+2048,Mortality (Fire),1.6,0.5,3.3
+2048,Mortality (Harvest),1.6,0.6,2.7
+2048,Mortality (Insects),4.3,0.8,11.1
+2048,NECB,-9.8,-31.8,15.6
+2048,NEP,25.7,7.7,51
+2048,NPP,141.1,126,168.5
+2048,Rh,115.4,104.6,126.5
+2049,Emission (AgExpand),0.5,0.2,0.9
+2049,Emission (Biomass),7,4.9,8.3
+2049,Emission (Clearcut),0.4,0.2,0.7
+2049,Emission (Fire),3.2,1.3,5.7
+2049,Emission (Orchard Removal),2.8,1.1,5
+2049,Emission (Urban),0.8,0.2,2
+2049,Harvest (AgExpand),0.1,0,0.2
+2049,Harvest (Clearcut),3.2,1.2,5.3
+2049,Harvest (Grain),9.5,7,13.3
+2049,Harvest (Straw),5.9,3.9,9
+2049,Harvest (Thinning),0.6,0.2,1
+2049,Harvest (Urban),0.1,0,0.2
+2049,Leaching,2.2,2.2,2.3
+2049,LULCC,36.4,28.9,46
+2049,Mortality,11.4,8.8,13.6
+2049,Mortality (Fire),1.7,0.7,3
+2049,Mortality (Harvest),1.6,0.6,2.6
+2049,Mortality (Insects),5.6,0.8,23.9
+2049,NECB,-5.8,-46.4,65.1
+2049,NEP,30.5,-13.9,106.9
+2049,NPP,145.6,101.4,213.3
+2049,Rh,115.1,105.1,124
+2050,Emission (AgExpand),0.5,0.2,0.9
+2050,Emission (Biomass),7.1,5.1,8.4
+2050,Emission (Clearcut),0.4,0.2,0.7
+2050,Emission (Fire),3.8,1.2,7.8
+2050,Emission (Orchard Removal),2.8,1.1,4.8
+2050,Emission (Urban),0.8,0.2,2
+2050,Harvest (AgExpand),0.1,0,0.2
+2050,Harvest (Clearcut),3.2,1.2,5.3
+2050,Harvest (Grain),10.1,7.4,12.7
+2050,Harvest (Straw),6.4,4.2,8.5
+2050,Harvest (Thinning),0.6,0.2,1
+2050,Harvest (Urban),0.1,0,0.2
+2050,Leaching,2.3,2.2,2.3
+2050,LULCC,38.1,30.6,46.3
+2050,Mortality,11.8,8.6,15.2
+2050,Mortality (Fire),2.1,0.7,4.4
+2050,Mortality (Harvest),1.6,0.6,2.7
+2050,Mortality (Insects),5.2,0.8,21.4
+2050,NECB,-1.4,-63.5,53.8
+2050,NEP,36.6,-24,93.5
+2050,NPP,153.3,103.3,206.3
+2050,Rh,116.7,111.1,129
+2051,Emission (AgExpand),0.5,0.2,0.9
+2051,Emission (Biomass),7.1,5.2,8.4
+2051,Emission (Clearcut),0.4,0.2,0.7
+2051,Emission (Fire),3.3,1.3,5.8
+2051,Emission (Orchard Removal),2.9,1.1,5.1
+2051,Emission (Urban),0.8,0.2,2
+2051,Harvest (AgExpand),0.1,0,0.2
+2051,Harvest (Clearcut),3.2,1.2,5.3
+2051,Harvest (Grain),10.2,7.7,13.9
+2051,Harvest (Straw),6.4,4.4,9.4
+2051,Harvest (Thinning),0.6,0.2,1
+2051,Harvest (Urban),0.1,0,0.2
+2051,Leaching,2.3,2.2,2.3
+2051,LULCC,37.8,29.8,48
+2051,Mortality,11.6,9,14
+2051,Mortality (Fire),1.8,0.8,3.2
+2051,Mortality (Harvest),1.6,0.6,2.6
+2051,Mortality (Insects),6.8,0.9,30.2
+2051,NECB,1.3,-24.7,53.7
+2051,NEP,39.1,9.4,97.8
+2051,NPP,156.1,121.9,219.1
+2051,Rh,117.1,108.9,126.7
+2052,Emission (AgExpand),0.5,0.2,0.9
+2052,Emission (Biomass),7.1,5.2,8.4
+2052,Emission (Clearcut),0.4,0.2,0.7
+2052,Emission (Fire),3.7,1,8.5
+2052,Emission (Orchard Removal),2.8,1.1,5.2
+2052,Emission (Urban),0.8,0.2,2.1
+2052,Harvest (AgExpand),0.1,0,0.2
+2052,Harvest (Clearcut),3.2,1.2,5.3
+2052,Harvest (Grain),9,6.7,13.3
+2052,Harvest (Straw),5.5,3.6,8.9
+2052,Harvest (Thinning),0.6,0.2,1
+2052,Harvest (Urban),0.1,0,0.2
+2052,Leaching,2.2,2.2,2.3
+2052,LULCC,36,26.7,49.9
+2052,Mortality,11.8,8.6,15.2
+2052,Mortality (Fire),2.1,0.5,4.7
+2052,Mortality (Harvest),1.6,0.6,2.7
+2052,Mortality (Insects),7.4,1.5,23.4
+2052,NECB,-22.6,-46.8,26.9
+2052,NEP,13.4,-10.3,73
+2052,NPP,131,100.3,194.6
+2052,Rh,117.6,104.5,130.6
+2053,Emission (AgExpand),0.5,0.2,0.9
+2053,Emission (Biomass),7,5.3,8.3
+2053,Emission (Clearcut),0.4,0.2,0.7
+2053,Emission (Fire),3.5,1.3,6.4
+2053,Emission (Orchard Removal),2.8,1.1,5.3
+2053,Emission (Urban),0.8,0.2,1.9
+2053,Harvest (AgExpand),0.1,0,0.2
+2053,Harvest (Clearcut),3.2,1.2,5.3
+2053,Harvest (Grain),9,6.8,12.7
+2053,Harvest (Straw),5.4,3.6,8.4
+2053,Harvest (Thinning),0.6,0.2,1
+2053,Harvest (Urban),0.1,0,0.2
+2053,Leaching,2.2,2.2,2.3
+2053,LULCC,35.6,27.9,44
+2053,Mortality,11.6,9.3,14.3
+2053,Mortality (Fire),1.9,0.7,3.5
+2053,Mortality (Harvest),1.6,0.6,2.6
+2053,Mortality (Insects),18.7,1.2,75.2
+2053,NECB,-15.3,-49.6,22.1
+2053,NEP,20.3,-14.5,62
+2053,NPP,138.4,102.4,185.2
+2053,Rh,118.1,111.5,124
+2054,Emission (AgExpand),0.5,0.2,0.9
+2054,Emission (Biomass),7,5.4,8.3
+2054,Emission (Clearcut),0.4,0.1,0.7
+2054,Emission (Fire),3,1.1,7.4
+2054,Emission (Orchard Removal),2.8,1,5.3
+2054,Emission (Urban),0.8,0.2,2
+2054,Harvest (AgExpand),0.1,0,0.2
+2054,Harvest (Clearcut),3.2,1.2,5.4
+2054,Harvest (Grain),9.3,6.4,13.2
+2054,Harvest (Straw),5.7,3.3,8.8
+2054,Harvest (Thinning),0.6,0.2,1
+2054,Harvest (Urban),0.1,0,0.2
+2054,Leaching,2.2,2.2,2.3
+2054,LULCC,35.7,26,45.8
+2054,Mortality,11.4,8.7,15.2
+2054,Mortality (Fire),1.7,0.6,4.4
+2054,Mortality (Harvest),1.6,0.6,2.7
+2054,Mortality (Insects),10.5,1.4,22.2
+2054,NECB,-9.5,-53.4,31.8
+2054,NEP,26.2,-22.3,71.1
+2054,NPP,143.9,93.1,202.2
+2054,Rh,117.7,102.6,133.1
+2055,Emission (AgExpand),0.5,0.2,0.9
+2055,Emission (Biomass),7.1,5.5,8.4
+2055,Emission (Clearcut),0.4,0.1,0.7
+2055,Emission (Fire),3.5,1.2,8.2
+2055,Emission (Orchard Removal),3,1.1,5.6
+2055,Emission (Urban),0.8,0.2,2.2
+2055,Harvest (AgExpand),0.1,0,0.2
+2055,Harvest (Clearcut),3.2,1.2,5.3
+2055,Harvest (Grain),11.3,6.5,14.5
+2055,Harvest (Straw),7.3,3.4,9.9
+2055,Harvest (Thinning),0.6,0.2,1
+2055,Harvest (Urban),0.1,0,0.3
+2055,Leaching,2.2,2.2,2.3
+2055,LULCC,40.1,27.9,50.1
+2055,Mortality,11.7,9.6,14
+2055,Mortality (Fire),2,0.7,4.3
+2055,Mortality (Harvest),1.6,0.6,2.7
+2055,Mortality (Insects),12.2,1.5,51.3
+2055,NECB,25.9,-38.6,53.4
+2055,NEP,66.1,-7.6,97.4
+2055,NPP,183.3,102,220.2
+2055,Rh,117.2,105.3,130.7
+2056,Emission (AgExpand),0.5,0.2,1
+2056,Emission (Biomass),7.1,5.7,8.4
+2056,Emission (Clearcut),0.4,0.1,0.7
+2056,Emission (Fire),3.2,1.2,6
+2056,Emission (Orchard Removal),3,1.1,5.7
+2056,Emission (Urban),0.9,0.2,2.2
+2056,Harvest (AgExpand),0.1,0,0.2
+2056,Harvest (Clearcut),3.2,1.2,5.3
+2056,Harvest (Grain),11.5,7.9,15
+2056,Harvest (Straw),7.5,4.6,10.2
+2056,Harvest (Thinning),0.6,0.2,1
+2056,Harvest (Urban),0.1,0,0.2
+2056,Leaching,2.2,2.2,2.3
+2056,LULCC,40.3,30.3,50.4
+2056,Mortality,11.6,9.3,14.2
+2056,Mortality (Fire),1.8,0.7,3.6
+2056,Mortality (Harvest),1.6,0.6,2.6
+2056,Mortality (Insects),20,1.9,74.8
+2056,NECB,18.2,-45.3,54.1
+2056,NEP,58.5,-7.6,98.2
+2056,NPP,176.4,120.7,217.9
+2056,Rh,118,105.5,139.3
+2057,Emission (AgExpand),0.5,0.2,0.9
+2057,Emission (Biomass),7,5.7,8.3
+2057,Emission (Clearcut),0.4,0.1,0.7
+2057,Emission (Fire),5,1.9,9.6
+2057,Emission (Orchard Removal),3,1.1,5.7
+2057,Emission (Urban),0.9,0.2,2.1
+2057,Harvest (AgExpand),0.1,0,0.2
+2057,Harvest (Clearcut),3.2,1.2,5.2
+2057,Harvest (Grain),9.1,6.6,13.6
+2057,Harvest (Straw),5.4,3.4,9.1
+2057,Harvest (Thinning),0.6,0.2,1
+2057,Harvest (Urban),0.1,0,0.2
+2057,Leaching,2.2,2.1,2.3
+2057,LULCC,37.4,29.2,50.5
+2057,Mortality,12.4,10,15
+2057,Mortality (Fire),2.7,1.1,5.3
+2057,Mortality (Harvest),1.6,0.6,2.6
+2057,Mortality (Insects),15.6,1.8,70.9
+2057,NECB,-31,-63.9,-2
+2057,NEP,6.4,-29.3,44.2
+2057,NPP,128.3,88.9,192.6
+2057,Rh,121.9,106.2,149.5
+2058,Emission (AgExpand),0.5,0.2,0.9
+2058,Emission (Biomass),6.9,5.6,8.2
+2058,Emission (Clearcut),0.4,0.2,0.7
+2058,Emission (Fire),4.9,1.5,11.5
+2058,Emission (Orchard Removal),3,1.1,5.7
+2058,Emission (Urban),0.8,0.2,2.1
+2058,Harvest (AgExpand),0.1,0,0.2
+2058,Harvest (Clearcut),3.2,1.2,5.3
+2058,Harvest (Grain),8.7,5.7,14.4
+2058,Harvest (Straw),5.1,2.7,9.7
+2058,Harvest (Thinning),0.6,0.2,1
+2058,Harvest (Urban),0.1,0,0.2
+2058,Leaching,2.2,2.1,2.3
+2058,LULCC,36.5,24.7,48.3
+2058,Mortality,12.2,9,15.9
+2058,Mortality (Fire),2.6,0.8,6.1
+2058,Mortality (Harvest),1.6,0.6,2.6
+2058,Mortality (Insects),12.3,1.8,38.6
+2058,NECB,-27.5,-76.7,43.4
+2058,NEP,9,-41.8,87.2
+2058,NPP,129,79.8,216.9
+2058,Rh,120,102,136.8
+2059,Emission (AgExpand),0.5,0.2,0.9
+2059,Emission (Biomass),6.9,5.5,8.3
+2059,Emission (Clearcut),0.4,0.1,0.6
+2059,Emission (Fire),3.1,1.2,5.9
+2059,Emission (Orchard Removal),2.9,1,5.9
+2059,Emission (Urban),0.9,0.2,2.1
+2059,Harvest (AgExpand),0.1,0,0.2
+2059,Harvest (Clearcut),3.1,1.2,5.1
+2059,Harvest (Grain),9.1,5.7,17
+2059,Harvest (Straw),5.5,2.7,11.8
+2059,Harvest (Thinning),0.6,0.1,1
+2059,Harvest (Urban),0.1,0,0.2
+2059,Leaching,2.2,2.1,2.3
+2059,LULCC,35.3,24.5,53.2
+2059,Mortality,11.2,8.9,13.6
+2059,Mortality (Fire),1.7,0.6,3.3
+2059,Mortality (Harvest),1.6,0.6,2.6
+2059,Mortality (Insects),10.3,1,37.8
+2059,NECB,-12.7,-62.3,68.6
+2059,NEP,22.6,-33.6,117.6
+2059,NPP,142.1,76.8,260.6
+2059,Rh,119.5,106,143.9
+2060,Emission (AgExpand),0.5,0.2,0.9
+2060,Emission (Biomass),6.8,5.5,8.2
+2060,Emission (Clearcut),0.4,0.1,0.7
+2060,Emission (Fire),2.9,1,6.5
+2060,Emission (Orchard Removal),2.9,1,5.9
+2060,Emission (Urban),0.9,0.2,2.1
+2060,Harvest (AgExpand),0.1,0,0.2
+2060,Harvest (Clearcut),3.1,1.2,5.2
+2060,Harvest (Grain),9.3,6.4,16.1
+2060,Harvest (Straw),5.6,3.2,11
+2060,Harvest (Thinning),0.6,0.2,1
+2060,Harvest (Urban),0.1,0,0.2
+2060,Leaching,2.2,2.1,2.4
+2060,LULCC,35.3,26.8,50.3
+2060,Mortality,11.1,8.6,14.1
+2060,Mortality (Fire),1.6,0.5,3.8
+2060,Mortality (Harvest),1.6,0.6,2.6
+2060,Mortality (Insects),7.7,0.7,25.6
+2060,NECB,-8.8,-46,46.3
+2060,NEP,26.6,-8,92.8
+2060,NPP,143.6,94.4,235.3
+2060,Rh,117,97.5,143.4
+2061,Emission (AgExpand),0.5,0.2,0.9
+2061,Emission (Biomass),6.8,5.5,8.3
+2061,Emission (Clearcut),0.4,0.1,0.7
+2061,Emission (Fire),3.2,1.1,5.5
+2061,Emission (Orchard Removal),3,1,5.9
+2061,Emission (Urban),0.9,0.2,2.1
+2061,Harvest (AgExpand),0.1,0,0.2
+2061,Harvest (Clearcut),3.1,1.2,5.2
+2061,Harvest (Grain),9.5,8,12.2
+2061,Harvest (Straw),5.7,4.5,7.8
+2061,Harvest (Thinning),0.6,0.1,1
+2061,Harvest (Urban),0.1,0,0.2
+2061,Leaching,2.2,2.1,2.4
+2061,LULCC,35.9,29.6,44.7
+2061,Mortality,11.2,9.1,13.7
+2061,Mortality (Fire),1.8,0.6,3.1
+2061,Mortality (Harvest),1.5,0.6,2.6
+2061,Mortality (Insects),5.8,0.5,23
+2061,NECB,-5.3,-72.3,36.2
+2061,NEP,30.6,-33.3,77.7
+2061,NPP,146.5,118.4,194.2
+2061,Rh,115.9,103.9,153.4
+2062,Emission (AgExpand),0.5,0.2,0.9
+2062,Emission (Biomass),6.9,5.6,8.3
+2062,Emission (Clearcut),0.4,0.1,0.6
+2062,Emission (Fire),5,2.3,8.4
+2062,Emission (Orchard Removal),3,1.1,5.8
+2062,Emission (Urban),0.8,0.2,2.1
+2062,Harvest (AgExpand),0.1,0,0.2
+2062,Harvest (Clearcut),3.1,1.2,5.2
+2062,Harvest (Grain),9.1,7.3,11.9
+2062,Harvest (Straw),5.4,3.9,7.6
+2062,Harvest (Thinning),0.6,0.2,0.9
+2062,Harvest (Urban),0.1,0,0.2
+2062,Leaching,2.2,2.1,2.4
+2062,LULCC,37.2,31.3,43.9
+2062,Mortality,12.2,9.7,15.6
+2062,Mortality (Fire),2.8,1.2,4.8
+2062,Mortality (Harvest),1.5,0.6,2.6
+2062,Mortality (Insects),8.4,0.5,43.2
+2062,NECB,-17,-60.7,30.7
+2062,NEP,20.2,-23.3,68.4
+2062,NPP,141,112,183.6
+2062,Rh,120.8,101.3,137.1
+2063,Emission (AgExpand),0.5,0.2,0.9
+2063,Emission (Biomass),6.8,5.7,8.3
+2063,Emission (Clearcut),0.4,0.1,0.6
+2063,Emission (Fire),3.5,1.3,6.8
+2063,Emission (Orchard Removal),3,1.1,5.6
+2063,Emission (Urban),0.8,0.2,2.2
+2063,Harvest (AgExpand),0.1,0,0.2
+2063,Harvest (Clearcut),3.1,1.2,5.1
+2063,Harvest (Grain),9.2,6.3,12.1
+2063,Harvest (Straw),5.4,3.1,7.7
+2063,Harvest (Thinning),0.6,0.2,0.9
+2063,Harvest (Urban),0.1,0,0.2
+2063,Leaching,2.2,2.1,2.4
+2063,LULCC,35.6,28.1,42.6
+2063,Mortality,11.3,9.3,13.3
+2063,Mortality (Fire),1.9,0.7,3.8
+2063,Mortality (Harvest),1.5,0.6,2.5
+2063,Mortality (Insects),7.5,0.5,38.4
+2063,NECB,-13,-73.2,44.7
+2063,NEP,22.6,-41,81.7
+2063,NPP,138.2,85.8,187.2
+2063,Rh,115.6,103.1,130.7
+2064,Emission (AgExpand),0.5,0.2,0.9
+2064,Emission (Biomass),6.8,5.7,8.3
+2064,Emission (Clearcut),0.4,0.1,0.6
+2064,Emission (Fire),4.1,1.3,8.4
+2064,Emission (Orchard Removal),3,1.1,5.7
+2064,Emission (Urban),0.8,0.2,2.2
+2064,Harvest (AgExpand),0.1,0,0.2
+2064,Harvest (Clearcut),3,1.2,5.1
+2064,Harvest (Grain),9.3,6,13.4
+2064,Harvest (Straw),5.5,2.8,8.7
+2064,Harvest (Thinning),0.6,0.2,0.9
+2064,Harvest (Urban),0.1,0,0.2
+2064,Leaching,2.2,2.1,2.4
+2064,LULCC,36.3,24.9,45.6
+2064,Mortality,11.7,8.9,15.2
+2064,Mortality (Fire),2.3,0.7,4.8
+2064,Mortality (Harvest),1.5,0.6,2.5
+2064,Mortality (Insects),14.9,0.5,100.7
+2064,NECB,-10.4,-56.8,33.9
+2064,NEP,25.9,-29.7,75.8
+2064,NPP,146,83.6,198.3
+2064,Rh,120.1,109.7,131.1
+2065,Emission (AgExpand),0.5,0.2,0.9
+2065,Emission (Biomass),6.8,5.4,8.3
+2065,Emission (Clearcut),0.4,0.1,0.6
+2065,Emission (Fire),4.5,1.3,9.3
+2065,Emission (Orchard Removal),3.1,1.1,6
+2065,Emission (Urban),0.8,0.2,2.2
+2065,Harvest (AgExpand),0.1,0,0.2
+2065,Harvest (Clearcut),3,1.1,5
+2065,Harvest (Grain),9.6,7.4,15.4
+2065,Harvest (Straw),5.7,4,10.4
+2065,Harvest (Thinning),0.6,0.2,0.9
+2065,Harvest (Urban),0.1,0,0.2
+2065,Leaching,2.2,2,2.4
+2065,LULCC,37.3,26.9,52.8
+2065,Mortality,11.9,8.3,16
+2065,Mortality (Fire),2.5,0.7,5.4
+2065,Mortality (Harvest),1.5,0.6,2.5
+2065,Mortality (Insects),19.1,0.6,61.9
+2065,NECB,-0.6,-20.4,76.7
+2065,NEP,36.7,14,125.6
+2065,NPP,151.5,115,251.8
+2065,Rh,114.8,100.5,127.1
+2066,Emission (AgExpand),0.5,0.2,0.9
+2066,Emission (Biomass),6.7,5.2,8.2
+2066,Emission (Clearcut),0.4,0.1,0.6
+2066,Emission (Fire),2.7,1,5.1
+2066,Emission (Orchard Removal),3.1,1.1,6
+2066,Emission (Urban),0.8,0.1,2.2
+2066,Harvest (AgExpand),0.1,0,0.2
+2066,Harvest (Clearcut),3,1.1,4.9
+2066,Harvest (Grain),9,5.4,12.6
+2066,Harvest (Straw),5.3,2.3,8
+2066,Harvest (Thinning),0.6,0.1,0.9
+2066,Harvest (Urban),0.1,0,0.2
+2066,Leaching,2.2,2,2.4
+2066,LULCC,34.4,23.2,42.9
+2066,Mortality,10.7,8.2,13.3
+2066,Mortality (Fire),1.5,0.6,2.8
+2066,Mortality (Harvest),1.5,0.6,2.5
+2066,Mortality (Insects),15.9,1.3,47.2
+2066,NECB,-16.8,-74.5,31.7
+2066,NEP,17.5,-49.4,70.7
+2066,NPP,136.4,56.9,190.6
+2066,Rh,118.9,101.7,143.6
+2067,Emission (AgExpand),0.5,0.2,0.9
+2067,Emission (Biomass),6.7,5,8.2
+2067,Emission (Clearcut),0.4,0.1,0.6
+2067,Emission (Fire),4.1,1.2,8.9
+2067,Emission (Orchard Removal),3.1,1.1,6
+2067,Emission (Urban),0.8,0.1,2.2
+2067,Harvest (AgExpand),0.1,0,0.2
+2067,Harvest (Clearcut),3,1.1,4.9
+2067,Harvest (Grain),9.4,6.1,12.9
+2067,Harvest (Straw),5.5,2.9,8.3
+2067,Harvest (Thinning),0.6,0.2,0.9
+2067,Harvest (Urban),0.1,0,0.2
+2067,Leaching,2.2,2,2.3
+2067,LULCC,36.4,25,47.3
+2067,Mortality,11.5,8,14.6
+2067,Mortality (Fire),2.3,0.6,5
+2067,Mortality (Harvest),1.5,0.6,2.4
+2067,Mortality (Insects),11.8,2,46.2
+2067,NECB,-5.3,-54,44.2
+2067,NEP,31,-27.1,86.9
+2067,NPP,149.1,78.7,203.3
+2067,Rh,118.1,98.5,148.4
+2068,Emission (AgExpand),0.5,0.2,0.9
+2068,Emission (Biomass),6.7,4.9,8.1
+2068,Emission (Clearcut),0.4,0.1,0.6
+2068,Emission (Fire),3.5,1.3,7
+2068,Emission (Orchard Removal),3.2,1.2,6
+2068,Emission (Urban),0.8,0.1,2.2
+2068,Harvest (AgExpand),0.1,0,0.2
+2068,Harvest (Clearcut),3,1.1,4.9
+2068,Harvest (Grain),10.2,7.7,13.9
+2068,Harvest (Straw),6.2,4.1,9.1
+2068,Harvest (Thinning),0.6,0.2,0.9
+2068,Harvest (Urban),0,0,0.2
+2068,Leaching,2.2,2,2.3
+2068,LULCC,37.3,30.2,47.8
+2068,Mortality,11.2,8.3,14.5
+2068,Mortality (Fire),2,0.7,4
+2068,Mortality (Harvest),1.5,0.6,2.5
+2068,Mortality (Insects),20.4,1.2,93.9
+2068,NECB,8.1,-70.6,68.9
+2068,NEP,45.4,-32.4,113.1
+2068,NPP,162.1,96.3,239.7
+2068,Rh,116.7,101.1,134.7
+2069,Emission (AgExpand),0.5,0.2,0.9
+2069,Emission (Biomass),6.6,4.8,7.9
+2069,Emission (Clearcut),0.4,0.1,0.6
+2069,Emission (Fire),5.6,1.5,11
+2069,Emission (Orchard Removal),3.2,1.2,6.1
+2069,Emission (Urban),0.8,0.1,2.3
+2069,Harvest (AgExpand),0.1,0,0.2
+2069,Harvest (Clearcut),3,1.1,5
+2069,Harvest (Grain),9.2,6.3,12.4
+2069,Harvest (Straw),5.3,3,7.9
+2069,Harvest (Thinning),0.6,0.2,1
+2069,Harvest (Urban),0,0,0.2
+2069,Leaching,2.2,2,2.3
+2069,LULCC,37.5,29.2,50.6
+2069,Mortality,12.2,9.2,17.3
+2069,Mortality (Fire),3.1,0.9,6.7
+2069,Mortality (Harvest),1.5,0.6,2.5
+2069,Mortality (Insects),17.2,0.9,85.8
+2069,NECB,-19.6,-73.9,13.1
+2069,NEP,17.9,-38,50.9
+2069,NPP,137.9,85,187
+2069,Rh,120,108,143.2
+2070,Emission (AgExpand),0.5,0.2,0.9
+2070,Emission (Biomass),6.6,4.8,7.8
+2070,Emission (Clearcut),0.4,0.1,0.6
+2070,Emission (Fire),3.5,1.1,8.3
+2070,Emission (Orchard Removal),3.3,1.2,6.2
+2070,Emission (Urban),0.8,0.1,2.3
+2070,Harvest (AgExpand),0.1,0,0.2
+2070,Harvest (Clearcut),3,1.1,4.8
+2070,Harvest (Grain),10.1,8,11.9
+2070,Harvest (Straw),6,4.3,7.4
+2070,Harvest (Thinning),0.6,0.2,0.9
+2070,Harvest (Urban),0,0,0.2
+2070,Leaching,2.2,2,2.3
+2070,LULCC,37,29.1,46.3
+2070,Mortality,11.1,8.7,15.5
+2070,Mortality (Fire),2,0.6,5.1
+2070,Mortality (Harvest),1.5,0.6,2.4
+2070,Mortality (Insects),15.4,0.8,66
+2070,NECB,4.4,-10.9,28.3
+2070,NEP,41.4,23.7,65.4
+2070,NPP,158.7,133.5,183.8
+2070,Rh,117.3,107.1,139.8
+2071,Emission (AgExpand),0.5,0.2,0.9
+2071,Emission (Biomass),6.6,4.5,7.8
+2071,Emission (Clearcut),0.4,0.1,0.6
+2071,Emission (Fire),3.8,1.2,7.8
+2071,Emission (Orchard Removal),3.4,1.3,6.4
+2071,Emission (Urban),0.8,0.1,2.3
+2071,Harvest (AgExpand),0.1,0,0.2
+2071,Harvest (Clearcut),3,1.2,4.9
+2071,Harvest (Grain),10.3,7.5,13.1
+2071,Harvest (Straw),6.2,3.9,8.4
+2071,Harvest (Thinning),0.6,0.2,0.9
+2071,Harvest (Urban),0,0,0.2
+2071,Leaching,2.2,2,2.3
+2071,LULCC,37.9,27.6,47.4
+2071,Mortality,11.2,7.8,14.6
+2071,Mortality (Fire),2.1,0.6,4.5
+2071,Mortality (Harvest),1.5,0.6,2.5
+2071,Mortality (Insects),11,0.8,39.4
+2071,NECB,5.1,-25.4,36.2
+2071,NEP,42.9,5.7,78.9
+2071,NPP,161.1,109,195.5
+2071,Rh,118.1,101.5,139.1
+2072,Emission (AgExpand),0.5,0.2,0.9
+2072,Emission (Biomass),6.5,4.4,7.8
+2072,Emission (Clearcut),0.4,0.1,0.6
+2072,Emission (Fire),4.4,1.2,10.6
+2072,Emission (Orchard Removal),3.3,1.2,6.3
+2072,Emission (Urban),0.8,0.1,2.4
+2072,Harvest (AgExpand),0.1,0,0.2
+2072,Harvest (Clearcut),3,1.1,4.9
+2072,Harvest (Grain),9.3,7,11.1
+2072,Harvest (Straw),5.4,3.5,6.8
+2072,Harvest (Thinning),0.6,0.2,1
+2072,Harvest (Urban),0,0,0.2
+2072,Leaching,2.2,2,2.3
+2072,LULCC,36.5,30.8,43.1
+2072,Mortality,11.5,8.9,14.1
+2072,Mortality (Fire),2.4,0.7,5.4
+2072,Mortality (Harvest),1.5,0.6,2.4
+2072,Mortality (Insects),8.7,0.7,36.9
+2072,NECB,-21.8,-58.5,30.1
+2072,NEP,14.7,-22,64.2
+2072,NPP,135.9,96.1,176.9
+2072,Rh,121.2,110.2,137.7
+2073,Emission (AgExpand),0.5,0.2,0.9
+2073,Emission (Biomass),6.5,4.2,7.7
+2073,Emission (Clearcut),0.4,0.1,0.6
+2073,Emission (Fire),2.8,1.1,4.9
+2073,Emission (Orchard Removal),3.3,1.2,6.2
+2073,Emission (Urban),0.8,0.1,2.2
+2073,Harvest (AgExpand),0.1,0,0.2
+2073,Harvest (Clearcut),3,1.1,4.9
+2073,Harvest (Grain),8.2,6.3,10.7
+2073,Harvest (Straw),4.5,2.9,6.4
+2073,Harvest (Thinning),0.6,0.2,0.9
+2073,Harvest (Urban),0,0,0.2
+2073,Leaching,2.2,2,2.3
+2073,LULCC,32.8,23.8,41
+2073,Mortality,10.5,6.8,12.9
+2073,Mortality (Fire),1.6,0.6,2.8
+2073,Mortality (Harvest),1.5,0.6,2.5
+2073,Mortality (Insects),7.2,1,17.9
+2073,NECB,-25.4,-67.6,16.6
+2073,NEP,7.4,-41.5,51.1
+2073,NPP,122.9,67.6,160.8
+2073,Rh,115.5,96.9,138.1
+2074,Emission (AgExpand),0.5,0.2,0.9
+2074,Emission (Biomass),6.5,4.3,7.7
+2074,Emission (Clearcut),0.4,0.1,0.6
+2074,Emission (Fire),3.3,1.3,6.4
+2074,Emission (Orchard Removal),3.4,1.3,6.1
+2074,Emission (Urban),0.8,0.1,2.4
+2074,Harvest (AgExpand),0.1,0,0.2
+2074,Harvest (Clearcut),3,1.1,4.8
+2074,Harvest (Grain),9.3,6,13.2
+2074,Harvest (Straw),5.4,2.7,8.4
+2074,Harvest (Thinning),0.6,0.2,0.9
+2074,Harvest (Urban),0,0,0.2
+2074,Leaching,2.2,2,2.3
+2074,LULCC,35.3,27.5,42.5
+2074,Mortality,10.8,8,12.9
+2074,Mortality (Fire),1.8,0.7,3.4
+2074,Mortality (Harvest),1.5,0.6,2.4
+2074,Mortality (Insects),5.7,0.8,21.5
+2074,NECB,-0.3,-45.6,73.6
+2074,NEP,35,-11.2,111.9
+2074,NPP,150.5,94.9,220.4
+2074,Rh,115.5,96.3,133
+2075,Emission (AgExpand),0.5,0.2,0.9
+2075,Emission (Biomass),6.6,4.4,7.7
+2075,Emission (Clearcut),0.4,0.1,0.6
+2075,Emission (Fire),3.5,1.5,7.2
+2075,Emission (Orchard Removal),3.4,1.3,6.1
+2075,Emission (Urban),0.8,0.1,2.3
+2075,Harvest (AgExpand),0.1,0,0.2
+2075,Harvest (Clearcut),3,1.1,4.9
+2075,Harvest (Grain),9.8,7.1,12.3
+2075,Harvest (Straw),5.8,3.6,7.7
+2075,Harvest (Thinning),0.6,0.2,0.9
+2075,Harvest (Urban),0,0,0.2
+2075,Leaching,2.2,2,2.3
+2075,LULCC,36.6,29.6,43.2
+2075,Mortality,11.1,8.8,12.9
+2075,Mortality (Fire),2,0.8,3.7
+2075,Mortality (Harvest),1.5,0.6,2.4
+2075,Mortality (Insects),6.1,0.8,17.8
+2075,NECB,5.4,-32,35.5
+2075,NEP,42,2.8,73.1
+2075,NPP,158,123.9,189.1
+2075,Rh,116,104.2,134.2
+2076,Emission (AgExpand),0.5,0.2,0.9
+2076,Emission (Biomass),6.6,4.4,7.7
+2076,Emission (Clearcut),0.4,0.1,0.6
+2076,Emission (Fire),3.8,1.2,12.4
+2076,Emission (Orchard Removal),3.4,1.3,6.2
+2076,Emission (Urban),0.7,0.1,2.3
+2076,Harvest (AgExpand),0.1,0,0.2
+2076,Harvest (Clearcut),3,1.1,4.9
+2076,Harvest (Grain),9.1,6.6,12.6
+2076,Harvest (Straw),5.2,3.1,7.9
+2076,Harvest (Thinning),0.6,0.2,0.9
+2076,Harvest (Urban),0,0,0.2
+2076,Leaching,2.2,2,2.3
+2076,LULCC,35.5,26.6,48.5
+2076,Mortality,11.3,7.6,17.4
+2076,Mortality (Fire),2.2,0.6,7.3
+2076,Mortality (Harvest),1.5,0.6,2.4
+2076,Mortality (Insects),8.1,0.9,34.9
+2076,NECB,-16.6,-50.6,7.4
+2076,NEP,18.9,-21.2,47.1
+2076,NPP,141.4,93.3,178.8
+2076,Rh,122.6,106.9,136.4
+2077,Emission (AgExpand),0.5,0.2,0.9
+2077,Emission (Biomass),6.7,4.6,7.9
+2077,Emission (Clearcut),0.4,0.1,0.6
+2077,Emission (Fire),3.8,1.7,7
+2077,Emission (Orchard Removal),3.6,1.3,6.5
+2077,Emission (Urban),0.8,0.1,2.4
+2077,Harvest (AgExpand),0.1,0,0.2
+2077,Harvest (Clearcut),3,1.1,4.9
+2077,Harvest (Grain),10.2,7.2,14.5
+2077,Harvest (Straw),6.1,3.6,9.4
+2077,Harvest (Thinning),0.6,0.2,0.9
+2077,Harvest (Urban),0,0,0.2
+2077,Leaching,2.2,2,2.3
+2077,LULCC,37.9,29.4,49
+2077,Mortality,11.4,8.1,14.1
+2077,Mortality (Fire),2.2,0.9,4
+2077,Mortality (Harvest),1.5,0.6,2.5
+2077,Mortality (Insects),7.2,0.6,29.5
+2077,NECB,13.1,-16.2,61.4
+2077,NEP,51,18.5,105.4
+2077,NPP,168.1,122.5,244.6
+2077,Rh,117.1,103.1,141.1
+2078,Emission (AgExpand),0.5,0.2,0.9
+2078,Emission (Biomass),6.7,4.7,8
+2078,Emission (Clearcut),0.4,0.1,0.6
+2078,Emission (Fire),3.6,1.5,6.6
+2078,Emission (Orchard Removal),3.6,1.3,6.5
+2078,Emission (Urban),0.8,0.1,2.5
+2078,Harvest (AgExpand),0.1,0,0.2
+2078,Harvest (Clearcut),3,1.1,4.9
+2078,Harvest (Grain),10.1,7.5,13.5
+2078,Harvest (Straw),5.9,3.8,8.6
+2078,Harvest (Thinning),0.6,0.1,0.9
+2078,Harvest (Urban),0,0,0.2
+2078,Leaching,2.2,2,2.3
+2078,LULCC,37.3,29.2,47.5
+2078,Mortality,11.4,8.2,14.4
+2078,Mortality (Fire),2.1,0.8,4.1
+2078,Mortality (Harvest),1.5,0.6,2.4
+2078,Mortality (Insects),11.3,0.7,53.8
+2078,NECB,2.9,-31.8,62.7
+2078,NEP,40.2,4.8,103.5
+2078,NPP,161.6,123.2,223.5
+2078,Rh,121.3,101.2,152.6
+2079,Emission (AgExpand),0.5,0.2,0.9
+2079,Emission (Biomass),6.7,4.8,7.9
+2079,Emission (Clearcut),0.4,0.1,0.6
+2079,Emission (Fire),3.8,1.7,6.5
+2079,Emission (Orchard Removal),3.6,1.4,6.6
+2079,Emission (Urban),0.7,0.1,2.4
+2079,Harvest (AgExpand),0.1,0,0.2
+2079,Harvest (Clearcut),3,1.2,4.9
+2079,Harvest (Grain),9.4,6.8,12.4
+2079,Harvest (Straw),5.4,3.3,7.7
+2079,Harvest (Thinning),0.6,0.2,1
+2079,Harvest (Urban),0,0,0.2
+2079,Leaching,2.2,2,2.3
+2079,LULCC,36.3,28.5,45.3
+2079,Mortality,11.5,8.9,13.8
+2079,Mortality (Fire),2.2,1,3.7
+2079,Mortality (Harvest),1.5,0.6,2.4
+2079,Mortality (Insects),8,0.8,48.7
+2079,NECB,-14.8,-52.8,27.7
+2079,NEP,21.5,-17.3,65.1
+2079,NPP,145.1,99.6,186.1
+2079,Rh,123.5,105,145.3
+2080,Emission (AgExpand),0.5,0.2,0.9
+2080,Emission (Biomass),6.7,4.9,7.9
+2080,Emission (Clearcut),0.4,0.1,0.6
+2080,Emission (Fire),3.6,1.6,6.3
+2080,Emission (Orchard Removal),3.7,1.3,6.7
+2080,Emission (Urban),0.7,0.1,2.4
+2080,Harvest (AgExpand),0.1,0,0.2
+2080,Harvest (Clearcut),3,1.1,4.9
+2080,Harvest (Grain),9.1,6.5,13.6
+2080,Harvest (Straw),5.1,3,8.6
+2080,Harvest (Thinning),0.6,0.2,1
+2080,Harvest (Urban),0,0,0.2
+2080,Leaching,2.2,2,2.3
+2080,LULCC,35.6,27.5,45.6
+2080,Mortality,11.3,8.5,13.7
+2080,Mortality (Fire),2,0.9,3.7
+2080,Mortality (Harvest),1.5,0.6,2.4
+2080,Mortality (Insects),5,0.4,31.3
+2080,NECB,-5.4,-58.2,63.3
+2080,NEP,30.2,-23,105.8
+2080,NPP,146,99.9,232.1
+2080,Rh,115.8,94.2,133.6
+2081,Emission (AgExpand),0.5,0.2,0.9
+2081,Emission (Biomass),6.7,4.9,8
+2081,Emission (Clearcut),0.4,0.1,0.6
+2081,Emission (Fire),4.9,1.6,11.6
+2081,Emission (Orchard Removal),3.6,1.3,6.8
+2081,Emission (Urban),0.7,0.1,2.4
+2081,Harvest (AgExpand),0.1,0,0.2
+2081,Harvest (Clearcut),3,1.2,5
+2081,Harvest (Grain),9,5.9,16.1
+2081,Harvest (Straw),5,2.5,10.7
+2081,Harvest (Thinning),0.6,0.2,1
+2081,Harvest (Urban),0,0,0.2
+2081,Leaching,2.2,2,2.3
+2081,LULCC,36.7,27.1,52
+2081,Mortality,12.1,9.4,15.9
+2081,Mortality (Fire),2.8,0.9,6.7
+2081,Mortality (Harvest),1.5,0.6,2.5
+2081,Mortality (Insects),5.4,0.5,29.8
+2081,NECB,-18,-73.4,60
+2081,NEP,18.7,-36.6,108.9
+2081,NPP,141.3,83.3,258.8
+2081,Rh,122.6,107.3,151.4
+2082,Emission (AgExpand),0.5,0.2,0.9
+2082,Emission (Biomass),6.7,4.8,8
+2082,Emission (Clearcut),0.4,0.1,0.6
+2082,Emission (Fire),3.8,1.8,6.2
+2082,Emission (Orchard Removal),3.7,1.3,7
+2082,Emission (Urban),0.7,0,2.4
+2082,Harvest (AgExpand),0.1,0,0.2
+2082,Harvest (Clearcut),3,1.1,4.9
+2082,Harvest (Grain),9.7,6.6,14.6
+2082,Harvest (Straw),5.5,3.1,9.4
+2082,Harvest (Thinning),0.6,0.1,1
+2082,Harvest (Urban),0,0,0.2
+2082,Leaching,2.2,2,2.3
+2082,LULCC,36.9,28,48.4
+2082,Mortality,11.6,9.1,14
+2082,Mortality (Fire),2.2,1,3.4
+2082,Mortality (Harvest),1.5,0.6,2.4
+2082,Mortality (Insects),5.7,0.7,17.8
+2082,NECB,2.7,-48.1,54
+2082,NEP,39.7,-16.2,90.6
+2082,NPP,159.3,97.5,212
+2082,Rh,119.6,96.8,146.4
+2083,Emission (AgExpand),0.5,0.2,0.9
+2083,Emission (Biomass),6.7,4.9,8
+2083,Emission (Clearcut),0.4,0.1,0.6
+2083,Emission (Fire),5.7,1.6,14.8
+2083,Emission (Orchard Removal),3.7,1.4,6.8
+2083,Emission (Urban),0.7,0,2.4
+2083,Harvest (AgExpand),0.1,0,0.2
+2083,Harvest (Clearcut),3,1.2,4.9
+2083,Harvest (Grain),9.2,7.5,12.1
+2083,Harvest (Straw),5.1,3.8,7.3
+2083,Harvest (Thinning),0.6,0.1,1
+2083,Harvest (Urban),0,0,0.2
+2083,Leaching,2.2,2,2.3
+2083,LULCC,37.9,28.5,46.4
+2083,Mortality,12.6,8.4,18.3
+2083,Mortality (Fire),3.3,0.9,8.3
+2083,Mortality (Harvest),1.5,0.6,2.5
+2083,Mortality (Insects),7.6,0.6,44
+2083,NECB,-16.6,-77.8,46.8
+2083,NEP,21.3,-41.1,84.1
+2083,NPP,142.3,104.2,199.9
+2083,Rh,121,103.8,151.4
+2084,Emission (AgExpand),0.5,0.2,0.9
+2084,Emission (Biomass),6.7,5,8.1
+2084,Emission (Clearcut),0.4,0.1,0.6
+2084,Emission (Fire),2.8,1.1,5.6
+2084,Emission (Orchard Removal),3.7,1.3,7.2
+2084,Emission (Urban),0.7,0,2.4
+2084,Harvest (AgExpand),0.1,0,0.2
+2084,Harvest (Clearcut),3,1.1,4.9
+2084,Harvest (Grain),9,6.8,14.1
+2084,Harvest (Straw),5,3.2,8.9
+2084,Harvest (Thinning),0.6,0.1,1
+2084,Harvest (Urban),0,0,0.2
+2084,Leaching,2.2,2,2.3
+2084,LULCC,34.6,26.5,47.1
+2084,Mortality,11,8.4,13.5
+2084,Mortality (Fire),1.7,0.6,3.1
+2084,Mortality (Harvest),1.5,0.6,2.4
+2084,Mortality (Insects),5.5,0.5,17.8
+2084,NECB,-10.1,-54.2,60.1
+2084,NEP,24.6,-23.7,104.2
+2084,NPP,143.5,91.6,242
+2084,Rh,118.9,98.5,139.3
+2085,Emission (AgExpand),0.5,0.2,0.9
+2085,Emission (Biomass),6.8,5.1,8.2
+2085,Emission (Clearcut),0.4,0.1,0.6
+2085,Emission (Fire),4.4,1.7,10.7
+2085,Emission (Orchard Removal),3.7,1.3,7.2
+2085,Emission (Urban),0.7,0,2.5
+2085,Harvest (AgExpand),0.1,0,0.2
+2085,Harvest (Clearcut),3,1.1,4.9
+2085,Harvest (Grain),9.1,6,13.2
+2085,Harvest (Straw),5.1,2.6,8.2
+2085,Harvest (Thinning),0.6,0.1,1
+2085,Harvest (Urban),0,0,0.2
+2085,Leaching,2.2,2,2.3
+2085,LULCC,36.6,26,50.7
+2085,Mortality,12,8.6,17.4
+2085,Mortality (Fire),2.7,1,6.8
+2085,Mortality (Harvest),1.5,0.6,2.5
+2085,Mortality (Insects),17.6,0.7,122.7
+2085,NECB,-6.4,-52.5,37.2
+2085,NEP,30.1,-23.7,83.8
+2085,NPP,150.2,79.6,216.1
+2085,Rh,120,102.1,145.7
+2086,Emission (AgExpand),0.5,0.2,0.9
+2086,Emission (Biomass),6.7,5.2,8.2
+2086,Emission (Clearcut),0.4,0.1,0.6
+2086,Emission (Fire),4.5,1.8,7.5
+2086,Emission (Orchard Removal),3.7,1.3,7.3
+2086,Emission (Urban),0.7,0,2.4
+2086,Harvest (AgExpand),0.1,0,0.2
+2086,Harvest (Clearcut),3,1.1,4.9
+2086,Harvest (Grain),9,6,12.2
+2086,Harvest (Straw),4.9,2.5,7.4
+2086,Harvest (Thinning),0.6,0.1,1
+2086,Harvest (Urban),0,0,0.2
+2086,Leaching,2.1,2,2.3
+2086,LULCC,36.2,26.5,45.6
+2086,Mortality,11.9,9.1,14.8
+2086,Mortality (Fire),2.6,1.1,4.4
+2086,Mortality (Harvest),1.5,0.6,2.4
+2086,Mortality (Insects),13.5,0.5,51.6
+2086,NECB,-11.4,-42.2,17.5
+2086,NEP,24.8,-12.4,58.5
+2086,NPP,146.8,101,194
+2086,Rh,122,100.4,153.5
+2087,Emission (AgExpand),0.5,0.2,0.9
+2087,Emission (Biomass),6.7,5.1,8.1
+2087,Emission (Clearcut),0.4,0.1,0.6
+2087,Emission (Fire),4.1,1.6,8
+2087,Emission (Orchard Removal),3.8,1.4,7.2
+2087,Emission (Urban),0.7,0,2.5
+2087,Harvest (AgExpand),0.1,0,0.2
+2087,Harvest (Clearcut),3,1.1,4.9
+2087,Harvest (Grain),9.7,6.6,13.2
+2087,Harvest (Straw),5.5,3,8.2
+2087,Harvest (Thinning),0.6,0.1,1
+2087,Harvest (Urban),0,0,0.2
+2087,Leaching,2.1,1.9,2.3
+2087,LULCC,37.2,26.6,45.7
+2087,Mortality,11.8,8.6,16.2
+2087,Mortality (Fire),2.5,0.9,5.4
+2087,Mortality (Harvest),1.5,0.6,2.5
+2087,Mortality (Insects),15.8,0.7,77.6
+2087,NECB,6.8,-74.4,66.7
+2087,NEP,43.9,-36.7,107
+2087,NPP,162.3,98.1,217.3
+2087,Rh,118.3,88.8,141.8
+2088,Emission (AgExpand),0.5,0.2,0.9
+2088,Emission (Biomass),6.7,5.1,8.2
+2088,Emission (Clearcut),0.4,0.1,0.6
+2088,Emission (Fire),3.9,1.3,7.4
+2088,Emission (Orchard Removal),3.9,1.5,7.3
+2088,Emission (Urban),0.7,0,2.5
+2088,Harvest (AgExpand),0.1,0,0.2
+2088,Harvest (Clearcut),3,1.1,4.9
+2088,Harvest (Grain),9.9,6.9,14.3
+2088,Harvest (Straw),5.6,3.2,9.1
+2088,Harvest (Thinning),0.6,0.1,1
+2088,Harvest (Urban),0,0,0.2
+2088,Leaching,2.1,1.9,2.3
+2088,LULCC,37.4,28.7,50.5
+2088,Mortality,11.7,8.7,16.4
+2088,Mortality (Fire),2.4,0.7,5.3
+2088,Mortality (Harvest),1.5,0.6,2.4
+2088,Mortality (Insects),7.1,0.6,19.1
+2088,NECB,6.9,-49.1,71
+2088,NEP,44.3,-16.5,118.2
+2088,NPP,163.2,105.8,259
+2088,Rh,118.9,97.7,142.4
+2089,Emission (AgExpand),0.5,0.2,1
+2089,Emission (Biomass),6.8,5.1,8.4
+2089,Emission (Clearcut),0.4,0.1,0.6
+2089,Emission (Fire),3.2,1.1,6.9
+2089,Emission (Orchard Removal),4,1.4,7.8
+2089,Emission (Urban),0.7,0,2.6
+2089,Harvest (AgExpand),0.1,0,0.2
+2089,Harvest (Clearcut),3,1.2,4.9
+2089,Harvest (Grain),10.1,7.3,15.9
+2089,Harvest (Straw),5.8,3.6,10.4
+2089,Harvest (Thinning),0.6,0.1,1
+2089,Harvest (Urban),0,0,0.2
+2089,Leaching,2.1,1.9,2.3
+2089,LULCC,37.3,26.9,51.5
+2089,Mortality,11.3,8,16.5
+2089,Mortality (Fire),1.9,0.6,5
+2089,Mortality (Harvest),1.5,0.6,2.5
+2089,Mortality (Insects),7.4,0.5,45.5
+2089,NECB,12.8,-36.1,76.3
+2089,NEP,50.2,-6.9,122.4
+2089,NPP,170,97.9,259.4
+2089,Rh,119.8,103.5,148.8
+2090,Emission (AgExpand),0.5,0.2,0.9
+2090,Emission (Biomass),6.8,5.2,8.4
+2090,Emission (Clearcut),0.4,0.1,0.6
+2090,Emission (Fire),3.6,1.5,6.2
+2090,Emission (Orchard Removal),4,1.5,7.6
+2090,Emission (Urban),0.7,0,2.5
+2090,Harvest (AgExpand),0.1,0,0.2
+2090,Harvest (Clearcut),3,1.1,4.9
+2090,Harvest (Grain),9.4,6.2,13.7
+2090,Harvest (Straw),5.2,2.6,8.4
+2090,Harvest (Thinning),0.6,0.1,1
+2090,Harvest (Urban),0,0,0.2
+2090,Leaching,2.1,1.9,2.3
+2090,LULCC,36.4,27.2,47
+2090,Mortality,11.6,8.5,15.2
+2090,Mortality (Fire),2.1,0.8,4
+2090,Mortality (Harvest),1.5,0.6,2.5
+2090,Mortality (Insects),7.3,0.5,30.2
+2090,NECB,-9.4,-66.1,40.3
+2090,NEP,27,-34.1,75.1
+2090,NPP,149.7,87.6,193.1
+2090,Rh,122.7,94,152.4
+2091,Emission (AgExpand),0.5,0.2,0.9
+2091,Emission (Biomass),6.7,5.2,8.4
+2091,Emission (Clearcut),0.4,0.1,0.6
+2091,Emission (Fire),3.5,1.5,5.9
+2091,Emission (Orchard Removal),4,1.5,7.7
+2091,Emission (Urban),0.7,0,2.6
+2091,Harvest (AgExpand),0.1,0,0.2
+2091,Harvest (Clearcut),3.1,1.1,5
+2091,Harvest (Grain),8.5,6.4,12.3
+2091,Harvest (Straw),4.4,2.7,7.3
+2091,Harvest (Thinning),0.6,0.1,1
+2091,Harvest (Urban),0,0,0.2
+2091,Leaching,2.1,1.9,2.3
+2091,LULCC,34.6,27.6,44.9
+2091,Mortality,11.5,8.8,14.3
+2091,Mortality (Fire),2,0.9,3.4
+2091,Mortality (Harvest),1.5,0.6,2.5
+2091,Mortality (Insects),4.4,0.7,10.9
+2091,NECB,-20.3,-43.6,3.2
+2091,NEP,14.3,-12.1,35.9
+2091,NPP,133.9,101.7,183.5
+2091,Rh,119.6,94.8,149.7
+2092,Emission (AgExpand),0.5,0.2,0.9
+2092,Emission (Biomass),6.7,5.1,8.5
+2092,Emission (Clearcut),0.4,0.1,0.6
+2092,Emission (Fire),3.9,1.7,7.3
+2092,Emission (Orchard Removal),3.9,1.4,7.8
+2092,Emission (Urban),0.7,0,2.6
+2092,Harvest (AgExpand),0.1,0,0.2
+2092,Harvest (Clearcut),3,1.1,5
+2092,Harvest (Grain),8.3,6.1,13.6
+2092,Harvest (Straw),4.2,2.5,8.4
+2092,Harvest (Thinning),0.6,0.1,1
+2092,Harvest (Urban),0,0,0.2
+2092,Leaching,2.1,1.9,2.3
+2092,LULCC,34.5,25.3,49
+2092,Mortality,11.7,8.4,16.2
+2092,Mortality (Fire),2.3,0.9,4.7
+2092,Mortality (Harvest),1.5,0.6,2.5
+2092,Mortality (Insects),4.7,0.8,16.9
+2092,NECB,-22.3,-67.3,49.8
+2092,NEP,12.2,-30.6,96.1
+2092,NPP,132.1,85.8,236.1
+2092,Rh,120,98.6,142.3
+2093,Emission (AgExpand),0.5,0.2,0.9
+2093,Emission (Biomass),6.7,5.1,8.5
+2093,Emission (Clearcut),0.4,0.1,0.6
+2093,Emission (Fire),4.9,1.9,8.7
+2093,Emission (Orchard Removal),3.9,1.4,7.7
+2093,Emission (Urban),0.7,0,2.5
+2093,Harvest (AgExpand),0.1,0,0.2
+2093,Harvest (Clearcut),3,1.1,4.9
+2093,Harvest (Grain),8.2,6.1,11.8
+2093,Harvest (Straw),4.2,2.5,6.9
+2093,Harvest (Thinning),0.6,0.1,1
+2093,Harvest (Urban),0,0,0.2
+2093,Leaching,2.1,1.9,2.3
+2093,LULCC,35.2,25.6,47.6
+2093,Mortality,12.3,8.8,17.8
+2093,Mortality (Fire),3,1,6.2
+2093,Mortality (Harvest),1.5,0.6,2.4
+2093,Mortality (Insects),6.6,0.7,27.2
+2093,NECB,-18.2,-51.3,31.4
+2093,NEP,17,-15.7,73.4
+2093,NPP,134.7,95.1,199.9
+2093,Rh,117.7,95.9,159.2
+2094,Emission (AgExpand),0.5,0.2,0.9
+2094,Emission (Biomass),6.7,5.2,8.4
+2094,Emission (Clearcut),0.4,0.1,0.6
+2094,Emission (Fire),5.6,1.8,12
+2094,Emission (Orchard Removal),4,1.5,7.7
+2094,Emission (Urban),0.7,0,2.5
+2094,Harvest (AgExpand),0.1,0,0.2
+2094,Harvest (Clearcut),3,1.1,4.9
+2094,Harvest (Grain),9.3,6.9,12.5
+2094,Harvest (Straw),5.1,3.1,7.5
+2094,Harvest (Thinning),0.6,0.1,1
+2094,Harvest (Urban),0,0,0.2
+2094,Leaching,2.1,1.9,2.3
+2094,LULCC,38,28.8,49.9
+2094,Mortality,12.9,8.4,20.1
+2094,Mortality (Fire),3.5,0.9,8.6
+2094,Mortality (Harvest),1.5,0.6,2.4
+2094,Mortality (Insects),15.2,0.9,52.1
+2094,NECB,-1.9,-39.6,52.8
+2094,NEP,36.1,-5.8,95.8
+2094,NPP,156.1,109.6,217.3
+2094,Rh,120,95.1,145.8
+2095,Emission (AgExpand),0.5,0.2,0.9
+2095,Emission (Biomass),6.7,5.1,8.4
+2095,Emission (Clearcut),0.4,0.1,0.6
+2095,Emission (Fire),3.9,1.7,6.3
+2095,Emission (Orchard Removal),4,1.4,8
+2095,Emission (Urban),0.7,0,2.5
+2095,Harvest (AgExpand),0.1,0,0.2
+2095,Harvest (Clearcut),3,1.1,4.9
+2095,Harvest (Grain),9.1,6.6,13.6
+2095,Harvest (Straw),4.9,2.9,8.4
+2095,Harvest (Thinning),0.6,0.2,1
+2095,Harvest (Urban),0,0,0.2
+2095,Leaching,2.1,1.9,2.3
+2095,LULCC,35.9,26.3,48.8
+2095,Mortality,11.7,8.5,14.8
+2095,Mortality (Fire),2.3,1,3.9
+2095,Mortality (Harvest),1.5,0.6,2.5
+2095,Mortality (Insects),11.8,1,33
+2095,NECB,-6.1,-49.8,48.3
+2095,NEP,29.7,-15.8,91.8
+2095,NPP,148.2,94.5,217
+2095,Rh,118.4,100.8,141.2
+2096,Emission (AgExpand),0.5,0.2,0.9
+2096,Emission (Biomass),6.6,5,8.2
+2096,Emission (Clearcut),0.4,0.1,0.6
+2096,Emission (Fire),5.1,1.3,11
+2096,Emission (Orchard Removal),3.9,1.4,7.7
+2096,Emission (Urban),0.7,0,2.5
+2096,Harvest (AgExpand),0.1,0,0.2
+2096,Harvest (Clearcut),2.9,1.1,4.8
+2096,Harvest (Grain),7.8,6.3,10
+2096,Harvest (Straw),3.8,2.6,5.4
+2096,Harvest (Thinning),0.6,0.1,0.9
+2096,Harvest (Urban),0,0,0.2
+2096,Leaching,2.1,1.9,2.3
+2096,LULCC,34.3,26.4,45.3
+2096,Mortality,12.3,8.4,18.6
+2096,Mortality (Fire),3.1,0.8,7.5
+2096,Mortality (Harvest),1.5,0.5,2.4
+2096,Mortality (Insects),27.4,2.8,121.3
+2096,NECB,-36.5,-101.1,0.2
+2096,NEP,-2.2,-62.3,30.8
+2096,NPP,117,85.8,143.5
+2096,Rh,119.2,98,150.2
+2097,Emission (AgExpand),0.5,0.2,0.9
+2097,Emission (Biomass),6.5,4.8,8.2
+2097,Emission (Clearcut),0.4,0.1,0.6
+2097,Emission (Fire),3.9,1.3,7.4
+2097,Emission (Orchard Removal),3.9,1.4,7.5
+2097,Emission (Urban),0.7,0,2.5
+2097,Harvest (AgExpand),0.1,0,0.2
+2097,Harvest (Clearcut),2.9,1.1,4.9
+2097,Harvest (Grain),8.8,7.4,10.6
+2097,Harvest (Straw),4.6,3.5,5.9
+2097,Harvest (Thinning),0.6,0.1,1
+2097,Harvest (Urban),0,0,0.2
+2097,Leaching,2.1,1.9,2.3
+2097,LULCC,34.9,28.1,44.2
+2097,Mortality,11.4,8.2,15.9
+2097,Mortality (Fire),2.4,0.7,4.9
+2097,Mortality (Harvest),1.5,0.6,2.5
+2097,Mortality (Insects),14.8,2.3,54.5
+2097,NECB,3.3,-17,18.5
+2097,NEP,38.3,21.3,51.6
+2097,NPP,153.7,130.7,173.1
+2097,Rh,115.4,97.1,135.6
+2098,Emission (AgExpand),0.5,0.2,0.9
+2098,Emission (Biomass),6.5,4.6,8.2
+2098,Emission (Clearcut),0.4,0.1,0.6
+2098,Emission (Fire),4.3,1.6,8.3
+2098,Emission (Orchard Removal),4,1.4,7.6
+2098,Emission (Urban),0.7,0,2.6
+2098,Harvest (AgExpand),0.1,0,0.2
+2098,Harvest (Clearcut),2.9,1.1,4.9
+2098,Harvest (Grain),9.5,7,13.2
+2098,Harvest (Straw),5.1,3.1,8
+2098,Harvest (Thinning),0.6,0.1,1
+2098,Harvest (Urban),0,0,0.2
+2098,Leaching,2.1,1.9,2.3
+2098,LULCC,36.6,26.6,48.7
+2098,Mortality,11.8,8,17
+2098,Mortality (Fire),2.7,0.8,6
+2098,Mortality (Harvest),1.5,0.5,2.4
+2098,Mortality (Insects),11.9,1.3,41.9
+2098,NECB,4.8,-34,44.3
+2098,NEP,41.4,-4,89.4
+2098,NPP,161.4,101.6,215.5
+2098,Rh,120,96.1,147.7
+2099,Emission (AgExpand),0.5,0.2,0.9
+2099,Emission (Biomass),6.5,4.5,8.3
+2099,Emission (Clearcut),0.4,0.1,0.6
+2099,Emission (Fire),4.8,1.1,13
+2099,Emission (Orchard Removal),4,1.5,7.5
+2099,Emission (Urban),0.7,0,2.6
+2099,Harvest (AgExpand),0.1,0,0.2
+2099,Harvest (Clearcut),2.9,1.2,4.8
+2099,Harvest (Grain),9.2,7,12.3
+2099,Harvest (Straw),4.9,3.2,7.3
+2099,Harvest (Thinning),0.6,0.1,1
+2099,Harvest (Urban),0,0,0.2
+2099,Leaching,2.1,1.9,2.3
+2099,LULCC,36.7,28.9,52.3
+2099,Mortality,12,7.9,20.4
+2099,Mortality (Fire),3,0.6,9.3
+2099,Mortality (Harvest),1.5,0.6,2.4
+2099,Mortality (Insects),6.4,1,23.3
+2099,NECB,-4.1,-55.7,52.1
+2099,NEP,32.6,-19.1,86.1
+2099,NPP,150.3,106.7,210.4
+2099,Rh,117.7,93.1,139.9
+2100,Emission (AgExpand),0.5,0.2,0.9
+2100,Emission (Biomass),6.5,4.5,8.3
+2100,Emission (Clearcut),0.4,0.1,0.6
+2100,Emission (Fire),4.4,1.2,11.3
+2100,Emission (Orchard Removal),4.1,1.5,7.9
+2100,Emission (Urban),0.7,0,2.6
+2100,Harvest (AgExpand),0.1,0,0.2
+2100,Harvest (Clearcut),3,1.2,4.8
+2100,Harvest (Grain),9.2,6.9,12.9
+2100,Harvest (Straw),4.9,3.1,7.8
+2100,Harvest (Thinning),0.6,0.2,1
+2100,Harvest (Urban),0,0,0.2
+2100,Leaching,2.1,1.9,2.3
+2100,LULCC,36.5,28.6,52.1
+2100,Mortality,11.9,7.9,19.6
+2100,Mortality (Fire),2.8,0.7,8.4
+2100,Mortality (Harvest),1.5,0.6,2.4
+2100,Mortality (Insects),6.9,0.8,19.9
+2100,NECB,-2.1,-33.4,44.3
+2100,NEP,34.4,-1.1,80.6
+2100,NPP,154.8,108.3,217.1
+2100,Rh,120.5,98.3,155.6
+2101,Emission (AgExpand),0.5,0.2,0.9
+2101,Emission (Biomass),6.6,4.5,8.4
+2101,Emission (Clearcut),0.4,0.1,0.6
+2101,Emission (Fire),4.4,1.2,11.3
+2101,Emission (Orchard Removal),4.1,1.6,7.6
+2101,Emission (Urban),0.7,0,2.5
+2101,Harvest (AgExpand),0.1,0,0.2
+2101,Harvest (Clearcut),3,1.2,4.8
+2101,Harvest (Grain),9.2,6.9,13.1
+2101,Harvest (Straw),4.9,3,7.9
+2101,Harvest (Thinning),0.6,0.2,1
+2101,Harvest (Urban),0,0,0.2
+2101,Leaching,2.1,1.9,2.3
+2101,LULCC,36.4,28.4,52.1
+2101,Mortality,11.9,7.9,19.9
+2101,Mortality (Fire),2.8,0.7,8.6
+2101,Mortality (Harvest),1.5,0.6,2.4
+2101,Mortality (Insects),6.9,0.8,19.3
+2101,NECB,-1.5,-31,40.4
+2101,NEP,34.9,0.9,77.7
+2101,NPP,154.9,108.5,216.3
+2101,Rh,120,99.4,153.5

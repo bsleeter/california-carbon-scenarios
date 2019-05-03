@@ -1,0 +1,1107 @@
+---
+title: Effects of 21st century climate, land use, and disturbances on ecosystem carbon balance in California
+bibliography: references.bib
+csl: apa.csl
+output:
+  word_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+  pdf_document: default
+  md_document: github_document
+always_allow_html: yes
+fontsize: 12pt
+mainfont: Times New Roman
+header-includes:
+- \usepackage[left]{lineno}
+- \linenumbers
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage[table]{xcolor}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \floatplacement{figure}{H}
+- \usepackage{setspace}\doublespacing
+---
+```{r Load Packages, include=FALSE}
+library(raster)
+library(rgdal)
+library(cowplot)
+library(readr)
+library(tidyverse)
+library(knitr)
+library(zoo)
+library(ggthemes)
+library(extrafont)
+library(kableExtra)
+```
+```{r ggplot theme, cache=FALSE, include=FALSE}
+theme_Publication <- function(base_size=10, base_family="") {
+  library(grid)
+  library(ggthemes)
+  (theme_foundation(base_size=base_size, base_family=base_family)
+    + theme(plot.title = element_text(face = "bold",
+                                      size = rel(1.2), hjust = 0.5),
+            text = element_text(),
+            panel.background = element_rect(colour = NA),
+            plot.background = element_rect(colour = NA),
+            panel.border = element_rect(colour = "black"),
+            axis.title = element_text(face = "bold",size = rel(0.8)),
+            axis.title.y = element_text(angle=90,vjust =2),
+            axis.title.x = element_text(),
+            axis.text = element_text(), 
+            axis.line = element_line(colour="black"),
+            axis.ticks = element_line(),
+            panel.grid.major = element_line(colour="#f0f0f0"),
+            panel.grid.minor = element_blank(),
+            legend.key = element_rect(colour = NA),
+            legend.position = "bottom",
+            legend.direction = "horizontal",
+            legend.key.size= unit(0.2, "cm"),
+            legend.spacing = unit(0, "cm"),
+            legend.title = element_text(face="bold", size = rel(0.8)),
+            plot.margin=unit(c(5,5,5,5),"mm"),
+            strip.background=element_rect(colour= NA, fill= NA),
+            strip.text = element_text(face="bold", colour = "black")
+    ))
+  
+}
+
+scale_fill_Publication <- function(...){
+  library(scales)
+  discrete_scale("fill","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+  
+}
+
+scale_colour_Publication <- function(...){
+  library(scales)
+  discrete_scale("colour","Publication",manual_pal(values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c","#662506","#a6cee3","#fb9a99","#984ea3","#ffff33")), ...)
+  
+}
+```
+```{r Read Inputs, cache=FALSE, include=FALSE}
+path = "Data/Report_Tables/"
+files = list.files(path = path, pattern = "*.csv")
+
+for(file in files)
+{
+  perpos <- which(strsplit(file, "")[[1]]==".")
+  assign(
+    gsub(" ","",substr(file, 1, perpos-1)), 
+    read_csv(paste(path,file,sep="")))
+}
+
+eco_short_names = tibble(EcoregionID = c(1,4,5,6,7,8,9,13,14,78,80,81),
+                         Name = c("Coast Range", "Cascades", "Sierra Nevada", 
+                                  "Oak Woodlands", "Central Valley", "SoCal. Mtns.", 
+                                  "East Cascades", "Central Basin", "Mojave Basin", "Klamath Mtns.", "Northern Basin", "Sonoran Basin"))
+```
+```{r Calculate Variables, cache=FALSE, include=FALSE}
+##### Calculate Variables used in Report #####
+netFluxes = c("NPP", "Rh", "NEP", "LULCC", "NECB")
+
+##### End of Abstract #####
+rcp85Mean = (cal_necb_by_rcp %>% filter(RCP=="rcp85"))$Mean
+rcp45Mean = (cal_necb_by_rcp %>% filter(RCP=="rcp45"))$Mean
+rcp_diff_mean_pct = round((rcp85Mean-rcp45Mean)/rcp85Mean*100,0)
+
+highMean = (cal_necb_by_luc %>% filter(LUC=="High"))$Mean
+lowMean = (cal_necb_by_luc %>% filter(LUC=="Low"))$Mean
+luc_diff_mean_pct = round((highMean-lowMean)/highMean*100,0)
+
+cal_necb_by_luc_rcp = cal_necb_by_iter_scn %>%
+  group_by(LUC,RCP) %>% summarise(Mean=mean(Amount), Lower=quantile(Amount, 0.025), Upper=quantile(Amount, 0.975))
+
+
+rcp85High = (cal_necb_by_luc_rcp %>% filter(LUC=="High", RCP=="rcp85"))$Mean
+rcp45Low = (cal_necb_by_luc_rcp %>% filter(LUC=="Low", RCP=="rcp45"))$Mean
+luc_rcp_diff_pct = round((rcp85High-rcp45Low)/rcp85High*100,0)
+
+##### Paragraph 1: Historical Carbon Stocks and NECB #####
+tec_2001 = filter(cal_tec_by_ts, Timestep == 2001, Ecosystem == "Yes")$Mean
+live_2001 = filter(cal_stock_by_ts, Timestep == 2001, StockGroup == "Live", Ecosystem == "Yes")$Mean
+live_2010 = filter(cal_stock_by_ts, Timestep == 2010, StockGroup == "Live", Ecosystem == "Yes")$Mean
+soil_2001 = filter(cal_stock_by_ts, Timestep == 2001, StockGroup == "Soil", Ecosystem == "Yes")$Mean
+dom_2001 = filter(cal_stock_by_ts, Timestep == 2001, StockGroup == "DOM", Ecosystem == "Yes")$Mean
+live_pct_2001 = round((live_2001 / tec_2001)*100, 1)
+soil_pct_2001 = round((soil_2001 / tec_2001)*100, 1)
+dom_pct_2001 = round((dom_2001 / tec_2001)*100, 1)
+
+arrange(eco_tec_by_ts, Timestep, -Mean)
+eco6_2001 = filter(eco_tec_by_ts, Timestep == 2001, Ecosystem == "Yes", EcoregionID == 6)$Mean
+eco5_2001 = filter(eco_tec_by_ts, Timestep == 2001, Ecosystem == "Yes", EcoregionID == 5)$Mean
+eco78_2001 = filter(eco_tec_by_ts, Timestep == 2001, Ecosystem == "Yes", EcoregionID == 78)$Mean
+
+necb_hist = cal_necb_by_ts %>% filter(Timestep <= 2015) %>% group_by() %>% summarise(Mean = sum(Mean), Lower = sum(Lower), Upper = sum(Upper))
+necb_hist_mean = necb_hist$Mean
+necb_hist_lower = necb_hist$Lower
+necb_hist_upper = necb_hist$Upper
+necb_hist_annual_mean = round(mean((cal_necb_by_ts %>% filter(Timestep <= 2015))$Mean), 1)
+necb_hist_annual_min = min((cal_necb_by_ts %>% filter(Timestep <= 2015))$Mean)
+necb_hist_annual_max = max((cal_necb_by_ts %>% filter(Timestep <= 2015))$Mean)
+necb_2001_2011_mean = round(mean((cal_necb_by_ts %>% filter(Timestep <= 2011))$Mean),1)
+necb_2012_2015_mean = round(mean((cal_necb_by_ts %>% filter(Timestep >= 2012, Timestep <= 2015))$Mean),1)
+necb_2012_2015_sum = sum((cal_necb_by_ts %>% filter(Timestep >= 2012, Timestep <= 2015))$Mean)
+necb_2001_2011_sum = sum((cal_necb_by_ts %>% filter(Timestep <= 2011))$Mean)
+necb_2013_2015_mean = round(mean((cal_necb_by_ts %>% filter(Timestep >= 2013, Timestep <= 2015))$Mean),1)
+necb_2001_2011_mean_annual = (cal_necb_by_ts %>% filter(Timestep <=2011) %>% summarise(Mean=mean(Mean)) %>% mutate_if(is.numeric, round, 1))$Mean
+necb_2016_2100_mean_annual = (cal_necb_by_ts %>% filter(Timestep >=2016, Timestep<2101) %>% summarise(Mean=mean(Mean)) %>% mutate_if(is.numeric, round, 1))$Mean
+necb_comp_full = necb_2016_2100_mean_annual-necb_hist_annual_mean
+necb_comp_part = necb_2016_2100_mean_annual-necb_2001_2011_mean_annual
+necb_2013 = round((cal_necb_by_ts %>% filter(Timestep == 2013))$Mean)
+necb_canesm_high = (cal_necb_by_scn_ts %>% filter(Timestep>2015, Mean<necb_2013*0.9))
+necb_canesm_high = round(mean((cal_necb_by_scn_ts %>% filter(Timestep>2015, Mean<necb_2013*0.9))$Mean),1)
+necb_had_midcent = cal_necb_by_scn_ts %>% filter(GCM=="HadGEM2-ES", RCP=="rcp85", Timestep>=2051, Timestep<=2070)
+necb_had_midcent_mean = round(mean(necb_had_midcent$Mean),1)
+
+arb_emissions = arb_emissions_by_sector %>% gather(Source, CO2, 2:9) %>% group_by(Timestep) %>% summarise(CO2=sum(CO2))
+arb_emissions_2012_2015 = arb_emissions %>% filter(Timestep>=2012, Timestep <=2015)
+arb_emissions_sum_2012_2015 = sum(arb_emissions_2012_2015$CO2)
+necb_2012_2015_CO2 = necb_2012_2015_sum*3.67
+arb_necb_2012_2015_pct = round((necb_2012_2015_CO2/arb_emissions_sum_2012_2015)*100,0)*-1
+arb_emissions_mean = mean(arb_emissions$CO2)
+arb_necb_hist_pct = round(((necb_hist_annual_mean*3.67)/arb_emissions_mean)*100,0)*-1
+
+##### Paragraph 2: Historical Carbon Fluxes (NPP, Rh, NEP) #####
+npp_hist_mean = round(mean(filter(cal_netflux_by_ts, Flux == "NPP", Timestep <= 2015)$Mean), 1)
+rh_hist_mean = round(mean(filter(cal_netflux_by_ts, Flux == "Rh", Timestep <= 2015)$Mean), 1)
+nep_hist_mean = round(mean(filter(cal_netflux_by_ts, Flux == "NEP", Timestep <= 2015)$Mean), 1)
+
+npp_hist_0110 = round(mean(filter(cal_netflux_by_ts, Flux == "NPP", Timestep <= 2010)$Mean), 1)
+npp_2013 = round(mean(filter(cal_netflux_by_ts, Flux == "NPP", Timestep == 2013)$Mean), 1)
+npp_2013_pct = 100-(round(npp_2013/npp_hist_0110*100,0))
+
+nep_hist_0110 = round(mean(filter(cal_netflux_by_ts, Flux == "NEP", Timestep <= 2010)$Mean), 1)
+nep_2013 = round(mean(filter(cal_netflux_by_ts, Flux == "NEP", Timestep == 2013)$Mean), 1)
+nep_2013_pct = 100-(round(nep_2013/nep_hist_0110*100,0))
+
+npp_hist_0710 = round(mean(filter(cal_netflux_by_ts, Flux == "NPP", Timestep >= 2002, Timestep <= 2010)$Mean), 1)
+npp_hist_0715 = round(mean(filter(cal_netflux_by_ts, Flux == "NPP", Timestep >= 2007, Timestep <= 2015)$Mean), 1)
+nep_hist_0715_pct = 100-(round(npp_hist_0715/npp_hist_0710*100,0))
+
+##### Paragraph 3: Historical Carbon Fluxes from LULC Change, Disturbance and Leaching #####
+lulcc_hist = round(mean((cal_netflux_by_ts %>% filter(Flux == "LULCC", Timestep <= 2015))$Mean), 1)
+grain_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (Grain)", Timestep <= 2015))$Mean), 1)
+straw_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (Straw)", Timestep <= 2015))$Mean), 1)
+
+fireEmis_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (Fire)", Timestep <= 2015))$Mean), 1)
+leaching_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Leaching", Timestep <= 2015))$Mean), 1)
+bioEmis_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (Biomass)", Timestep <= 2015))$Mean), 1)
+orchRemoval_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (Orchard Removal)", Timestep <= 2015))$Mean), 1)
+
+fireEmis_hist_annual_min = min((cal_fluxes_by_ts %>% filter(Flux == "Emission (Fire)", Timestep <= 2015))$Mean)
+fireEmis_hist_annual_max = max((cal_fluxes_by_ts %>% filter(Flux == "Emission (Fire)", Timestep <= 2015))$Mean)
+fireEmis_hist_annual_min_year = (cal_fluxes_by_ts %>% filter(Flux == "Emission (Fire)", Timestep <= 2015) %>% group_by() %>% slice(which.min(Mean)))$Timestep
+fireEmis_hist_annual_max_year = (cal_fluxes_by_ts %>% filter(Flux == "Emission (Fire)", Timestep <= 2015) %>% group_by() %>% slice(which.max(Mean)))$Timestep
+
+clearcut_harv_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (Clearcut)", Timestep <= 2015))$Mean), 1)
+clearcut_emis_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (Clearcut)", Timestep <= 2015))$Mean), 1)
+thinning_harv_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (Thinning)", Timestep <= 2015))$Mean), 1)
+clearcut_loss_hist_annual = clearcut_emis_hist_annual + clearcut_harv_hist_annual
+thinning_loss_hist_annual = thinning_harv_hist_annual
+harvest_hwp_hist_annual = clearcut_harv_hist_annual + thinning_harv_hist_annual
+harvest_loss_hist_annual = clearcut_harv_hist_annual + clearcut_emis_hist_annual + thinning_harv_hist_annual
+
+urban_emis_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (Urban)", Timestep <= 2015))$Mean), 1)
+urban_harv_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (Urban)", Timestep <= 2015))$Mean), 1)
+agexp_emis_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Emission (AgExpand)", Timestep <= 2015))$Mean), 1)
+agexp_harv_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Harvest (AgExpand)", Timestep <= 2015))$Mean), 1)
+urban_loss_hist_annual = urban_emis_hist_annual + urban_harv_hist_annual
+agexp_loss_hist_annual = agexp_emis_hist_annual + agexp_harv_hist_annual
+urban_agexpand_combined = urban_loss_hist_annual + agexp_loss_hist_annual
+
+lulcc_hist_total = sum((cal_netflux_by_ts %>% filter(Flux == "LULCC", Timestep <= 2015))$Mean)
+
+##### Paragraph 4: Historical Mortality from Insects, Fire, and Harvest #####
+fireMort_hist_total = sum((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Fire)", Timestep <= 2015))$Mean)
+fireMort_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Fire)", Timestep <= 2015))$Mean), 1)
+fireMort_hist_annual_min = min((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Fire)", Timestep <= 2015))$Mean)
+fireMort_hist_annual_max = max((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Fire)", Timestep <= 2015))$Mean)
+
+insectMort_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Insects)", Timestep <= 2015))$Mean), 1)
+insectMort_hist_2015 = (cal_fluxes_by_ts %>% filter(Flux == "Mortality (Insects)", Timestep == 2015))$Mean
+insectMort_hist_2016 = (cal_fluxes_by_ts %>% filter(Flux == "Mortality (Insects)", Timestep == 2016))$Mean
+
+harvMort_hist_total = sum((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Harvest)", Timestep <= 2015))$Mean)
+harvMort_hist_annual = round(mean((cal_fluxes_by_ts %>% filter(Flux == "Mortality (Harvest)", Timestep <= 2015))$Mean), 1)
+
+dom_2001
+dom_2016 = filter(cal_stock_by_ts, Timestep == 2016, StockGroup == "DOM", Ecosystem == "Yes")$Mean
+dom_hist_change = dom_2016 - dom_2001
+dom_hist_change_pct = round((dom_hist_change/dom_2001)*100, 1)
+
+##### Paragraph 5: Average Projected change in TEC #####
+tec_2015 = filter(cal_tec_by_ts, Timestep == 2015, Ecosystem == "Yes")$Mean
+necb_proj_total_average = round(mean(cal_necb_by_scn$Mean),1)
+
+trx_proj_total_average = (cal_tec_by_ts %>% filter(Ecosystem == "No", Timestep == 2100))$Mean
+
+necb_proj_total_average_pct = round((necb_proj_total_average / tec_2015)*100,1)
+necb_proj_total_min = min(cal_necb_by_scn$Mean)
+necb_proj_total_max = max(cal_necb_by_scn$Mean)
+necb_proj_annual_average = round((necb_proj_total_average/85),1)
+necb_proj_annual_min = round((necb_proj_total_min/85),1)
+necb_proj_annual_max = round((necb_proj_total_max/85),1)
+
+live_2015 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2015, StockGroup == "Live", Ecosystem == "Yes"))$Mean),1)
+live_2100 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2100, StockGroup == "Live", Ecosystem == "Yes"))$Mean),1)
+soil_2015 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2015, StockGroup == "Soil", Ecosystem == "Yes"))$Mean),1)
+soil_2100 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2100, StockGroup == "Soil", Ecosystem == "Yes"))$Mean),1)
+dom_2015 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2015, StockGroup == "DOM", Ecosystem == "Yes"))$Mean),1)
+dom_2100 = round(mean((cal_stock_by_scn_ts %>% filter(Timestep == 2100, StockGroup == "DOM", Ecosystem == "Yes"))$Mean),1)
+live_proj_change_mean = live_2100 - live_2015
+soil_proj_change_mean = soil_2100 - soil_2015
+dom_proj_change_mean = dom_2100 - dom_2015
+
+necb_proj_hist_diff_pct = abs(round(((necb_proj_annual_average - necb_hist_annual_mean) / necb_hist_annual_mean)*100,0))
+
+##### Paragraph 6: Ecoregion Projected NECB #####
+eco1_necb_proj = (eco_necb %>% filter(EcoregionID == 1))$Mean
+eco5_necb_proj = (eco_necb %>% filter(EcoregionID == 5))$Mean
+eco6_necb_proj = (eco_necb %>% filter(EcoregionID == 6))$Mean
+eco7_necb_proj = (eco_necb %>% filter(EcoregionID == 7))$Mean
+eco78_necb_proj = (eco_necb %>% filter(EcoregionID == 78))$Mean
+
+eco1_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 1, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+eco5_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 5, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+eco6_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 6, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+eco7_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 7, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+eco8_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 8, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+eco78_necb_proj_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 78, Timestep >= 2016, Timestep <= 2100))$Mean),1)
+
+eco6_necb_hist_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 6, Timestep <= 2015))$Mean),1)
+eco6_necb_hist_proj_diff = eco6_necb_proj_annual - eco6_necb_hist_annual
+eco78_necb_hist_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 78, Timestep <= 2015))$Mean),1)
+eco78_necb_hist_proj_diff = eco78_necb_proj_annual - eco78_necb_hist_annual
+eco5_necb_hist_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 5, Timestep <= 2015))$Mean),1)
+eco5_necb_hist_proj_diff = eco5_necb_proj_annual - eco5_necb_hist_annual
+eco8_necb_hist_annual = round(mean((eco_necb_by_ts %>% filter(EcoregionID == 8, Timestep <= 2015))$Mean),1)
+eco8_necb_hist_proj_diff = eco8_necb_proj_annual - eco8_necb_hist_annual
+
+eco_necb_hist_annual = eco_necb_by_ts %>% filter(Timestep <= 2015) %>% group_by(EcoregionName) %>% summarise(Historical = mean(Mean))
+eco_necb_hist_proj = eco_necb_by_ts %>% filter(Timestep >= 2015, Timestep <= 2100)  %>% group_by(EcoregionName) %>% summarise(Projected = mean(Mean)) %>%
+  left_join(eco_necb_hist_annual, by = "EcoregionName") %>% mutate(Difference = Projected - Historical) %>% arrange(-Difference)
+
+##### Paragraph 7: Projected change in Carbon storage/NECB by Climate Model and RCP Scenario #####
+necb_gcm_min = min(cal_necb_by_gcm$Mean)
+necb_gcm_max = max(cal_necb_by_gcm$Mean)
+necb_gcm_min_annual = round(min(cal_necb_by_gcm$Mean)/85,1)
+necb_gcm_max_annual = round(max(cal_necb_by_gcm$Mean)/85,1)
+
+necb_gcm_miroc = (cal_necb_by_gcm %>% filter(GCM == "MIROC5"))$Mean
+necb_gcm_hadley = (cal_necb_by_gcm %>% filter(GCM == "HadGEM2-ES"))$Mean
+necb_gcm_cnrm = (cal_necb_by_gcm %>% filter(GCM == "CNRM-CM5"))$Mean
+necb_gcm_canesm = (cal_necb_by_gcm %>% filter(GCM == "CanESM2"))$Mean
+
+necb_gcm_miroc_annual = round((cal_necb_by_gcm %>% filter(GCM == "MIROC5"))$Mean/85,1)
+necb_gcm_hadley_annual = round((cal_necb_by_gcm %>% filter(GCM == "HadGEM2-ES"))$Mean/85,1)
+necb_gcm_cnrm_annual = round((cal_necb_by_gcm %>% filter(GCM == "CNRM-CM5"))$Mean/85,1)
+necb_gcm_canesm_annual = round((cal_necb_by_gcm %>% filter(GCM == "CanESM2"))$Mean/85,1)
+
+necb_rcp45 = (cal_necb_by_rcp %>% filter(RCP == "rcp45"))$Mean
+necb_rcp85 = (cal_necb_by_rcp %>% filter(RCP == "rcp85"))$Mean
+necb_rcp45_lower = (cal_necb_by_rcp %>% filter(RCP == "rcp45"))$Lower
+necb_rcp85_lower = (cal_necb_by_rcp %>% filter(RCP == "rcp85"))$Lower
+necb_rcp45_upper = (cal_necb_by_rcp %>% filter(RCP == "rcp45"))$Upper
+necb_rcp85_upper = (cal_necb_by_rcp %>% filter(RCP == "rcp85"))$Upper
+
+necb_rcp_diff_pct = round(((necb_rcp85 - necb_rcp45) / necb_rcp85)*100,1)
+
+necb_hadgem_rcp85 = (cal_necb_by_gcm_rcp %>% filter(GCM == "HadGEM2-ES", RCP == "rcp85"))$Mean
+necb_hadgem_rcp45 = (cal_necb_by_gcm_rcp %>% filter(GCM == "HadGEM2-ES", RCP == "rcp45"))$Mean
+necb_hadgem_rcp_diff = (necb_hadgem_rcp85 - necb_hadgem_rcp45)*-1
+
+necb_canesm_rcp85 = (cal_necb_by_gcm_rcp %>% filter(GCM == "CanESM2", RCP == "rcp85"))$Mean
+necb_canesm_rcp45 = (cal_necb_by_gcm_rcp %>% filter(GCM == "CanESM2", RCP == "rcp45"))$Mean
+necb_canesm_rcp_diff = necb_canesm_rcp85 - necb_canesm_rcp45
+
+##### Paragraph 8: Projected change in Carbon storage/NECB by LUC Scenario #####
+necb_high = (cal_necb_by_luc %>% filter(LUC == "High"))$Mean
+necb_medium = (cal_necb_by_luc %>% filter(LUC == "Medium"))$Mean
+necb_low = (cal_necb_by_luc %>% filter(LUC == "Low"))$Mean
+necb_bau = (cal_necb_by_luc %>% filter(LUC == "BAU"))$Mean
+
+necb_high_annual = round(necb_high/85,1)
+necb_medium_annual = round(necb_medium/85,1)
+necb_low_annual = round(necb_low/85,1)
+necb_bau_annual = round(necb_bau/85,1)
+
+necb_high_to_medium = necb_high_annual - necb_medium_annual
+necb_high_to_low = necb_high_annual - necb_low_annual
+
+##### Paragraph 9: Projected change in Carbon storage/NECB by individual Scenario #####
+necb_had_85_high = (cal_necb_by_scn %>% filter(LUC == "High", GCM == "HadGEM2-ES", RCP == "rcp85"))$Mean
+necb_mir_85_high = (cal_necb_by_scn %>% filter(LUC == "High", GCM == "MIROC5", RCP == "rcp85"))$Mean
+
+necb_had_45_high = (cal_necb_by_scn %>% filter(LUC == "High", GCM == "HadGEM2-ES", RCP == "rcp45"))$Mean
+necb_had_85_45_diff = necb_had_85_high - necb_had_45_high
+necb_had_85_45_diff_pct = round((necb_had_85_45_diff / necb_had_85_high *100),1)
+
+necb_had_85_low = (cal_necb_by_scn %>% filter(LUC == "Low", GCM == "HadGEM2-ES", RCP == "rcp85"))$Mean
+necb_had_85_high_low_diff = necb_had_85_high - necb_had_85_low
+necb_had_85_high_low_diff_pct = round((necb_had_85_high_low_diff / necb_had_85_high *100),1)
+
+necb_had_45_low = (cal_necb_by_scn %>% filter(LUC == "Low", GCM == "HadGEM2-ES", RCP == "rcp45"))$Mean
+necb_had_85_45_high_low_diff = necb_had_85_high - necb_had_45_low
+necb_had_85_45_high_low_diff_pct = round((necb_had_85_45_high_low_diff / necb_had_85_high *100),1)
+
+necb_cnrm_45_low = (cal_necb_by_scn %>% filter(LUC == "Low", GCM == "CNRM-CM5", RCP == "rcp45"))$Mean
+necb_cnrm_45_low_annual  = round((necb_cnrm_45_low / 85),1)
+
+##### Table 1 #####
+table_1_eco = left_join(table_1_eco_stocks_hist, table_1_eco_fluxes_hist, by = "EcoregionName") %>%
+  left_join(table_1_eco_transfers_hist, by = "EcoregionName") %>%
+  mutate_if(is.numeric, round, 1) %>%
+  print()
+
+table_1_total = table_1_eco %>% gather(Variable, Amount, 2:11) %>%
+  group_by(Variable) %>% summarise(Amount = sum(Amount)) %>%
+  spread(Variable, Amount) %>% mutate(EcoregionName = "Total") %>%
+  mutate_if(is.numeric, round, 1) %>%
+  print()
+  
+table_1_final = bind_rows(table_1_eco, table_1_total) %>%
+  mutate_if(is.numeric, round, 1) %>%
+  print()
+
+##### Table 2 #####
+table_2_final = left_join(table_2_stocks_hist_by_ts, table_2_cal_netflux_hist_by_ts, by = "Timestep") %>%
+  left_join(table_2_transfers_hist_by_ts, by = "Timestep")
+
+##### Table 3 #####
+
+##### Table 4 #####
+literature_stocks_by_state = literature_stocks_by_ecoregion %>%
+  group_by(Source, Variable, Ecosystems) %>% summarise(Mg = sum(Mg), Tg = sum(Tg))
+
+table_xxxx = literature_stocks_by_ecoregion %>% select(-Mg, -EcoregionID) %>% select(EcoregionName, Ecosystems, Variable, Source, Tg) %>%
+  group_by(EcoregionName, Source, Variable, Ecosystems) %>% summarise(Tg = sum(Tg))
+
+##### Comparison to other Studies #####
+
+gonzalez_forest_area = 125000/1000
+gonzalez_all_agl_2001 = 920000/1000
+gonzalez_forest_agl_2001 = 830000/1000
+gonzalez_forest_agl_2010 = 780000/1000
+gonzalez_forest_change = gonzalez_forest_agl_2010 - gonzalez_forest_agl_2001
+gonzalez_forest_change_annual = round((gonzalez_forest_change/(2010-2001)),1)
+gonzalez_forest_density_2001 = round((gonzalez_forest_agl_2001 / gonzalez_forest_area),1) 
+
+forest_2001_live = (stocks_by_ts_sc %>% filter(LULC == "Forest", Timestep == 2001, StockGroup == "Live"))$Mean
+forest_2010_live = (stocks_by_ts_sc %>% filter(LULC == "Forest", Timestep == 2010, StockGroup == "Live"))$Mean
+
+root_shoot = 0.27
+
+forest_2001_agl = round(forest_2001_live*(1-root_shoot),1)
+forest_2010_agl = round(forest_2010_live*(1-root_shoot),1)
+forest_agl_change = forest_2010_agl - forest_2001_agl
+forest_agl_change_annual = round((forest_agl_change/(2010-2001)),1)
+
+forest_area_2001 = (cal_lulc_by_ts %>% filter(LULC == "Forest", Timestep == 2001))$Mean
+forest_area_2010 = round((cal_lulc_by_ts %>% filter(LULC == "Forest", Timestep == 2010))$Mean,0)
+
+forest_area_diff_gonzalez = forest_area_2001 - (gonzalez_forest_area*1000)
+forest_area_diff_gonzalez_pct = round((forest_area_diff_gonzalez/forest_area_2001)*100,1)
+forest_2001_agl_reduced_area = round(forest_2001_agl * (1-(forest_area_diff_gonzalez_pct/100)),1)
+
+##### Implications of different climate and land use pathways #####
+necb_hadgem_rcp_diff_pct = round(((necb_hadgem_rcp85 - necb_hadgem_rcp45) / necb_hadgem_rcp85)*100,1)
+necb_canesm_rcp_diff_pct = round(((necb_canesm_rcp85 - necb_canesm_rcp45) / necb_canesm_rcp85)*100,1)*-1
+
+necb_rcp_diff_by_iter = cal_necb_by_iter_scn %>% select(LUC, GCM, RCP, Iteration, Amount) %>% spread(RCP, Amount) %>% 
+  mutate(Change = rcp45-rcp85) %>% select(-rcp45, -rcp85) %>% mutate(Mitigation = "Emissions Reduction")
+
+necb_luc_diff_by_iter = cal_necb_by_iter_scn %>% select(LUC, GCM, RCP, Iteration, Amount) %>% spread(LUC, Amount) %>% 
+  mutate(Change = Low-High) %>% select(-BAU, -High, -Medium, -Low)  %>% mutate(Mitigation = "Avoided Conversion")
+
+necb_mitigation_by_iter = bind_rows(necb_rcp_diff_by_iter, necb_luc_diff_by_iter)
+
+necb_rcp_diff = necb_rcp_diff_by_iter %>% group_by(LUC, GCM, Mitigation) %>% summarise(Mean = mean(Change), Lower = quantile(Change, 0.025), Upper = quantile(Change, 0.975))
+necb_luc_diff = necb_luc_diff_by_iter %>% group_by(RCP, GCM, Mitigation) %>% summarise(Mean = mean(Change), Lower = quantile(Change, 0.025), Upper = quantile(Change, 0.975))
+
+necb_rcp_diff_min = round(min((necb_rcp_diff)$Mean),1)
+necb_rcp_diff_max = round(max((necb_rcp_diff)$Mean),1)
+necb_rcp_diff_mean = round(mean((necb_rcp_diff)$Mean),1)
+
+necb_rcp_diff_min_pct = round(necb_rcp_diff_min / abs(necb_rcp85) *100, 0)
+necb_rcp_diff_max_pct = round(necb_rcp_diff_max / abs(necb_rcp85) *100, 0)
+
+necb_luc_diff_min = round(min((necb_luc_diff)$Mean),1)
+necb_luc_diff_max = round(max((necb_luc_diff)$Mean),1)
+necb_luc_diff_mean = round(mean((necb_luc_diff)$Mean),1)
+
+necb_luc_diff_min_pct = round(necb_luc_diff_min / abs(necb_high) *100, 0)
+necb_luc_diff_max_pct = round(necb_luc_diff_max / abs(necb_high) *100, 0)
+
+necb_rcp85_high = cal_necb_by_iter_scn %>% filter(RCP == "rcp85", LUC == "High") %>% group_by(LUC, RCP) %>% summarise(Mean = mean(Amount), Lower = quantile(Amount, 0.025), Upper = quantile(Amount, 0.975))
+necb_rcp45_low = cal_necb_by_iter_scn %>% filter(RCP == "rcp45", LUC == "Low") %>% group_by(LUC, RCP) %>% summarise(Mean = mean(Amount), Lower = quantile(Amount, 0.025), Upper = quantile(Amount, 0.975))
+necb_rcp_luc_diff = round(abs(necb_rcp85_high$Mean - necb_rcp45_low$Mean),1)
+
+necb_hadley_rcp85_high = round((cal_necb_by_iter_scn %>% filter(GCM == "HadGEM2-ES", RCP == "rcp85", LUC == "High") %>% 
+                            group_by(LUC, RCP) %>% summarise(Mean = mean(Amount), Lower = quantile(Amount, 0.025), Upper = quantile(Amount, 0.975)))$Mean,1)
+
+necb_hadley_rcp45_low = round((cal_necb_by_iter_scn %>% filter(GCM == "HadGEM2-ES", RCP == "rcp45", LUC == "Low") %>% 
+                           group_by(LUC, RCP) %>% summarise(Mean = mean(Amount), Lower = quantile(Amount, 0.025), Upper = quantile(Amount, 0.975)))$Mean,1)
+
+necb_hadley_rcp_luc_diff = round(abs(necb_hadley_rcp85_high - necb_hadley_rcp45_low),1)
+necb_hadley_rcp_luc_diff_pct = round((necb_hadley_rcp_luc_diff / necb_hadley_rcp85_high) * 100, 0)
+
+# Climate Data
+tmean_hist_mean = round(mean(prism_tmean$Mean),1)
+tmean_proj_mean = loca_tmean %>% filter(Year >= 2070, !is.na(Mean)) %>% group_by(GCM, RCP) %>% summarise(Mean = mean(Mean))
+tmean_proj_min = round(min(tmean_proj_mean$Mean),1)
+tmean_proj_max = round(max(tmean_proj_mean$Mean),1)
+tmean_min_change = tmean_proj_min - tmean_hist_mean       
+tmean_max_change = tmean_proj_max - tmean_hist_mean 
+
+# CFE Sensitivity Analysis
+co2Diff = 550-366.7
+
+norbyLow = 0.05
+norbyMedLow = 0.10
+norbyMed = 0.15
+norbyMedHigh = 0.20
+norbyHigh = 0.25
+
+co2Low = norbyLow/co2Diff
+co2MedLow = norbyMedLow/co2Diff
+co2Med = norbyMed/co2Diff
+co2MedHigh = norbyMedHigh/co2Diff
+co2High = norbyHigh/co2Diff
+
+
+cfe_rcp45_nocfe = (cfe_necb %>% filter(RCP=="rcp45", CFE=="No CFE"))$Mean
+cfe_rcp85_nocfe = (cfe_necb %>% filter(RCP=="rcp85", CFE=="No CFE"))$Mean
+
+cfe_rcp45_low = (cfe_necb %>% filter(RCP=="rcp45", CFE=="Low"))$Mean
+cfe_rcp85_low = (cfe_necb %>% filter(RCP=="rcp85", CFE=="Low"))$Mean
+cfe_rcp85lim_low = (cfe_necb %>% filter(RCP=="rcp85-600", CFE=="Low"))$Mean
+
+cfe_rcp45_high = (cfe_necb %>% filter(RCP=="rcp45", CFE=="High"))$Mean
+cfe_rcp85_high = (cfe_necb %>% filter(RCP=="rcp85", CFE=="High"))$Mean
+cfe_rcp85lim_high = (cfe_necb %>% filter(RCP=="rcp85-600", CFE=="High"))$Mean
+
+
+cfe_rcp45_low_diff = round(abs((cfe_rcp45_nocfe-cfe_rcp45_low)/85),1)
+cfe_rcp45_high_diff = round(abs((cfe_rcp45_nocfe-cfe_rcp45_high)/85),1)
+
+cfe_rcp85_low_diff = round(abs((cfe_rcp85_nocfe-cfe_rcp85_low)/85),1)
+cfe_rcp85_high_diff = round(abs((cfe_rcp85_nocfe-cfe_rcp85_high)/85),1)
+
+cfe_rcp85lim_low_diff = round(abs((cfe_rcp85_nocfe-cfe_rcp85lim_low)/85),1)
+cfe_rcp85lim_high_diff = round(abs((cfe_rcp85_nocfe-cfe_rcp85lim_high)/85),1)
+
+cfe_rcp45_pct = round(abs((cfe_rcp45_low-cfe_rcp45_nocfe)/cfe_rcp45_nocfe),2)*100
+cfe_rcp85_pct = round(abs((cfe_rcp85_low-cfe_rcp85_nocfe)/cfe_rcp85_nocfe),2)*100
+cfe_rcp85lim_pct = round(abs((cfe_rcp85lim_low-cfe_rcp85_nocfe)/cfe_rcp85_nocfe),2)*100
+
+cfe_tec_rcp45_ref = (cfe_tec %>% filter(Timestep==2100, CFE=="No CFE", RCP=="rcp45"))$Mean
+cfe_tec_rcp45_med = (cfe_tec %>% filter(Timestep==2100, CFE=="Medium", RCP=="rcp45"))$Mean
+cfe_tec_rcp45_med_pct = round((cfe_tec_rcp45_med-cfe_tec_rcp45_ref)/cfe_tec_rcp45_ref*100,1)
+
+cfe_tec_rcp85_ref = (cfe_tec %>% filter(Timestep==2100, CFE=="No CFE", RCP=="rcp85"))$Mean
+cfe_tec_rcp85lim_med = (cfe_tec %>% filter(Timestep==2100, CFE=="Medium", RCP=="rcp85-600"))$Mean
+cfe_tec_rcp85lim_med_pct = round((cfe_tec_rcp85lim_med-cfe_tec_rcp85_ref)/cfe_tec_rcp85_ref*100,1)
+cfe_tec_rcp85_med = (cfe_tec %>% filter(Timestep==2100, CFE=="Medium", RCP=="rcp85"))$Mean
+cfe_tec_rcp85_med_pct = round((cfe_tec_rcp85_med-cfe_tec_rcp85_ref)/cfe_tec_rcp85_ref*100,1)
+
+##### Fire Emissions Comparison #####
+arb_fire = arb_fire_emissions %>% 
+  mutate(TransitionGroup="FIRE", FlowType="Emission", Mean=ARB_CO2, Source="ARB") %>%
+  select(Timestep, TransitionGroup, FlowType, Source, Mean)
+
+lucas_fire = cal_flows_by_ts %>% filter(Timestep<=2017, TransitionGroup=="Fire", Flow=="Emission") %>%  
+  mutate(Source="LUCAS",TransitionGroup="FIRE",Mean=Mean*3.67) %>% rename("FlowType"="Flow") %>% select(Timestep,TransitionGroup,FlowType,Source,Mean)
+
+fire_emission_comparison = bind_rows(arb_fire, lucas_fire) %>% filter(Timestep>=2002,Timestep<=2016) %>% spread(Source,Mean)
+
+arb_sum = round(sum(fire_emission_comparison$ARB),1)
+arb_min = round(min(fire_emission_comparison$ARB),1)
+arb_max = round(max(fire_emission_comparison$ARB),1)
+arb_mean = round(mean(fire_emission_comparison$ARB),1)
+arb_sd = round(sd(fire_emission_comparison$ARB),1)
+
+lucas_sum = round(sum(fire_emission_comparison$LUCAS),1)
+lucas_min = round(min(fire_emission_comparison$LUCAS),1)
+lucas_max = round(max(fire_emission_comparison$LUCAS),1)
+lucas_mean = round(mean(fire_emission_comparison$LUCAS),1)
+lucas_sd = round(sd(fire_emission_comparison$LUCAS),1)
+
+fire_r2=round(summary(lm(ARB ~ LUCAS, data=fire_emission_comparison))$r.squared,2) 
+
+
+##### Urbanization impacts #####
+cal_necb_urb = cal_necb_by_iter_scn %>% filter(LUC %in% c("Medium","BAU")) %>% group_by(LUC,GCM,RCP) %>%
+  summarise(Mean=mean(Amount)) %>% group_by(GCM,RCP) %>% arrange(desc(LUC)) %>% mutate(Diff=Mean-lag(Mean)) %>%
+  filter(LUC=="BAU") %>% mutate(DiffPct=Diff/Mean)
+
+urb_diff_bau_med_mean = round(mean(cal_necb_urb$Diff),1)
+urb_diff_bau_med_canesm_min = round(min(filter(cal_necb_urb, GCM=="CanESM2")$DiffPct*100),0)
+urb_diff_bau_med_canesm_max = round(max(filter(cal_necb_urb, GCM=="CanESM2")$DiffPct*100),0)
+
+urb_diff_bau_med_cnrm45 = round(max(filter(cal_necb_urb, GCM=="CNRM-CM5",RCP=="rcp45")$DiffPct*100),0)
+```
+
+Running Title: Ecosystem carbon balance in California
+
+Benjamin M. Sleeter^1^*, David C. Marvin^2^, D. Richard Cameron^2^, Paul C. Selmants^3^, LeRoy Westerling^4^, Jason Kreitler^5^, Colin J. Daniel^6^, Jinxun Liu^3^, Tamara S. Wilson^3^
+
+#### Affiliations 
+^1^U.S. Geological Survey, Seattle, WA, USA; bsleeter@usgs.gov; (253) 343-3363  
+^2^The Nature Conservancy, San Francisco, CA, USA  
+^3^U.S. Geological Survey, Menlo Park, CA, USA  
+^4^University of California Merced, California, USA  
+^5^U.S. Geological Survey, Boise, ID, USA  
+^6^Apex Resource Management Solutions Ltd., Ottawa, ON, CAN
+
+**Keywords:** land use, climate change, carbon balance, California, scenarios, disturbance    
+
+**Date:** `r format(Sys.time(), '%B %d, %Y')`  
+
+# Abstract
+Terrestrial ecosystems are an important sink for atmospheric carbon dioxide (CO~2~), sequestering ~30% of annual anthropogenic emissions and slowing the rise of atmospheric CO~2~. However, the future direction and magnitude of the land sink is highly uncertain. We examined how historical and projected changes in climate, land use, and ecosystem disturbances affect the carbon balance of terrestrial ecosystems in California over the period 2001-2100. We modeled 32 unique scenarios, spanning four land-use and two radiative forcing scenarios as simulated by four global climate models. Between 2001-2015 carbon storage in California's terrestrial ecosystems declined by `r necb_hist_mean` Tg C, with a mean annual flux ranging from a source of `r necb_hist_annual_min` Tg C yr^-1^ to sink of `r necb_hist_annual_max` Tg C yr^-1^. The large variability in the magnitude of the state's carbon source/sink was primarily attributable to inter-annual variability in weather and climate, which affected the rate of carbon uptake in vegetation and the rate of ecosystem respiration. Under nearly all future scenarios, carbon storage in terrestrial ecosystems was projected to decline, with an average loss of `r necb_proj_total_average_pct`% (`r necb_proj_total_average` Tg C) by the year 2100 from current stocks. However, uncertainty in the magnitude of carbon loss was high, with individual scenario projections ranging from `r necb_proj_total_min` Tg C to `r necb_proj_total_max` Tg C and was largely driven by differences in future climate conditions projected by climate models. Moving from a high to a low radiative forcing scenario reduced net ecosystem carbon loss by `r rcp_diff_mean_pct`% and when combined with reductions in land-use change (i.e. moving from a high to a low land use scenario), net carbon losses were reduced by `r luc_rcp_diff_pct`% on average. However, reconciling large uncertainties associated with the effect of increasing atmospheric CO~2~ is needed to better constrain models used to establish baseline conditions from which ecosystem-based climate mitigation strategies can be evaluated. 
+
+\pagebreak
+
+# 1. Introduction
+Changes in land use have been a primary factor in the global rise of atmospheric carbon dioxide (CO~2~) and a major driver of global climate change [@le2017global]. Since 1850, land-use change has added nearly half as much carbon to the atmosphere as fossil fuel emissions and has exerted a dominant influence on the storage of carbon in terrestrial ecosystems [@le2017global; @houghton2017global]. Changes in land use have primarily resulted in the conversion of natural ecosystems to produce food, fiber, and for establishment of settlements [@foley2005global]. Combined, land use and management have the potential to undermine the ability of ecosystems to produce a wide range of services [@foley2005global], including the storage and sequestration of carbon to mitigate climate change [@houghton2017global]. Meanwhile, climate change affects ecosystem carbon balance by changing the rate of carbon uptake in vegetation [@ballantyne2017accelerating; @ballantyne2012increase] and the decay and decomposition of dead organic matter (DOM) and soils [@melillo2017long; @pries2017whole], and remains the subject of intense study [@usgcrp2017climate; @usgcrp2018soccr2]. Furthermore, studies indicate that climate change is increasing the frequency and magnitude of extreme events [@mann2017influence] which can alter ecosystem carbon balance by increasing gaseous emissions and through the transfer of carbon from live to DOM pools [@kurz2008mountain]. The combined effects of climate and land change can result in either positive (i.e. net emissions) or negative (i.e. net sequestration) feedbacks from the biosphere on the climate system [@cssrNca4]. The direction and magnitude of these feedbacks will either hinder or facilitate the achievement of local to global-scale greenhouse gas reduction targets. 
+
+Accounting for and minimizing anthropogenically-linked ecosystem carbon emissions and/or maximizing the biosphere carbon sink is important for meeting the 2° C target of the Paris Agreement [@fargione2018natural]. Despite the historically negative role in the carbon cycle, land use and management is increasingly being evaluated instead as a tool for climate mitigation [@cameron2017ecosystem; @griscom2017natural; @houghton2015role; @fargione2018natural]. To evaluate the effectiveness of land-based mitigation efforts, regional baseline estimates of carbon stocks and fluxes are needed. At management scales, spatially explicit projections spanning long temporal periods (i.e. 50-100 years) need to consider the interactive effects of changes in land use/land cover (LULC) and climate. Such projections provide a reference point against which the effects of mitigation actions, applied to different locations at different times, can be evaluated. With the rise in sub-national emission reduction targets [@galarraga2017climate] jurisdictions must work not only to mitigate emissions from both the energy and land sectors, but also understand future climate-biosphere feedbacks and their effect on ecosystem carbon balance. 
+
+The State of California exemplifies many of the challenges associated with projecting integrated effects of climatic and land-use change on ecosystem carbon balance. California is a large and ecologically diverse region overlain by a complex land-use mosaic (Fig. \ref{fig:study_area}). California ranks first among the United States in population, economic activity, and agricultural production value, while at the same time maintains nearly half of its land area in some form of protected status. California is a leader in sub-national climate action with one of the only economy-wide regulatory climate targets in the world [@us_climate_alliance]. Recognizing the importance of ecosystems for emissions mitigation, the state has started to integrate ecosystem management as part of its emissions reduction strategy [@arb2017_scoping]. California’s climate is highly variable [@swain2018increasing], with a recent severe drought killing more than 100 million trees [@stephens2018drought] and a high probability of a multi-decadal drought occurring this century [@cook2015unprecedented]. Anthropogenic climate change is increasing the frequency of climate extremes in California [@diffenbaugh2015anthropogenic; @cvijanovic2017future], leading to changes in natural disturbance regimes [@abatzoglou2016impact; @crockett2018greater]. However, the future effects of climate and land change on ecosystem carbon balance are difficult to predict, and pose additional challenges to meeting greenhouse gas reduction targets. Furthermore, no existing studies have attempted to quantify the effects of major controlling processes such as land use, land-use change, natural disturbance, and climate change, on the carbon balance of California ecosystems.
+
+We consider 32 unique future scenarios exploring alternative assumptions about land use and land-use change, reductions in global emissions, and future climate conditions. We used a fully coupled state-and-transition simulation model with carbon stocks and flows to estimate changes in ecosystem carbon balance for California’s natural and agricultural lands on an annual time-step for the period 2001-2100. [@sleeter2018effects; @daniel2018integrating]. Scenario projections explored low, medium, high, and business-as-usual land-use intensity pathways [@sleeter2018effects] and were combined with climate projections for two radiative forcing scenarios (RCP 4.5 and RCP 8.5). RCP’s were simulated by four bias-corrected, statistically down-scaled global climate models [@pierce2014statistical] chosen to represent a wide range of future climate pathways in California. Finally, we integrated projections of climate-driven drought-induced tree mortality and wildfire, overcoming a major limitation of previous studies [@allen2015underestimation]. The goals of this study were to a) estimate changes in California ecosystem carbon balance and their uncertainties over the recent historical past and under a range of plausible future scenarios, b) estimate how changes are distributed across different components (i.e. carbon pools), land use/land cover classes (e.g. forests, grasslands), and regions, and c)  develop understanding of the relative impact of major controlling processes such as land-use, disturbances, and climate change. 
+
+# 2. Materials and Methods
+We used the Land Use and Carbon Scenario Simulator (LUCAS), an empirical model of land use change coupled with a gain-loss model of ecosystem carbon dynamics [@sleeter2018effects; @sleeter2017carbon; @selmants2017baseline] to project changes in ecosystem carbon balance for the state of California under a range of climate and land-use scenarios. The LUCAS model utilizes a fully coupled state-and-transition simulation model with stocks and flows (STSM-SF) [@daniel2018integrating] to estimate changes in ecosystem carbon pools resulting from changes in land use, land cover, and disturbances [@sleeter2018effects]. The model estimates annual changes in carbon pools resulting from vegetation productivity, litterfall, mortality, decay/decomposition, emission, leaching, and harvest. Carbon stocks and fluxes respond to changes in land use and land cover resulting from processes associated with urbanization, agricultural expansion and contraction, forest and agricultural harvest and management activities, and wildfire and drought-induced tree mortality. The model also considers the effects of short and long-term climate variability on growth of live biomass and the turn-over of dead organic material (DOM). Land-use transitions in this study are based on a set of projections developed for the state of California [@sleeter2017future]. Carbon stocks and fluxes are based on a national assessment of ecosystem carbon balance [@sleeter2018effects] modified for the State of California based on methods described in Daniel et al. [@daniel2018integrating].
+
+### 2.1 Study area
+The spatial extent of this study was the state of California covering 423,812 km^2^ (Fig. \ref{fig:study_area}). The State of California was subdivided into a regular grid of 1-km x 1-km simulation cells. The state type of each simulation cell was based on combinations of 12 ecological regions, 58 counties (administrative units), and 12 discrete LULC classes, including water, wetlands, snow/ice, barren, forest, grassland, shrubland, annual cropland, perennial cropland, development, and transportation/roads. For the forest, grassland, shrubland, and cropland classes we also tracked the age and time-since-transition (TST) of each cell as additional state variables. A general description of the structure of STSMs can be found in Daniel et al., 2016 [@daniel2016state].
+
+```{r study_area, cache = FALSE, echo = FALSE, dpi = 300, width = 4.65, height = 6.22, fig.align="center", fig.cap="Land use/land cover map of California. Ecological regions are shown as black lines. CR is Coast Range, KM is Klamath Mountains, C is Cascades, SN is the Sierra Nevada Mountains, EC is East Cascades Slopes and Foothills, CV is Central California Valley, OW is Central and Southern California Chaparral and Oak Woodlands, SCM is Southern California Mountains, NBR is Northern Basin and Range, CBR is Central Basin and Range, MBR is Mojave Basin and Range, and SBR is Sonoran Basin and Range."}
+knitr::include_graphics('Data/Figures/fig-1.png')
+```
+
+### 2.2 States and transitions
+The state-and-transition simulation model (STSM) divides a landscape into a grid of simulation cells and then simulates the state type of each cell forward in time, as a discrete-time stochastic process, in response to any number of possible transitions [@daniel2016state]. Transitions between state types were defined to represent the processes associated with urbanization, agricultural expansion and contraction, agricultural harvest and management, forest harvest, wildfire, and drought mortality (Fig. \ref{fig:conceptual_model}). In total, 39 unique transition pathways were defined for this study and were based on the model described in @sleeter2017future. The order in which transitions were applied was randomized in each time-step. Several important modifications to the model were made for this study and are described below. For a thorough description of the structure of the STSM developed for California see @sleeter2017future and @wilson2016future.
+
+The base land change model included a business-as-usual (BAU) and three population-based scenarios which explored alternative urbanization pathways [@sleeter2017future]. The BAU scenario was based entirely on extending historical rates of LULC change into the future and represents a future scenario pathway describing a continuation of recent historical trends. The three population-based scenarios were originally designed to explore the effect of different rates of population growth on urban land expansion. For this study we further modified the population-based scenarios to also include varying rates of other anthropogenic land uses, such as agricultural expansion and contraction and forest harvest.
+
+The "High" land use scenario utilized a high population projection to characterize urbanization, and was further modified to explore a future with high rates of other anthropogenic land uses. Under this scenario, transition rates associated with agricultural expansion and contraction were derived by sampling, with replacement, from the period 1997-2002, which was a period of sustained growth in the areal extent of California agricultural lands [@sleeter2017future]. Similarly, for transitions associated with forest harvest, we sampled, with replacement, from the 2002-2009 period. A similar approach was used to construct the "Low" land use scenario, where the rates of agricultural land use were sampled from the 1993-1996 period and transitions associated with forest harvest were sampled from the 2010-2014 period. These rates were combined with a low population projection and corresponding low rate of urbanization. For the "BAU" and "Medium" scenarios, we sampled, with replacement, from the full time series of historical land use data for each transition type. As such, the only difference between the "BAU" and "Medium" land use scenarios was the rate of urbanization. The "BAU" scenario projected urbanization using the full time-series of historical urbanization data while the "Medium" land use scenario used a medium population projection as described in @sleeter2017future. 
+
+Forest harvest activities in California are dominated by softwoods, which make up approximately 58% of the total forest area of the state and are dominated by a mixed conifer group (includes mixed stands of Douglas-fir, ponderosa pine, sugar pine, Jeffrey pine, white and red fir, incense cedar, and other true fir species), ponderosa pine, and other western softwoods [@christensen2016california]. Hardwoods make up approximately 40% of the state's forest lands and are dominated by western oak species, however, they make up less than 1% of statewide harvest totals [@mciver2015california]. Conversely, the combined harvest of Douglas-fir, true firs, ponderosa pine, redwood, and sugar pine accounts for nearly 94% of all harvest in California [@mciver2015california]. In the LUCAS model, forest harvest was characterized as either stand replacing (clear-cut) or partial harvest (selection) events. Annual historical harvest rates were derived from annual historical maps of forest disturbance [@landfire2014disturbance] available for the period 1999-2014. In projected years, forest harvest transitions were estimated by sampling, with replacement, from the historical time series of data, where co-variance between harvest types and rates by county was preserved. The minimum age for forest harvest was set to 40 years-old for clear-cut and 20 years-old for selection harvest. Cells selected for clear-cut harvest subsequently had their age reset to 0 while cells selected for selection harvest did not experience a change in age. Spatial maps were used to prohibit harvest from protected lands [@network2016protected]. Carbon transfer rates resulting from clear-cuts were based on @sleeter2018effects. For selection harvest, we assumed 20% of live biomass pool was transferred to the harvested wood products (HWP) pool. 
+
+Wildfire and drought-induced tree mortality were estimated based on sub-models which were integrated into the LUCAS framework. An exogenous statistical fire model was used to derive burn area projections for each climate scenario [@sleeter2017future]. For the projected period, burn area was estimated for each climate model (GCM) and radiative forcing scenario (RCP) based on a statistical model of wildfire which considered the effects of climate, vegetation, population density, and fire history [@westerlingwildfire]. For each scenario, the annual projected burn area was summarized for each ecoregion and climate scenario. The LUCAS model was then used to simulate individual fire events which spread across the landscape within a time-step. Fire events were projected based on 1) the expected annual burn area within an ecoregion as provided by the exogenous statistical fire model, 2) the relative probability of an individual cell experiencing a fire, 3) the stationary distribution of fire size as calculated from historical fire maps for each ecoregion, and 4) the distribution of fire severity classes as calculated from historical fire maps for each ecoregion. 
+
+A similar approach was used to estimate the annual extent of drought-induced tree mortality. We used the 60-month Standardized Precipitation Evapotranspiration Index (SPEI) [@vicente2010multiscalar] to track long-term drought annually across California using PRISM [@prism2011prism] 4-km historical climate data for monthly temperature and precipitation inputs calibrated to aerial detection survey forest mortality maps [@aerial2016survey]. We fit a binomial GLM model for each of three mortality classes, using SPEI as a single predictor in the model. We used these models to estimate future drought-induced mortality for each GCM and RCP scenario on an annual time-step. We estimated the annual mortality area for each ecoregion from the model outputs and sampled, with replacement, from a Gaussian distribution created from these annual ecoregional means and an assumed 50% standard deviation. Annual relative probability maps derived from the spatial predictions were used within LUCAS to constrain the pattern of disturbance. Additional details describing the wildfire and drought-induced tree mortality sub-models can be found in the Supplemental Methods.
+
+```{r conceptual_model, cache = FALSE, echo = FALSE, out.width="100%", fig.align="center", fig.cap="Conceptual diagram of a) state-and-transition simulation model (STSM) and b) carbon stock-flow (SF) model used in this study. Green boxes denote ecosystem state classes and carbon pools included in the estimation of ecosystem carbon storage. Gray diamonds indicate land change transition processes and carbon fluxes considered in the model. DGVM with subscripts indicates that flux was parameterized with a dynamic global vegetation model as a function of the subscripts indicated"}
+knitr::include_graphics('Data/Figures/conceptual-diagram.png')
+```
+
+### 2.3 Carbon stocks and flows
+With the STSM-SF method, the fate of continuous carbon stocks can be simulated for each simulation cell, based on a suite of continuous flows (i.e. carbon fluxes) specifying the rates at which these stock levels change over time [@daniel2018integrating]. Carbon stocks considered in this study included a single live pool (living biomass), three dead organic matter pools (standing deadwood, down deadwood, and litter), and a soil pool (soil organic carbon). In addition, we tracked carbon in three product pools, including harvested wood products (HWP) and carbon stored in agricultural products (grain and straw pools). Pools representing carbon stored in atmosphere and aquatic pools were tracked to ensure the mass balance of carbon was maintained. For live, DOM, and soil pools, initial carbon stocks were estimated for each land cover class (forest, grasslands, shrublands, annual and perennial agriculture) and ecoregion based on a regionally calibrated dynamic global vegetation model (DGVM) [@sleeter2018effects; @daniel2018integrating; @selmants2017baseline; @sleeter2015integrated] and a remote sensing derived map of forest age (see Supplemental Methods). 
+
+The LUCAS model estimates change in carbon stocks (i.e. fluxes) resulting from growth, mortality, litterfall, dead-fall (e.g. standing to down deadwood), decomposition, emission, and leaching (Fig. \ref{fig:conceptual_model}). In addition, LUCAS estimates change in carbon stocks and fluxes resulting from land use, land-use change, and disturbances. Average annual growth was estimated for each LULC class and ecoregion based on an empirical model of net primary production (NPP) [@del2008global]. Ecoregion and land cover-specific turnover rates were then used to represent the flow of carbon from live to DOM pools resulting from litterfall and mortality based on an analysis of output from a dynamic global vegetation model (DGVM) [@daniel2018integrating; @sleeter2018effects]. Rates of decay and decomposition of DOM, as well as the lateral flux from of carbon from terrestrial to aquatic systems (i.e. leaching), were specified for each ecoregion [@sleeter2018effects]. An annual multiplier was applied to DOM turnover rates based on a Q10 function [@kurz2009cbm]. We assumed a Q10 of 2.0 for the decay of down deadwood, decomposition of litter, and gaseous emissions from the soil pool [@pries2017whole], and a Q10 of 2.65 was assumed for the litter pool. Lastly, transition-triggered flows (e.g. flows resulting from transitions such as harvest or urbanization) [@daniel2018integrating] result in additional fluxes to product pools and the atmosphere and were derived from Sleeter et al., 2018 [@sleeter2018effects]. 
+
+### 2.4 Initial Conditions
+The LUCAS model was initialized with spatially explicit maps representing spatial strata, LULC type, and age (Fig. S1). All maps were projected to an Albers Equal Area Conical Projection using the NAD83 Datum. Each cell had a spatial resolution of 1-km x 1-km. Three levels of spatial stratification were used in the model, including ecological regions, counties, and land ownership. First, an ecoregion map was developed based on Level III ecoregions of the conterminous United States as defined by the U.S. Environmental Protection Agency [@omernik1987ecoregions]. Second, an administrative boundaries map was derived based on county boundaries from the U.S. Census Bureau. Lastly, three levels of ownership were defined, including federal, non-federal, and private, based on the U.S. Protected Areas Database v1.4 [@network2016protected]. Initial LULC class for each cell was based on Sleeter et al., 2017 [@sleeter2017future] with modifications for perennial croplands described in the Supplemental Methods. 
+
+Initial carbon stocks for each simulation cell were estimated based on the ecoregion, LULC class, and age of each cell and an age-to-carbon look-up table derived from the output of the DGVM [@sleeter2018effects; @daniel2018integrating] (Fig. S2). Initial stock estimates were then scaled using a stationary spatial growth multiplier to reflect within-ecoregion heterogeneity of carbon pools. The spatial multiplier was estimated using 30-year climate normal's and the empirical NPP model, where values for each cell reflected the NPP anomaly relative to each cells ecoregion and LULC class type. The soil carbon pool was estimated from a soil carbon stock spatial layer using soil property prediction maps (see Supplemental Methods). We used this soil carbon map to scale the regional output from the DGVM following methods developed and described in @daniel2018integrating.
+
+### 2.5 Scenario simulations
+We simulated 32 scenarios in total, spanning all combinations of four LULC scenarios, two radiative forcing scenarios (i.e. RCPs), and four climate models (i.e. GCMs). For each scenario we ran 100 Monte Carlo realizations of the model. The four LULC scenarios were based on those published in @sleeter2017future which explored alternative futures based on business-as-usual (“BAU”) trends and three scenarios exploring alternative projections of population growth (low, medium, and high). Down-scaled climate data from the Localized Construction Analogs (LOCA) data-set were used to represent future climate conditions for the RCP4.5 and RCP8.5 radiative forcing scenarios [@pierce2014statistical]. Climate models chosen represent “hot-dry” (HadGEM2-ES), “hot-wet” (CNRM-CM5), “average” (CanESM2), and “complementary” (MIROC5) conditions, which were the subset of global climate models selected for the California Fourth Climate Change Assessment as models meant to represent a range of possible futures for the state [@pierce2016creating; @bedsworth2017projected]. All scenario simulations were run at 1-km x 1-km spatial resolution on an annual time-step for the period 2001-2101. A baseline period spanning the years 2001-2015 was defined where simulations utilized real historical LULC and climate data inputs; projections departed in 2016 based on one of the 32 individual future pathways. Positive values reported in this study denote a net increase in carbon storage in terrestrial ecosystems while negative values denote a net loss from ecosystems. The term "net ecosystem production"" (NEP) refers to the net difference in carbon storage resulting from plant productivity (i.e. NPP) and respiration by heterotrophic organisms (Rh). Net ecosystem carbon balance (NECB) refers to the the net change in total carbon stored in ecosystems. For this study, the primary difference between NEP and NECB is the inclusion of carbon losses resulting from land use change, disturbances, harvest, and aquatic leaching in the calculation of NECB.
+
+### 2.6 Effect of CO~2~ fertilization
+Increasing atmospheric CO~2~ (C~a~) concentration has a direct, positive effect on carbon assimilation by plants through photosynthesis (Franks et al. 2013). However, there is a large degree of uncertainty in the persistence and magnitude of this effect, particularly over long time horizons. To explore the importance of the CO~2~ fertilization effect (CFE) on ecosystem carbon balance, we conducted a series of simulations to test the sensitivity of the model to the introduction of a CFE on NPP. We used the "BAU" land use scenario and CanESM2 ("average") climate model to test a range of CFE rates for both the RCP 4.5 and RCP 8.5 scenarios. CFE rates were selected to span the range of values observed in the literature, which generally show increases in NPP ranging from 9-23% when C~a~ levels were increased by ~50% (i.e. an increase of ~180 ppm CO~2~) [@norby2005forest; @norby2010co2].  The LUCAS model was parameterized with an NPP CFE multiplier based on a $\beta$ factor representing the annual change in NPP (%) for every 100 ppm increase in C~a~. We tested five $\beta$ levels, ranging from 2-14%, which are generally consistent with the range of observed CFE's from FACE experiments (5-25% increases in NPP given exposure to an increase of ~180 ppm of CO~2~). Additionally, we introduced a third scenario where we assumed the CFE reached saturation at 600 ppm which is generally the upper limit from free air CO~2~ enrichment experiments (FACE); this threshold is reached in ~2060 under the RCP 8.5 scenario. Under this scenario we assumed no additional CFE occurred despite C~a~ levels increasing to ~930 ppm by 2100. Thus, the NPP CFE multiplier was calculated as:
+
+$$ NPP^{t,s}_{CFE} = NPP^{t,s}_{NO CFE} * (\frac{1 +  \Delta {C_a}^{t,s} * \beta} {100}) $$
+where $NPP^{t,s}_{CFE}$ is the projected NPP including CFE for year $t$ (a year between 2001 and 2100) and scenario $s$ (either RCP4.5 or RCP8.5), $NPP^{t,s}_{NO CFE}$ is the NPP projected by the model in the absence of CFE for year $t$ and scenario $s$, $\Delta {C_a}^{t,s}$ is the difference in $C_a$ between year $t$ and the base year of 2001 for scenario $s$, and $\beta$ is a percentage increase in NPP for a 100 ppm increase in $C_a$. We tested five $\beta$ levels (i.e. 0.05, 0.10, 0.15. 0.20, 0.25), and three scenarios (i.e. RCP4.5, RCP8.5, and RCP8.5 where the CFE was capped at 600 ppm).
+
+# 3. Results
+### 3.1 Contemporary change in carbon stocks
+In 2001, California ecosystems stored an estimated `r tec_2001` Tg C with `r live_pct_2001`% (`r live_2001` Tg C) stored in live vegetation, `r soil_pct_2001`% (`r soil_2001` Tg C) stored in soils, and `r dom_pct_2001`% (`r dom_2001` Tg C) stored in dead organic material (DOM). Between 2001 and 2016 total ecosystem carbon declined by `r necb_hist_mean` (`r necb_hist_lower` to `r necb_hist_upper`) Tg C (mean and 95% Monte Carlo confidence intervals) with the mean annual source/sink rate ranging from `r necb_hist_annual_min` (source) to `r necb_hist_annual_max` Tg C yr^-1^. Between 2001-2011, the net ecosystem carbon balance (NECB) of California ecosystems was `r necb_2001_2011_mean` Tg C yr^-1^, with the carbon losses increasing eleven-fold (`r necb_2012_2015_mean` Tg C yr^-1^) during the severe drought of 2012-2015 (Table 1). During this period, the cumulative change in total ecosystem carbon was `r necb_2012_2015_sum` Tg C, equivalent to approximately `r arb_necb_2012_2015_pct`% of the state’s total greenhouse gas emissions over the same period [@arb2018inventory] (Fig. \ref{fig:historical_emissions}). Between 2001-2015, the mean annual NECB from California ecosystems (`r necb_hist_annual_mean` Tg C yr^-1^) was equivalent to `r arb_necb_hist_pct`% of the state's average annual total greenhouse-gas emissions. Table 1 shows the estimated carbon stocks and fluxes for each time-step over the historical period.
+
+```{r historical_emissions, cache=FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.width=6, fig.height=3.25, dpi=300, fig.align="center", fig.cap="Total CO2 emissions and net ecosystem sink (NEP) in California by sector and source for the period 2002-2015. Anthropogenic emissions are show in gray bars and ecosystem emissions and sinks are shown in colored bars. Positive values shows emissions to the atmosphere and negative values show a net sink in ecosystems. Anthropogenic emissions (gray bars) are from the California Air Resources Board."}
+# Management Emissions
+e_harvest = cal_flows_by_ts_tg %>% filter(Flow %in% c("Emission"), TransitionGroup %in% c("Clearcut", "Thinning")) %>% 
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>% mutate(Source="Forest Harvest", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+e_orchard = cal_flows_by_ts_tg %>% filter(Flow=="Emission", TransitionGroup=="OrchardRemoval") %>% mutate(Source="Orchard Removal", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+# Land Use Emissions
+e_urban = cal_flows_by_ts_tg %>% filter(Flow %in% c("Emission","Harvest"), TransitionGroup=="Urban") %>% 
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>% mutate(Source="Urbanization", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+e_expand = cal_flows_by_ts_tg %>% filter(Flow %in% c("Emission","Harvest"), TransitionGroup=="AgExpand") %>% 
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>% mutate(Source="Ag Expansion", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+e_luc = cal_flows_by_ts_tg %>% filter(Flow %in% c("Emission","Harvest"), TransitionGroup %in% c("Urban", "AgExpand")) %>% 
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>% mutate(Source="Land Use Change", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+# Disturbance Emissions
+e_fire = cal_flows_by_ts_tg %>% filter(Flow %in% c("Emission"), TransitionGroup=="Fire") %>% 
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>% mutate(Source="Wildfire", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+e_biomass = cal_flows_by_ts_tg %>% filter(Flow=="Emission (biomass)") %>% mutate(Source="Biomass", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+e_fire_bio = bind_rows(e_fire, e_biomass) %>% group_by(Timestep, Source) %>% summarise(CO2=sum(CO2))
+# Other Losses
+e_leaching = cal_flows_by_ts_tg %>% filter(Flow=="Leaching") %>% mutate(Source="Leaching", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+# Net Fluxes
+e_npp = cal_netflux_by_ts %>% filter(Flux=="NPP") %>% mutate(Source="NPP", CO2=Mean*3.67*-1) %>% ungroup() %>% select(Timestep, CO2, Source)
+e_rh = cal_netflux_by_ts %>% filter(Flux=="Rh") %>% mutate(Source="Rh", CO2=Mean*3.67) %>% ungroup() %>% select(Timestep, CO2, Source)
+e_nep = cal_netflux_by_ts %>% filter(Flux=="NEP") %>% mutate(Source="Ecosystem NEP", CO2=Mean*3.67*-1) %>% ungroup() %>% select(Timestep, CO2, Source)
+e_necb = cal_netflux_by_ts %>% filter(Flux=="NECB") %>% mutate(Source="Ecosystem NECB", CO2=Mean*3.67*-1) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+# NEP - Ag Harvest - background emissions
+e_agharvest = cal_flows_by_ts_tg %>% filter(Flow %in% c("Harvest (grain)", "Harvest (straw)")) %>% group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>%
+  mutate(Source="Ag Harvest", CO2=(Mean*3.67)) %>% ungroup() %>% select(Timestep, CO2, Source)
+e_nep_ag_biomass = bind_rows(e_nep, e_agharvest, e_biomass) %>% group_by(Timestep) %>% summarise(CO2=sum(CO2)) %>% mutate(Source="Ecosystem Sink")
+
+# Wood Products
+hwp_harvest = cal_flows_by_ts_tg %>% filter(Flow=="Harvest", TransitionGroup %in% c("Clearcut", "Thinning", "Urban", "AgExpand")) %>%
+  group_by(Timestep) %>% summarise(Mean = sum(Mean)) %>%
+  mutate(Source="Forest Products", CO2=(Mean*3.67*-1)) %>% ungroup() %>% select(Timestep, CO2, Source)
+
+# Combine ecosystem fluxes
+eco_emissions = bind_rows(e_harvest, e_orchard, e_urban, e_expand, e_fire,  e_leaching, e_nep_ag_biomass, hwp_harvest)
+eco_emissions_total = e_necb %>% mutate(Source="Ecosystems") # Create ecosystems total
+
+# Create ARB emissions
+arb_emissions_by_sector = read_csv("Data/Report_Tables/arb_emissions_by_sector.csv") %>% gather(Source, CO2, 2:9)
+arb_emissions_total = arb_emissions_by_sector %>% group_by(Timestep) %>% summarise(CO2=sum(CO2)) %>% mutate(Source="Inventoried Emissions") # Create emissions total
+
+# Combine ecosystems and ARB together and order fators
+subheadings = tibble(Timestep=rep(seq(2002,2015),2), CO2=0, Source=c(rep("Inventoried Emissions",14),rep("Ecosystems",14)))
+eco_arb_emissions = bind_rows(eco_emissions, arb_emissions_by_sector, subheadings) %>% filter(Timestep>=2002, Timestep <= 2015) # Combines individual source tables together
+eco_arb_emissions_total = bind_rows(eco_emissions_total, arb_emissions_total) %>% filter(Timestep>=2002, Timestep <= 2015) # Combines individual source tables together
+eco_arb_sum_total = eco_arb_emissions_total %>% group_by(Timestep) %>% summarise(CO2=sum(CO2)) %>% mutate(Source="Total")
+eco_arb_emissions_total = bind_rows(eco_arb_emissions_total, eco_arb_sum_total)
+
+eco_arb_emissions$Source = factor(eco_arb_emissions$Source, levels = c("Inventoried Emissions",
+                                                                       "Electricity Generation (Imports)",
+                                                                       "Electricity Generation (In State)",
+                                                                       "Transportation",
+                                                                       "Industrial",
+                                                                       "Commercial",
+                                                                       "Residential",
+                                                                       "Agriculture & Forestry",
+                                                                       "Not Specified",
+                                                                       "Ecosystems",
+                                                                       "Forest Harvest",
+                                                                       "Forest Products",
+                                                                       "Orchard Removal",
+                                                                       "Urbanization",
+                                                                       "Ag Expansion",
+                                                                       "Ag Harvest",
+                                                                       "Wildfire",
+                                                                       "Leaching", 
+                                                                       "Ecosystem Sink"))
+
+lbls = c(expression(bold("Inventoried Emissions")), "Electricity Generation (Imports)","Electricity Generation (In State)","Transportation","Industrial","Commercial", "Residential","Agriculture & Forestry","Not Specified",
+         expression(bold("Ecosystems")),"Forest Harvest","Forest Products", "Orchard Removal", "Urbanization", "Ag Expansion","Wildfire","Leaching", "Ecosystem Sink")
+colo = c("white","gray80","gray70","gray60","gray50","gray40","gray30","gray20","gray10",
+         "white","HotPink","Purple","MediumPurple","Red","Orange","DarkRed","SteelBlue","DarkSeaGreen")
+# Generate plot
+plot_emissions = ggplot() +
+  geom_bar(data=eco_arb_emissions, aes(x=Timestep, y=CO2, fill=Source), stat="identity") +
+  scale_fill_manual(name="Emission Source", values=colo, label=lbls) +
+  geom_point(data=eco_arb_emissions_total, aes(x=Timestep, y=CO2, shape=Source), size=2) +
+  geom_line(data=eco_arb_emissions_total, aes(x=Timestep, y=CO2, group=Source)) +
+  scale_shape_manual(name="Annual Flux", values=c(15,16,17)) +
+  theme_bw(8) +
+  labs(x="Timestep", y=expression(Tg~CO2~yr^-1)) +
+  theme(legend.key.height = unit(0.5,"line"),
+        legend.justification = "center",
+        legend.text.align = 0)
+plot_emissions
+ggsave("fig3.pdf", plot_emissions, width = 6, height = 3.25, units = c("in"), dpi = 300)
+```
+
+```{r table_historical_stocks, echo=FALSE, cache=FALSE}
+
+table_hist_stocks_data = table_2_final %>% mutate_if(is.numeric, round, 1)
+write_csv(table_hist_stocks_data, "table2.csv")
+
+table_historical_stocks=kable(table_hist_stocks_data, digits = 1, booktabs = T, escape = F, caption="Annual carbon stocks and fluxes for California for the period 2001-2015. The transfer column represents the cumulative carbon transfered from ecosystem classes to non-ecosystem classes (e.g. development). The LULCC column represents carbon losses due to land use, land-use change, and disturbances.") %>% 
+  kable_styling(latex_options = c("hold_position"), bootstrap_options = c("striped"), font_size = 10) %>%
+  add_header_above(c(" " = 1, "Stocks (Tg C)" = 4, "Fluxes (Tg C/yr)" = 5, " " = 1))
+table_historical_stocks
+```
+
+### 3.2 Contemporary drivers of carbon stock change
+Declines in ecosystem carbon were driven by a combination of factors, including inter-annual variability in weather and climate, changes in land use and land cover, wildfire, and drought, and represents an important positive feedback to the climate from terrestrial ecosystems. The largest drivers of ecosystem carbon loss were associated with declines in plant growth during years with poor growing conditions, gaseous emissions resulting from wildfire, and removal of carbon resulting from agricultural and forest harvest activities. Over the contemporary period, net primary productivity (NPP) averaged `r npp_hist_mean` Tg C yr^-1^ while heterotrophic respiration (Rh) remained relatively constant at an average annual rate of `r rh_hist_mean` Tg C yr^-1^. A declining trend in NPP, owing primarily to sustained drought conditions over much of the state beginning in 2013, and a relatively stable rate of ecosystem respiration, resulted in net ecosystem productivity (NEP) of `r nep_hist_mean` Tg C yr^-1^ (Table 1). However, the effects of year-to-year variability in weather and climate had profound impacts on ecosystem carbon balance. For example, in 2013, statewide NPP was estimated to be reduced by `r npp_2013_pct`% over the 2001-2010 average while NEP was estimated to be reduced by `r nep_2013_pct`%. Moreover, since 2007, state-wide NPP has been on average `r nep_hist_0715_pct`% lower than the previous decades average with only a single year (2010) with above average productivity (Table 1).
+
+Carbon losses due to land use, land-use change, disturbances such as fire, and lateral transfer to aquatic systems, removed an average of `r lulcc_hist` Tg C yr^-1^. Table 2 shows the estimated mean annual rate of carbon flux between various pools over the historical period. The largest annual removals were associated with harvest of agricultural lands with an average annualized rate of `r grain_hist_annual + straw_hist_annual` Tg C yr^-1^ (`r grain_hist_annual` Tg C yr^-1^ in grain and `r straw_hist_annual` Tg C yr^-1^ in straw). The removal/replanting of orchards contributed an additional loss of  `r orchRemoval_hist_annual` Tg C yr^-1^ through emissions from biomass and soils. On average, wildfire resulted in annual ecosystem carbon losses of `r fireEmis_hist_annual` Tg C yr^-1^. However, large inter-annual variability in burn area resulted in annual carbon losses ranging from a low of `r fireEmis_hist_annual_min` Tg C yr^-1^ in `r fireEmis_hist_annual_min_year` to a high of `r fireEmis_hist_annual_max` Tg C yr^-1^ in `r fireEmis_hist_annual_max_year`. Forest harvest activities, including both clear-cut and selection harvest, represented the second largest LULC-related flux (after harvest of agricultural products), accounting for a combined `r harvest_loss_hist_annual` Tg C yr^-1^ being transferred from live carbon pools.  Transfers from ecosystems to harvested wood product pools (HWP) accounted for `r harvest_hwp_hist_annual` Tg C yr^-1^ of the annual carbon loss, while an additional `r clearcut_emis_hist_annual` Tg C yr^-1^ was lost to the atmosphere through gaseous emissions. Other land use and land-use changes, including urbanization (`r urban_loss_hist_annual` Tg C yr^-1^) and expansion of agriculture (`r agexp_loss_hist_annual` Tg C yr^-1^) accounted for an additional `r urban_agexpand_combined` Tg C yr^-1^ removed from terrestrial ecosystems. Other carbon losses resulted from the lateral flux from terrestrial to aquatic ecosystems (i.e. "Leaching") and background emissions from biomass which were estimated at `r leaching_hist_annual` and `r bioEmis_hist_annual` Tg C yr^-1^, respectively. Cumulatively over the 2001-2015 period, LULC and disturbances resulted in `r lulcc_hist_total` Tg C being removed from terrestrial ecosystems. 
+
+```{r table_historical_flows, echo=FALSE, cache=FALSE}
+write_csv(table_3, "table3.csv")
+kable(table_3, digits = 1, escape = F, booktabs = T, caption = "Annual carbon fluxes for the historical period. Unless specified otherwise, emissions fluxes reflect the
+combined emissions from all ecosystem carbon pools (e.g. living biomass, litter, standing deadwood, down deadwood, and soil). Values represent the mean, minimum, and maximum annual values for the period 2001-2015",
+      col.names = c("Transition", "Flow", "From Stock", "To Stock", "Mean", "Min", "Max")) %>%
+  kable_styling(latex_options = c("hold_position"), bootstrap_options = c("striped"), font_size = 10) %>%
+  add_header_above(c(" " = 4, "Tg C/yr" = 3)) %>%
+  collapse_rows(columns = 1, latex_hline = "major", valign = "top")
+```
+
+In addition to the direct carbon losses (through gaseous emissions and/or transfer to product pools) discussed above, ecosystem disturbances resulted in the transfer of carbon between live and DOM pools which result in future committed emissions through decay and decomposition (Table 2). Cumulatively, wildfire accounted for `r fireMort_hist_total` Tg C (`r fireMort_hist_annual` Tg C yr^-1^) being transferred from live to DOM pools (primarily to standing deadwood), although as with gaseous emissions, inter-annual variability was high with annual fluxes ranging from `r fireMort_hist_annual_min` to `r fireMort_hist_annual_max` Tg C yr^-1^. Similarly, forest harvest activities resulted in the cumulative transfer of `r harvMort_hist_total` Tg C (`r harvMort_hist_annual` Tg C yr^-1^) from live to (primarily) down deadwood pools resulting from the mortality of tree roots on harvested stands. Drought mortality was the largest overall driver of increases in DOM state-wide, however the effects of drought were highly variable in space and time. Prior to 2015, drought-induced mortality accounted for an annual transfer of `r insectMort_hist_annual` Tg C yr^-1^. However, in response to prolonged exceptional drought conditions, mortality increased to `r insectMort_hist_2015` and `r insectMort_hist_2016` Tg C yr^-1^ in 2015 and 2016, respectively. As a result, the historical period (including 2016) realized a net increase in DOM pools statewide of `r dom_hist_change_pct`% (`r dom_hist_change` Tg C).
+
+### 3.3 Projected change in ecosystem carbon balance
+This study projected changes in ecosystem carbon balance for 32 unique future pathways representing all possible combinations of two radiative forcing trajectories (RCP4.5 and RCP8.5) as simulated by four global climate models (CanESM2, CNRM-CM5, HadGEM2-ES, and MIROC5), and four land use scenarios (BAU, High, Medium, Low) [@sleeter2017future]. Each scenario was replicated for 100 Monte Carlo simulations. Figure \ref{fig:tec_stock_necb} shows the mean projected total ecosystem carbon (Fig. 4a), live, DOM, and soil carbon stocks (Fig. 4b), and NECB (Fig. 4c) for California over the historical and projected periods. When averaged across all scenario simulations, carbon stored in terrestrial ecosystems was projected to decline by `r necb_proj_total_average` Tg C between 2015 and 2100, representing a loss of `r necb_proj_total_average_pct`% from 2015 levels. An additional `r trx_proj_total_average` Tg C was transferred from ecosystem classes (e.g. forest, grassland, shrublands, agricultural lands) to other LULC classes which were not further considered in this study (e.g. development, wetlands). The magnitude of the decline in ecosystem carbon was highly uncertain, with estimates ranging from a decline of `r necb_proj_total_min` Tg C to net increase of `r necb_proj_total_max` Tg C; the mean annualized source/sink rate was projected to range from `r necb_proj_annual_min` Tg C yr^-1^ to `r necb_proj_annual_max` Tg C yr^-1^ depending on climate model, radiative forcing scenario, and land-use scenario. Declines in ecosystem carbon were driven by declines in live and soil pools averaging `r live_proj_change_mean` and `r soil_proj_change_mean` Tg C, respectively while carbon stored in DOM was projected to increase by `r dom_proj_change_mean` Tg C. For the period 2015-2100, the mean annual net flux from terrestrial ecosystems (`r necb_proj_annual_average` Tg C yr^-1^), was on average, `r necb_proj_hist_diff_pct`% lower than the rate estimated for the historical period (`r necb_hist_annual_mean` Tg C yr^-1^).
+
+```{r tec_stock_necb, cache = FALSE, echo = FALSE, fig.width = 5, fig.height = 4, dpi = 300, fig.align="center", fig.cap="Projected changes in total ecosystem carbon (TEC; panel A), carbon stocks including dead organic matter (DOM), live biomass, and soil (panel B), and net ecosystem carbon balance (NECB; panel C). Mean and Monte Carlo Confidence Intervals (MCCI) were calculated across all 32 scenarios and iterations of the model. Ecosystem carbon pools include carbon stored only in ecosystem classes, including forests, grasslands, shrublands, and agriculture."}
+
+fig_2_necb = cal_necb_by_ts %>% mutate(Color = ifelse(Mean > 0, "Sink", "Source"))
+fig_2_necb_proj = fig_2_necb %>% filter(Timestep > 2015, Timestep < 2101)
+
+plot_tec = ggplot(fig_2_tec) +
+  geom_ribbon(aes(x = Timestep, ymin = Min/1000, ymax = Max/1000, fill = "Min-Max")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval2.5/1000, ymax = Interval97.5/1000, fill = "95% CI")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval10/1000, ymax = Interval90/1000, fill = "80% CI")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval25/1000, ymax = Interval75/1000, fill = "50% CI")) +
+  geom_line(aes(x = Timestep, y = Mean/1000, color = "Mean"), size = 0.5) +
+  #geom_hline(yintercept = 4.823, color="gray") +
+  scale_fill_manual(name = "", values = c("Min-Max"="#edf8e9", "95% CI"="#bae4b3", "80% CI"="#74c476", "50% CI"="#238b45"), guide=FALSE) +
+  scale_color_manual(name = "", values = c("Mean"="black"), guide=FALSE) +
+  theme_bw(8) +
+  labs(x = "", y = "Pg C") +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.key.height = unit(0.5,"line"))
+
+plot_stock = ggplot(fig_2_stock) +
+  geom_ribbon(aes(x = Timestep, ymin = Min/1000, ymax = Max/1000, fill = "Min-Max")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval2.5/1000, ymax = Interval97.5/1000, fill = "95% CI")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval10/1000, ymax = Interval90/1000, fill = "80% CI")) +
+  geom_ribbon(aes(x = Timestep, ymin = Interval25/1000, ymax = Interval75/1000, fill = "50% CI")) +
+  geom_line(aes(x = Timestep, y = Mean/1000, color = "Mean"), size = 0.5) +
+  scale_fill_manual(name = "", values = c("Min-Max"="#edf8e9", "95% CI"="#bae4b3", "80% CI"="#74c476", "50% CI"="#238b45")) +
+  scale_color_manual(name = "", values = c("Mean"="black")) +
+  scale_y_continuous(breaks=seq(0,2.8, by=0.4)) +
+  theme_bw(8) +
+  labs(x = "", y = "") +
+  facet_wrap(~StockGroup, scales = "free_y", ncol = 1) +
+  theme(legend.position = "right",
+        legend.direction = "vertical",
+        legend.key.height = unit(0.5,"line"),
+        strip.background = element_rect(fill="white"))
+
+plot_necb = ggplot() +
+  geom_ribbon(data = fig_2_necb_proj, aes(x = Timestep, ymin = Lower, ymax = Upper), alpha = 0.2) +
+  geom_bar(data = fig_2_necb, aes(x = Timestep, y = Mean, fill = Color), stat = "identity") +
+  scale_fill_manual(name = "", values = c("#000000", "#e41a1c")) +
+  theme_bw(8) +
+  labs(x = "Year",
+       y = expression(Tg~C~yr^-1)) +
+  theme(legend.position = "right",
+        legend.key.height = unit(0.5,"line"))
+
+plots = align_plots(plot_tec, plot_necb, align="v", axis="ltb")
+top_row = plot_grid(plots[[1]], plot_stock, labels=c("(a)","(b)"), label_size=10, align="h", axis="lr", rel_widths=c(1,1.3))
+final_plot = plot_grid(top_row, plots[[2]], labels=c("","(c)"), label_size=10, ncol=1, rel_heights=c(2.5,1.))
+final_plot
+ggsave("fig4.pdf", final_plot, width = 5, height = 4, units = c("in"), dpi = 300)
+```
+
+### 3.4 Effects of different scenario pathways
+Climate models were the primary source of uncertainty in projected ecosystem carbon balance (Table 3; Fig. \ref{fig:net_fluxes}). When averaged across all scenario simulations, mean annualized net carbon flux ranged from `r necb_gcm_min_annual` Tg C yr^-1^ to `r necb_gcm_max_annual` Tg C yr^-1^. The largest cumulative declines in carbon storage were projected under the MIROC5 ("Complement"; `r necb_gcm_miroc` Tg C) and HadGEM2-ES ("hot-dry"; `r necb_gcm_hadley` Tg C) models. The smallest declines were associated with the "hot-wet" model (CNRM-CM5) with a projected cumulative loss of `r necb_gcm_cnrm` Tg C. The "averages" model (CanESM2) was chosen specifically to represent an average of down-scaled climate models for California [@pierce2014statistical; @bedsworth2017] and projected a net decline of `r necb_gcm_canesm` Tg C by 2100 with an mean annualized rate of `r necb_gcm_canesm_annual` Tg C yr^-1^. On average, simulations based on the RCP8.5 pathway resulted in a loss of `r necb_rcp85` Tg C from ecosystems, however variability was large, with estimates ranging from a source of `r necb_rcp85_lower` Tg C yr^-1^ to a net sink of `r necb_rcp85_upper` Tg C. Switching from the RCP8.5 to RCP4.5 climate pathway resulted in a reduction in net carbon losses of `r necb_rcp_diff_pct`%. However, reductions in carbon losses were inconsistent, and highly dependent upon climate model. For example, when switching from the RCP8.5 to RCP4.5 pathway, ecosystems sequestered an additional `r necb_hadgem_rcp_diff` Tg C by 2100 under the "hot-dry" model (HadGEM2-ES), while under the "average" model (CanESM2), ecosystem carbon losses increased by `r necb_canesm_rcp_diff` Tg C. Increases in precipitation under the CanESM2 RCP8.5 scenario resulted in large increases in NPP which led to increased rates of sequestration not realized under the RCP 4.5 future (Table 3). These results suggest the overall benefits of global-scale reductions in radiative forcing and reductions in atmospheric greenhouse-gasses may not be realized at local-to-regional scales and may result in positive feedbacks on the climate system through reductions in ecosystem sequestration potential.
+
+```{r table_projected_netflux, echo=FALSE, cache=FALSE}
+cal_flux_hist_avg = cal_netflux_by_scn_ts %>% filter(Timestep <= 2015) %>% group_by(LUC, GCM, RCP, Flux) %>% summarise(Mean = mean(Mean))
+cal_flux_proj_avg = cal_netflux_by_scn_ts %>% filter(Timestep > 2015) %>% group_by(LUC, GCM, RCP, Flux) %>% summarise(pMean = mean(Mean)) 
+
+table_flux_diff = left_join(cal_flux_hist_avg, cal_flux_proj_avg, by = c("LUC", "GCM", "RCP", "Flux")) %>% mutate(Diff = (pMean-Mean)) %>% ungroup() %>% 
+  select(LUC, GCM, RCP, Flux, Diff) %>% spread(Flux, Diff) %>% arrange(LUC, RCP, GCM) %>% select(LUC, RCP, GCM, NPP, Rh, NEP, LULCC, NECB) %>% mutate_if(is.numeric, round, 1) %>% 
+  arrange(factor(LUC, levels = c("BAU","High","Medium","Low"))) %>% mutate(RCP = replace(RCP, RCP=="rcp45", "RCP4.5"), RCP = replace(RCP, RCP=="rcp85", "RCP8.5"))
+
+table_projected_flux = kable(table_flux_diff, digits = 1, escape = F, booktabs = T, linesep = "", caption="Differences in mean annual projected carbon fluxes compared to historical period for each land use and RCP scenario as simulated by four climate models.",
+                             col.names = c("LUC","RCP","GCM",
+                                           "$\\Delta{NPP}$", "$\\Delta{Rh}$", "$\\Delta{NEP}$", "$\\Delta{LULCC}$", "$\\Delta{NECB}$")) %>%
+  kable_styling(latex_options = c("hold_position"), bootstrap_options = c("striped"), font_size = 10) %>%
+  add_header_above(c(" " = 3, "Tg C/yr" = 5)) %>%
+  collapse_rows(columns = 1:2, latex_hline = "custom", custom_latex_hline = 1:2)
+table_projected_flux
+write_csv(table_flux_diff, "table3.csv")
+```
+
+The four land use scenarios used in this study were developed to explore alternative future pathways based on low, medium, and high population and land use intensity assumptions, along with a scenario which explored a continuation of current trends in land use and land-use change (e.g. business-as-usual; BAU) [@sleeter2017future]. Projected changes in land use are shown in Figure S3. Urbanization was projected to occur primarily on agricultural lands, grasslands, and shrublands while changes in agriculture were primarily located in grassland and shrubland ecosystems. The "High" scenario was the only scenario where agricultural lands were projected to increase in overall area (Fig. S4). Under all scenarios, forest, grassland, and shrubland were projected to decline from current levels. When averaged across all climate model and RCP simulations, the "High" scenario resulted in the largest net decline in ecosystem carbon balance (`r necb_high` Tg C) of the four land use scenarios (`r necb_high_annual` Tg C yr^-1^). Under the "BAU" scenario, which explored an extrapolation of recent historical rates of change, ecosystem carbon was projected to decline by a cumulative `r necb_bau` Tg C by 2100 (`r necb_bau_annual` Tg C yr^-1^). Reducing the rate of various land use and land-use changes (e.g. rate of timber harvest, urbanization, expansion of agriculture) consistently achieved reductions in ecosystem carbon losses, regardless of climate or RCP scenario. Relative to the "High" land use scenario, ecosystems sequestered an additional `r necb_high_to_medium` Tg C yr^-1^ under the "Medium" land-use scenario and `r necb_high_to_low` Tg C yr^-1^ under the "Low" scenario. 
+
+The BAU and Medium scenarios share the same set of assumptions, aside from the rate of urbanization. Under the BAU scenario, historical rates of urbanization were extrapolated into the future, while under the Medium scenario, urbanization was based on a medium population growth projection (see @sleeter2017future for additional details). When averaged across all GCM and RCP scenarios, California ecosystems sequestered an additional `r urb_diff_bau_med_mean*-1` Tg C when urbanization was reduced from the BAU (historical rates) to the Medium scenario (e.g. slowing population growth after mid-century). Under the "average" climate model (CanESM2), urbanization reductions alone represented `r urb_diff_bau_med_canesm_min`-`r urb_diff_bau_med_canesm_max`% of NECB, while under the "hot-wet" model (CNRM-CM5) and low emissions scenario (RCP4.5), reducing urbanization accounted for `r urb_diff_bau_med_cnrm45`% of NECB.    
+
+```{r net_fluxes,cache = FALSE, echo=FALSE, warning=FALSE, fig.width=7.5, fig.height=6, dpi=300, fig.align="center", fig.cap="Net carbon fluxes, calculated as rolling 10-year averages, under the BAU land-use scenario for each of the 8 climate pathways (RCP8.5 shown in red, RCP4.5 shown in green). Fluxes are shown from top to bottom as Net Primary Productivity (NPP), heterotrophic respiration (Rh), Net Ecosystem Productivity (NEP), losses from land use and land cover change (LULCC, losses shown as positive values), and Net Ecosystem Carbon Balance (NECB). Rh includes carbon baseline emissions from litter and soil pools, NEP is estimated as NPP-Rh, and NECB is estimated as NEP minus ecosystem carbon removals from land use, land-use change, disturbance, and leaching. Negative values indicate a net loss of carbon from ecosystems."}
+
+netflux_bygcm_rcp = cal_flux_by_gcm_rcp_ts %>% filter(Flux %in% c("NPP", "Rh", "NEP", "LULCC", "NECB")) %>% 
+  group_by(GCM, RCP, Flux) %>% 
+  mutate(Mean10 = rollmean(Mean, 10, alig ="center", fill=NA),
+         Lower10 = rollmean(Lower, 10, align="center", fill=NA),
+         Upper10 = rollmean(Upper, 10, align="center", fill=NA)) %>% ungroup() %>%
+  mutate(GCM=replace(GCM, GCM=="CanESM2", "CanESM2 (average)")) %>%
+  mutate(GCM=replace(GCM, GCM=="CNRM-CM5", "CNRM-CM5 (hot-wet)")) %>%
+  mutate(GCM=replace(GCM, GCM=="HadGEM2-ES", "HadGEM2-ES (hot-dry)")) %>%
+  mutate(GCM=replace(GCM, GCM=="MIROC5", "MIROC5 (complement)"))
+netflux_bygcm_rcp$Flux = factor(netflux_bygcm_rcp$Flux, levels = c("NPP","Rh","NEP","LULCC","NECB"))
+
+text_annot = data.frame(GCM="CanESM2 (average)", Flux="NECB", Timestep=2015, Mean=c(5,-45), Label=c("Sink", "Source"))
+necb_line = data.frame(GCM=c(rep("CanESM2 (average)",100), 
+                             rep("CNRM-CM5 (hot-wet)",100), 
+                             rep("HadGEM2-ES (hot-dry)",100),
+                             rep("MIROC5 (complement)",100)), 
+                       Flux="NECB", 
+                       Timestep=rep(seq(2001,2100,1),4), 
+                       Mean=c(0))
+
+plot_netflux = ggplot() +
+  geom_ribbon(data=netflux_bygcm_rcp, aes(x=Timestep, ymin=Lower10, ymax=Upper10, fill=RCP), alpha=0.5) +
+  geom_line(data=netflux_bygcm_rcp, aes(x=Timestep, y=Mean10, color=RCP)) +
+  geom_text(data=text_annot, aes(x=Timestep, y=Mean, label=text_annot$Label), size=2.5) +
+  geom_line(data=necb_line, aes(x=Timestep, y=Mean), color="gray35", size=0.2) +
+  facet_grid(Flux~GCM, scales="free_y") +
+  scale_fill_manual(name="RCP", labels=c("RCP4.5", "RCP8.5"), values=c("DarkCyan","SaddleBrown")) +
+  scale_color_manual(name="RCP", labels=c("RCP4.5", "RCP8.5"), values=c("DarkCyan","SaddleBrown")) +
+  theme_bw(8) +
+  theme(strip.background = element_rect(fill="gray95"),
+        legend.position = "bottom",
+        legend.key.height = unit(0.5,"line")) +
+  labs(x="Year", y=expression(Tg~C~yr^-1))
+plot_netflux
+ggsave("fig5.pdf", plot_netflux, width = 7.5, height = 6, units = c("in"), dpi = 300)
+```
+
+Figure \ref{fig:scatter_plot} shows the cumulative estimate of NEP and NECB for each of the 32 scenarios used in this study. In general, the "hot-dry" (HadGEM2-ES) and "complement" (MIROC5) models, combined with high global emissions and high rates of land use change, resulted in the scenarios with the largest cumulative declines in ecosystem carbon (`r necb_had_85_high` and `r necb_mir_85_high` Tg C by 2100, respectively). Under the "hot-dry" model, reducing global emissions resulted in similar rates of NPP and increases in NEP, indicating the avoided warming associated with the RCP4.5 scenario decreases carbon losses associated with ecosystem respiration; NECB was projected to increase by `r necb_had_85_45_diff_pct`%. Under the same "hot-dry" model, switching from the "High" to the "Low" land use scenario resulted in a `r necb_had_85_high_low_diff_pct`% increase in NECB while combining both global emissions reductions and reductions in land use resulted in net ecosystem carbon losses being reduced by `r necb_had_85_45_high_low_diff_pct`%. Under the most optimistic scenario (low negative climate impacts, global emissions reductions, and low land-use changes), California ecosystems were projected to be a net sink of carbon at a rate of `r necb_cnrm_45_low_annual` Tg C yr^-1^. 
+
+```{r scatter_plot, cache = FALSE, echo = FALSE, warning=FALSE, message=FALSE, fig.width = 7.5, fig.height = 4, fig.align="center", fig.cap="A, Relative effects of climate change (y-axis; increasing from top to bottom) and land use and disturbances (including wildfire) (x-axis, increasing from left to right) for each of the 32 scenario simulations for the period 2017-2100. Error bars represent the Monte Carlo confidence intervals calculated for each scenario. Shaded area represents the area within the plot space where ecosystems were estimated to be a net carbon sink over the projected period. All values are cumulative over the simulation period and were re-scaled as the difference from the mean of the 32 scenarios. B, Box-plot showing the change in total ecosystem carbon for each climate model when switching from high to low land-use scenarios (top; local land use mitigation achieved through avoided conversion) and switching from the RCP8.5 to RCP4.5 radiative forcing scenarios (bottom; global mitigation). Box-plots show the median (black bar), 25th and 75th percentiles (boxes), 10th and 90th percentiles (whiskers), and outliers (points). Negative values indicate a net loss of ecosystem carbon storage while positive values indicate net carbon sequestration."}
+flows_scatter = cal_flux_by_scn
+flows_scatter_mean = flows_scatter %>%
+  filter(Flux %in% c("NEP", "LULCC")) %>%
+  select(LUC, GCM, RCP, Flux, Mean) %>%
+  spread(Flux, Mean)
+flows_scatter_upper = flows_scatter %>%
+  filter(Flux %in% c("NEP", "LULCC")) %>%
+  select(LUC, GCM, RCP, Flux, Upper) %>%
+  spread(Flux, Upper)
+flows_scatter_lower = flows_scatter %>%
+  filter(Flux %in% c("NEP", "LULCC")) %>%
+  select(LUC, GCM, RCP, Flux, Lower) %>%
+  spread(Flux, Lower)
+
+# scale values relative to mean of all scenarios
+flows_scatter_mean$LossesRel = scale(flows_scatter_mean$LULCC,scale=F)
+flows_scatter_mean$GainsRel = scale(flows_scatter_mean$NEP,scale=F)
+mean_losses = attributes(flows_scatter_mean$LossesRel)[[2]]
+mean_gains  = attributes(flows_scatter_mean$GainsRel)[[2]]
+flows_scatter_upper$LossesRelupper = flows_scatter_upper$LULCC - mean_losses
+flows_scatter_upper$GainsRelupper = flows_scatter_upper$NEP - mean_gains
+flows_scatter_lower$LossesRellower = flows_scatter_lower$LULCC - mean_losses
+flows_scatter_lower$GainsRellower = flows_scatter_lower$NEP - mean_gains
+
+flows_scatter_relCI = flows_scatter_mean %>% select(LUC, GCM, RCP, LossesRel, GainsRel) %>%
+  left_join(flows_scatter_upper, by = c("LUC", "GCM", "RCP")) %>%
+  left_join(flows_scatter_lower, by = c("LUC", "GCM", "RCP")) %>% 
+  select(LUC, GCM, RCP, LossesRel, GainsRel, LossesRellower, GainsRellower, LossesRelupper, GainsRelupper)
+
+# bounding box for positive NECB
+yint = (mean_losses-mean_gains)
+xvals = seq(-600,600,20)
+yvals = xvals+yint
+bounds = data.frame(x=c(xvals[1],xvals[61],xvals[1]),y=c(yvals[1],yvals[61],1000))
+
+plot_scatter_all = flows_scatter_relCI
+plot_scatter_rcp45 = flows_scatter_relCI %>% filter(RCP=="rcp45")
+plot_scatter_rcp85 = flows_scatter_relCI %>% filter(RCP=="rcp85")
+plot_scatter_all$LUC = factor(plot_scatter_all$LUC, levels = c("BAU","High","Medium","Low"))
+
+plot_scatter = ggplot() + 
+  geom_polygon(data = bounds, aes(x = x, y = y), fill = "Beige", color="gray", alpha=0.2) +
+  geom_hline(yintercept=0, size=0.2, color="gray") +
+  geom_vline(xintercept=0, size=0.2, color="gray") +
+  geom_errorbarh(data=plot_scatter_all, aes(y=GainsRel, xmin=LossesRellower, xmax=LossesRelupper), size=0.2) +
+  geom_errorbar(data=plot_scatter_all, aes(x=LossesRel, ymin=GainsRellower, ymax=GainsRelupper), size=0.2) +
+  geom_point(data=plot_scatter_all, aes(x=LossesRel, y=GainsRel, shape=LUC, color=GCM, fill=interaction(RCP,GCM)), size = 2.5) +
+  scale_color_manual(name="Climate Model", 
+                     values = c("#386cb0","#fdb462","#7fc97f","#ef3b2c"),
+                     labels = c("CanESM2", "CNRM-CM5", "HadGEM2-ES","MIROC5")) +
+  scale_fill_manual(name="RCP Scenario", 
+                    values = c("#386cb0","#ffffff","#fdb462","#ffffff","#7fc97f","#ffffff","#ef3b2c","#ffffff"),
+                    breaks = c("rcp45.CanESM2", "rcp85.CanESM2"),
+                    labels = c("RCP4.5", "RCP8.5"),
+                    guide = guide_legend(override.aes = list(shape = c(15,22)))) +
+  scale_shape_manual(values=c(21,22,23,24)) +
+  theme_bw(8) + 
+  theme(legend.position = "right",
+        legend.box = "vertical",
+        legend.key.size = unit(0.7, 'lines'),
+        legend.direction = "vertical") + 
+  labs(color = "Climate Model", fill = "RCP", shape = "LUC Scenario") +
+  scale_y_continuous("Relative Difference in Cumulative NEP (Tg)", breaks = seq(-1000,1000,200)) +
+  coord_cartesian(ylim = c(-1000,1000), xlim = c(-600,600), expand = F) +
+  scale_x_continuous("Relative Difference in Cumulative LULCC Losses (Tg C)", breaks = seq(-600,600,200))
+
+# Plot of mitigation scenarios
+plot_mitigation = ggplot(necb_mitigation_by_iter, aes(x = GCM, y = Change, fill = GCM)) + 
+  geom_boxplot(size=0.2) +
+  theme_bw(8) +
+  scale_fill_Publication() +
+  facet_wrap(~Mitigation, ncol = 1) +
+  coord_flip() +
+  theme(legend.position = "",
+        axis.text.y = element_blank(),
+        strip.background = element_blank()) + 
+  labs(y = "Cumulative change in NECB (Tg C)",
+       x = "Climate Model")
+
+plot_scatter_mitigation = plot_grid(plot_scatter, plot_mitigation, labels = c("(a)", "(b)"), label_size = 10, ncol = 2, align = "h", axis="tb",rel_widths = c(1.5, 1.0))
+plot_scatter_mitigation
+ggsave("fig6.pdf", plot_scatter_mitigation, width = 7.5, height = 4, units = c("in"), dpi = 300)
+
+
+```
+
+### 3.5 Effect of CO~2~ fertilization
+The effect of C~a~ enrichment on ecosystem productivity has a major impact on uncertainty in the estimation of regional scale carbon balance (Fig. \ref{fig:cfe_plot_g}). The inclusion of a CFE effect with $\beta$ values ranging from `r round(co2Low*100,3)` to `r round(co2High*100,3)` resulted in increases of carbon sequestration by the end-of-century ranging from `r cfe_rcp45_low_diff`-`r cfe_rcp85lim_high_diff` Tg C yr^-1^ (assuming the CFE effect was limited to C~a~ of 600 ppm). Assuming no CFE limitation based on C~a~, NECB was projected to increase between `r cfe_rcp85_low_diff`-`r cfe_rcp85_high_diff` Tg C yr^-1^ under the RCP8.5 scenario. Compared to the reference scenario ($\beta$=0), total carbon stored in California ecosystems was projected to increase by `r cfe_tec_rcp45_med_pct`% under RCP4.5 and `r cfe_tec_rcp85lim_med_pct`% under RCP8.5 (limited at 600 ppm) assuming a moderate CFE ($\beta$=`r round(co2Med*100,3)`). For RCP4.5, the moderate CFE effect was enough to offset all other carbon losses resulting in California ecosystems being relatively carbon neutral by the end of the century while under RCP8.5 high rates of C~a~ accumulation result in rapid increases in carbon storage through mid-century before leveling off after yr. 2060 when the CFE reaches saturation. Under the unlimited RCP8.5 scenario, carbon sequestration continues unabated reaching a cumulative increase of `r cfe_tec_rcp85_med_pct`% relative to the reference scenario.
+
+```{r cfe_plot_g, cache = FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.width=6, fig.height=4, dpi=300, fig.align="center", fig.cap="Effect of CO2 fertilization (CFE) on total ecosystem carbon storage (TEC) and net ecosystem carbon balance (NECB). A, Projected TEC over time under 3 alternative CFE scenarios (No CFE, With CFE, and Limited CFE) for two climate models (RCP 4.5 and RCP 8.5). All CFE scenarios are based on the BAU land use scenario and CanESM2 climate model. Colors show the projected mean, minimum and maximum estimates for scenarios with no CFE, with a range of CFE values, and with CFE limited to 600 ppm (under RCP8.5 only). B, shows the CFE rate (percent change in NPP for a 100 ppm increase in atmospheric CO2) plotted against projected average NECB (from year 2001 to 2100). Points falling above the horizontal line at zero denote scenarios where California is a net sink of carbon while values below zero indicate a net source of carbon to the atmosphere."}
+
+# TEC Plot
+cfe_1 = cal_tec_by_scn_ts %>% filter(LUC=="BAU", GCM=="CanESM2", Ecosystem=="Yes") %>% mutate(CFE="No", CFERate=0) %>% 
+  select(LUC, GCM, RCP, CFE, Timestep, Mean, Lower, Upper) 
+
+cfe_2 = cfe_tec_all %>% ungroup()
+cfe_3 = cfe_2 %>% filter(RCP=="rcp45") %>% mutate(CFE="Yes")
+cfe_4 = cfe_2 %>% filter(RCP=="rcp85") %>% mutate(CFE="Yes")
+cfe_5 = cfe_2 %>% filter(RCP=="rcp85-600") %>% mutate(RCP="rcp85", CFE="Limited")
+cfe_6 = bind_rows(cfe_1, cfe_3, cfe_4, cfe_5)
+cfe_6$CFE = factor(cfe_6$CFE, levels=c("No","Yes","Limited"))
+
+
+cfe_plot_tec = ggplot(data=cfe_6, aes(x=Timestep, y=Mean/1000, fill=CFE)) +
+  geom_ribbon(aes(ymin=Lower/1000, ymax=Upper/1000), alpha=0.5) +
+  geom_line(aes(color=CFE), size=0.2) +
+  scale_fill_manual(values=c("gray", "ForestGreen", "Peru")) +
+  scale_color_manual(values=c("gray", "ForestGreen", "Peru")) +
+  facet_wrap(~RCP, ncol=1) +
+  labs(x="Year",
+       y=expression(TEC~(Pg~C))) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.key.height = unit(0.5,"lines"),
+        #strip.background = element_blank(),
+        legend.margin = margin(c(1,3,1,1)),
+        legend.justification = "center",
+        panel.spacing = unit(1, "lines"))
+
+# NECB Plot
+cfe_necb$CFE = factor(cfe_necb$CFE, levels=c("High","MedHigh","Medium","MedLow","Low", "No CFE"))
+text = data.frame(x=c(0.12,0.12), y=c(-2,2), Label=c("Source", "Sink"))
+
+cfe_plot_necb = ggplot() +
+  geom_hline(yintercept = 0, color="gray60") +
+  geom_pointrange(data=cfe_necb, aes(x=CFERate*100, y=Mean/85, ymin=Lower/85, ymax=Upper/85, shape=RCP), size=0.4) +
+  geom_line(data=cfe_necb, aes(x=CFERate*100, y=Mean/85, group=RCP), size=0.2, show.legend=FALSE) +
+  geom_text(data=text, aes(x=x, y=y, label=Label), size=3) +
+  scale_shape_manual(name="RCP", labels=c("RCP4.5", "RCP8.5", "RCP8.5 (Limited)"), values=c(16,17,18)) +
+  labs(x="CFE Rate",
+       y=expression(NECB~(Tg~C~yr^-1))) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.key.height = unit(0.7,"lines"),
+        legend.margin = margin(c(1,3,1,1)),
+        legend.justification = "center")
+
+# Merge the Plots
+cfe_plot = plot_grid(cfe_plot_tec, cfe_plot_necb, ncol=2, labels=c("(a)","(b)"), align="h", axis="lr", label_size=10)
+cfe_plot
+ggsave("fig7.pdf", cfe_plot, width = 6, height = 4, units = c("in"), dpi = 300)
+
+```
+
+# 4. Discussion
+Historically, California ecosystems have been a net source of carbon at an average rate of `r necb_hist_annual_mean` Tg C yr^-1^. Estimates of the annual source-sink rate were high, and largely the result of inter-annual variability in weather and climate conditions and persistent extreme drought conditions. Major drivers of NECB included changes in vegetation productivity, ecosystem respiration, and the episodic nature of disturbances such as wildfire and drought. Future projections suggest ecosystems of California will continue to lose carbon at a mean annual rate of `r necb_proj_annual_average` Tg C yr^-1^. However, uncertainty in the source/sink rate was large, with estimates ranging from `r necb_proj_annual_min` to `r necb_proj_annual_max` Tg C yr^-1^. The large degree of uncertainty in the future source-sink rate was primarily due to differences in future climate conditions projected by climate models. Scenarios exploring the effect of global emissions reductions (i.e. RCPs) did not achieve ecosystem carbon benefits across all climate futures, and may result in unanticipated positive feedbacks on climate forcing. Reducing land use consistently achieved reductions in net ecosystem carbon losses and was a reliable way of increasing carbon storage in ecosystems, regardless of future climate scenario. However, uncertainties resulting from the effect of increases in atmospheric CO~2~ are large, and must be reconciled in order to better constrain model projections.
+
+### 4.1 Implications of different climate and land use pathways
+By comparing various scenario combinations we can determine the relative impact of both global adherence to a lower emissions trajectory and jurisdictional actions to reduce land use emissions (Fig. \ref{fig:scatter_plot}). On average, the cumulative effect of a lower emissions trajectory (i.e. from RCP8.5 to RCP4.5) changed net ecosystem carbon losses in California by `r necb_rcp_diff_min_pct` to `r necb_rcp_diff_max_pct`% through 2100, with a mean estimate of `r necb_rcp_diff_mean` Tg C sequestered in terrestrial ecosystems. Global emissions reduction had the largest positive impact under more extreme climate futures; for example, under the “hot-dry” future (HadGEM2-ES), reducing global emissions leads to an additional `r necb_hadgem_rcp_diff` Tg C sequestered by ecosystems, resulting in a reduction of `r necb_hadgem_rcp_diff_pct`% in net ecosystem carbon losses. Conversely, under the “average” climate future (CanESM2), the global emission reduction scenario resulted in a `r necb_canesm_rcp_diff_pct`% increase in ecosystem carbon losses compared to the RCP8.5 pathway, suggesting that local effects of reductions in global radiative forcing are uncertain and may result in a positive feedback to the climate system.
+
+While the effect of global climate mitigation on ecosystem carbon balance in California can be variable, reducing land-use change produced a reliable increase in carbon sequestration regardless of the climate future. Switching from the “high” to the “low” land-use scenario resulted in a `r necb_luc_diff_min_pct`% to `r necb_luc_diff_max_pct`% reduction in net ecosystem carbon losses across all climate futures, with a median cumulative retention of an additional `r necb_luc_diff_mean` Tg C in California ecosystems by 2100. The combination of global climate mitigation and a reduction in land use conversions results in the largest potential benefits to ecosystem carbon storage, reducing cumulative net losses by `r necb_rcp_luc_diff` Tg C. Under a “hot-dry” climate future, global emissions reductions combined with a shift from high to low rates of land-use change reduced ecosystem carbon emissions by `r necb_hadley_rcp_luc_diff_pct*-1`% (from `r necb_hadley_rcp85_high` to `r necb_hadley_rcp45_low` Tg C). Relative to global emissions reduction scenarios, results suggest that reducing ecosystem carbon losses due to harvest and land use is an important and reliable approach for sub-national jurisdictions like California to achieve greenhouse reduction goals and to reduce positive feedbacks to the climate system. These results highlight the benefits of sub-national jurisdictions fully participating in reducing emissions from the energy and transportation sectors – thereby contributing to global mitigation – while reducing land use emissions to minimize potential climate-driven ecosystem carbon losses.
+
+### 4.2 Driving forces of carbon change
+In this study we estimated the direct effects of climate change on ecosystem carbon balance through both changes in vegetation productivity and the decay and decomposition of dead organic matter. Additionally, projected changes in climate were used to estimate changes in the magnitude and frequency of natural disturbance events including wildfire and drought-induced tree mortality. The climate models considered in this study provided a wide range of future conditions, with mean annual temperature increases ranging from `r tmean_min_change` - `r tmean_max_change` C by the end-of-century (Figure S5). The effect of increased warming resulted in large declines in soil carbon pools across almost all scenarios (Fig. \ref{fig:tec_stock_necb}). Although more variable, changes in precipitation were important drivers of changes in NPP. For example, under the "average" climate model (CanESM2) combined with the high emission scenario (RCP8.5) and business-as-usual (BAU) land use scenario, NPP was projected to increase by 18.1 Tg C yr^-1^ over the historical period (Table 3), owing primarily to hot-wet conditions conducive to increased plant productivity. Conversely, under the same RCP and land-use scenario, the "hot-dry" model (HadGEM2-ES) projected declines in NPP of 7.1 Tg C yr^-1^ relative to the historical period. 
+
+Projected emissions from wildfire under RCP4.5 were consistent across GCMs and more pronounced under RCP8.5. While all GCMs show an upward trend in projected wildfire emissions, the much higher emissions from CanESM2 were due to a steep increase in wildfire area during 2080-2100 (Figure S6). High and medium severity wildfire also led to an additional pulse of carbon from live to DOM pools due to wildfire mortality. The effect of climate change on drought-induced tree mortality was only evident in the high severity mortality class under RCP8.5. High severity mortality led to a projected cumulative average transfer of 613 Tg C from the live to the DOM pools. In all scenarios, extreme episodic mortality events were driving carbon losses rather than consistent low-level background events (Figure S6). This is characteristic of severe drought periods driven by a combination of low precipitation and high temperatures, or high temperatures alone. Under RCP4.5, high severity mortality led to average cumulative losses of 563 Tg C from the live biomass pool, but no GCM differed more than 6% from this mean value. 
+
+### 4.3 Comparison to other studies in California
+The comprehensive nature of this study, which used a gain-loss method to estimate carbon stocks and fluxes for California's forest, grassland, shrubland, and agricultural ecosystems over both recent historical conditions as well as 32 alternative future pathways, represents a unique contribution to understanding the interactions and major controlling processes of ecosystem carbon balance. As such, we can compare our estimates of carbon stocks and fluxes with other recent studies which have been more limited in scope, often covering only a subset of the variables included in this study. 
+
+A recent study [@gonzalez2015aboveground] estimated that in 2001, California ecosystems stored `r gonzalez_all_agl_2001` Tg C in live above-ground vegetation, of which `r gonzalez_forest_agl_2001` Tg C was stored on 125,000 km^2^ of land classified as forest. Our study estimated California forests stored `r forest_2001_live` Tg C in total live biomass carbon (sum of above- and below-ground stocks). While we did not explicitly model above and below ground carbon stocks as separate pools, we can infer the above-ground portion by applying a standard root:shoot relationship of `r root_shoot` [@mokany2006critical]. This provides an estimate of forest live above-ground carbon storage of `r forest_2001_agl` Tg C in 2001. Comparisons are further complicated due to differences in land classification, particularly differences in the extent and amount of forest area. We estimated the 2001 forested land area in California was ~156,000 km^2^, which was `r forest_area_diff_gonzalez_pct`% higher than the estimate by @gonzalez2015aboveground. Normalizing for differences in the extent of forest area provides an estimate of `r forest_2001_agl_reduced_area` Tg C stored in forest above-ground live stocks, an amount more comparable to that provided by @gonzalez2015aboveground (`r gonzalez_forest_agl_2001` Tg C). For forests, the stock-change study [@gonzalez2015aboveground] estimated a decline of `r gonzalez_forest_change` Tg C (`r gonzalez_forest_change_annual` Tg C yr^-1^) between 2001 and 2010 which was approximately two times larger than our estimate of `r forest_agl_change` Tg C (`r forest_agl_change_annual` Tg C yr^-1^) over the same period. However, the stock-change approach did not include carbon accumulation (e.g. growth) on forest cells which did not change from one ordinal forest class (e.g. forest type, cover, and height) to another [@gonzalez2015aboveground] whereas this study's gain-loss approach estimated growth on an annual basis for all simulation cells. A comparison of this study to other published research estimating ecosystem carbon stocks in California is shown in Table S1. 
+
+Our estimates of statewide NPP are within 15-25% of those from satellite-derived estimates [@zhao2005improvements] for the historical period (2002-2015), but are consistently lower and have higher year-to-year variability (Fig. S8), suggesting the LUCAS model estimates are more sensitive to inter-annual climatic variability. Spatial and temporal variability in LUCAS-estimated NPP is represented by an empirical NPP model [@del2008global] which was calibrated using NPP estimates from the Ecosystem Model-Data Intercomparison (EMDI) project which consists, in part, of thousands of regional-scale NPP estimates based on growth increment from the FIA database [@olson2013npp]. Satellite-derived estimates were based on the MOD17 algorithm incorporating spectral reflectances and meteorological scalars [@zhao_modis], which tends to overestimate NPP in low productivity ecosystems [@turner2006evaluation] that dominate much of California. In addition, MOD17-based estimates of productivity tend to be insensitive to inter-annual variation and drought effects in ecosystems dominated by evergreen vegetation, which make up the majority of California’s forests and shrublands [@hwang2008evaluating; @porcar2014linking; @he2016satellite; @verma2015improving]. 
+
+Wildfire is a major source of carbon emissions to the atmosphere in California. The California Air Resources Board (ARB) estimates carbon emissions from wildfire [@arb2018prelimfire] using the First Order Fire Effects Model (FOFEM) developed by the U.S. Forest Service [@reinhardt1997first] with fire footprints from @calfire2018frap. Estimates from our study compare well with those from ARB over the overlapping historical period (2002-2016) and are shown in Figure S9. We estimate that historical fire emissions averaged `r lucas_mean` ($\sigma$=`r lucas_sd`) CO~2~ yr^-1^ compared to an average historical rate of `r arb_mean` ($\sigma$=`r arb_sd`) CO~2~ yr^-1^ based on the ARB methodology. Annual estimates and variability also show strong agreement with estimates produced using the ARB modeling approach with an r-square value of `r fire_r2` based on a comparison of annual emission estimates.
+
+### 4.4 Limitations of study
+This study was limited to just four of the 32 LOCA down-scaled global climate models from the CMIP5 archive. While these four models were chosen by a working group for the California 4th Climate Assessment as representing a broad range of future California climates, our results would likely be different if all 32 models were assessed in this framework. More importantly, our current framework did not include variability in key parameters that would likely increase the uncertainty of the results. This includes the uncertainty associated with parameters related to climate (i.e. effect of precipitation and temperature on NPP and DOM turnover rates), carbon (base stocks and flows), and disturbance (extent of wildfire and mortality). Our approach did not account for changes in vegetation type which may result from the coupled effects of climate change and high severity fire. Specifically, there is growing concern that in some regions, the ability of forests to recover after large high severity fires is reduced in response to climate change [@thorne2017impact]. Our model did not estimate these effects and may result in an overestimation of carbon storage given the assumption that forests will always recover after disturbance.
+
+Future warming, and its effect on DOM turnover rates, was represented using climate model temperature projections and a Q10 function generally consistent with those used in the Carbon Budget Model of the Canadian Forest Sector (CBM-CFS3) [@kurz2009cbm]. However, the CBM-CFS3 model does not include a Q10 for the decomposition of the slow recalcitrant pool, which might indicate our model overestimates the temperature sensitivity of SOC decay rates. However, a recent whole-profile warming experiment in California [@pries2017whole] determined an effective Q10 for soil CO~2~ efflux to be 2.4, suggesting our estimate of SOC temperature sensitivity may be conservative. 
+
+While rising atmospheric CO~2~ undoubtedly plays a role in vegetation productivity, the magnitude and duration of this effect and how it manifests in specific ecosystems is highly uncertain [@smith2016large], especially under long-term scenario projections [@arora2013carbon; @friedlingstein2014uncertainties; @sitch2008evaluation; @piao2013evaluation]. Early results from FACE studies appeared to support this strong positive CFE on NPP at the ecosystem level across a range of forest types [@norby2005forest]. However, there is also substantial evidence that an array of feedback responses and constraints can dampen or eliminate CO~2~-induced increases in plant carbon assimilation and growth [@franks2013sensitivity; @smith2013plant; @norby2010co2]. Longer term results from FACE studies in both forests and grasslands have demonstrated that the initial CFE-induced growth stimulation declined over time as nitrogen (N) became more limiting [@reich2006nitrogen; @norby2010co2]. The magnitude of this progressive N-limitation on CFE is highly site-specific, and sometimes does not appear to dampen CFE at all because of high site N status or positive feedbacks to N cycling [@smith2013plant]. Moreover, FACE experiments represent a step change in C~a~ of often ~150%. Results from these experiments can be difficult to interpret in the context of gradual, year-by-year increases in C~a~ over decades, especially at regional to continental scales. Studies based on remote sensing have also not been able to constrain the CFE effect on NPP. For example, although CFE explains 70% of increased plant greenness over time at a global scale [@zhu2016greening], a comparison with ecosystem models demonstrated that models overestimate CFE-induced increases in NPP by ~150% compared to satellite-based estimates over a 30-year period [@smith2016large]. 
+
+The $\beta$ values included in the sensitivity analysis generally cover the range of values observed at forested FACE sites [@norby2005forest; @zaehle2014evaluation; @smith2016large]. These estimates tend to be higher than $\beta$ values derived from a remote sensing-based approach [@smith2016large], which have been criticized as likely underestimating the CFE [@de2016satellite], and considerably lower than values reported in a range of Earth System Models [see Figure 4 in @smith2016large], indicating that the uncertainty in ecosystem carbon storage (TEC) and flux (NECB) is likely to be much larger than the estimates shown in Fig. \ref{fig:cfe_plot_g}. The large degree of uncertainty resulting from the introduction of a range of CFE's in this study underscores the need for more research on the role of increasing atmospheric CO~2~ on terrestrial carbon cycling, especially under long-term projections, as studies have indicated that the role of increasing CO~2~ on ecosystem carbon balance can be as much as four times larger than the effect of climate change [@gregory2009quantifying; @arora2013carbon]. In the context of climate mitigation planning, assuming no CFE is the most conservative approach and that any realized CFE in the future will likely only further increase carbon sequestration in ecosystems.
+
+Similar to most other carbon cycle models, our model might overestimate recovery rates of carbon sink strength after prolonged drought [@anderegg2015pervasive]. Between 2013-2015, California entered a period sustained and exceptional drought which affected most areas and ecosystems of the State. Evidence suggests the extreme drought conditions experienced in recent years were without precedent over instrumented and millennial records [@robeson2015revisiting], and while primarily the result of natural climate variability [@berg2015increased; @williams2015contribution], anthropogenic warming was an import contributing factor [@williams2015contribution; @diffenbaugh2015anthropogenic; @shukla2015temperature]. In this study, the effect of drought conditions on ecosystem carbon balance was significant. Between 2013-2015, NECB was estimated at `r necb_2013_2015_mean` Tg C yr^-1^ with an estimated loss of `r necb_2013` Tg C yr^-1^ in 2013 alone, and was largely driven a large negative precipitation anomaly (Fig. S7). The range of climate models and RCP scenarios used in this study produced a single time-step with a one-year decline in NECB similar to that of 2013 (`r necb_canesm_high` Tg C yr^-1^; CanESM2, RCP8.5 in 2096). Under the RCP8.5 scenario, three of the four climate models (CanESM2 in 2063, HadGEM2-ES in 2058-2059, and MIROC5 in 2059) projected NECB declines similar to that of the recent drought period, suggesting that while the probability of a single year event such as 2013 was low, severe multi-year drought conditions in the future are represented in future projections. Of particular note is the projection of a sustained drought period occurring mid-century under the RCP8.5 scenario as simulated by the HadGEM2-ES climate model; between 2051-2070, ecosystems were estimated to be a net source of carbon in 16 of 20 years (`r necb_had_midcent_mean` Tg C yr^-1^), a rate nearly twice as high as the 14-year historical average. To better understand the context of these extreme events, future work should extend the baseline period of analysis to encompass additional periods of severe drought in California (e.g. 1976-1977, 1987-1992). While the uncertainty associated with projecting extreme events is large [@swain2014extraordinary], substantial evidence suggests anthropogenic climate change will increase the probability of extreme drought conditions in California [@williams2015contribution; @diffenbaugh2015anthropogenic; @cook2015unprecedented] which may have significant impacts on ecosystem carbon balance. 
+
+### 4.5 Concluding remarks
+Changes in ecosystem carbon balance are an important driver of global climate change. However, there is a great deal of uncertainty in the direction and magnitude of the carbon source or sink. Results of this study show that uncertainty primarily resulted from future climate conditions driven by different climate models and are consistent with other studies in this regard [@zaehle2007projected]. However, these uncertainties are relatively small compared to the uncertainties associated with increasing CO~2~ and its effect on carbon storage and flux. While net ecosystem carbon balance was projected to increase relative to recent historical rates, carbon stored in California ecosystems was projected to decline in 30 of the 32 future scenarios considered in this study. Reducing global greenhouse-gas emissions did not always result in increased carbon storage in California ecosystems, suggesting there may be unanticipated feedbacks to the climate system resulting from ecosystem carbon flux. Conversely, reducing land use was a reliable and consistent approach to increasing carbon sequestration, regardless of future climate conditions. These findings are useful for establishing a set of baseline projections from which additional ecosystem-based climate mitigation strategies can be evaluated [@cameron2017ecosystem; @fargione2018natural]. Such studies are needed to understand the role of ecosystems in regulating greenhouse-gas emissions and for achieving local to global scale climate mitigation goals. 
+
+# Declarations
+### Author Contributions
+BMS was the lead researcher, developed and parameterized the model, analyzed the results, and drafted the manuscript. DCM helped in all aspects of the research including model development and parameterization, data analysis, and writing of the manuscript. DRC assisted in model development, analysis, and writing. PCS assisted in analysis and writing. LW developed wildfire projections. CJD contributed to model development and writing, JL developed carbon flux parameters. TSW contributed to writing. DCM and JK implemented the model on a high performance computing environment.  
+
+### Acknowledgments
+The authors thank Zhiliang Zhu, Brad Reed, and Deb Willard of the U.S. Geological Survey for their ongoing support for this research. The authors also thank David Stoms of the California Energy Commission for his early guidance and support of land change scenario projections in California. 
+
+### Competing interests
+The authors declare no competing interests.
+
+### Code and data availability
+The model, source code, and data required to replicate this study, as well as the output data supporting the conclusions of the study are available through the USGS ScienceBase repository.
+
+The LUCAS model runs within the Syncro-Sim software application. All simulations were run using Syncro-Sim software version 2.0.18, under the Mono framework for Linux. The STSM and SF modules used in this study were version 3.1.18. We ran the simulations on the Comet system at the San Diego Super-computing Center under the NSF Extreme Science and Engineering Discovery Environment (XSEDE) program through allocation TG-DEB17001767.
+
+The following steps are required to run the model used in this analysis:
+
+* Download and install the latest Windows or LINUX version of the Syncro-Sim software, available at http://www.apexrms.com.
+* Download and unzip the model files, including spatial input files and a “.ssim” (SQLite) database from the online repository (to be filled in upon publication).
+* Use the Syncro-Sim software to open the “California Carbon Model.ssim” file and select a scenario to run.
+* Alternatively, the model can be built from scratch using the R programming language with the rsyncrosim package installed. To follow this approach, download the “California Carbon Model R Code.zip” data package and run the necessary R scripts.
+
+All output results from the 32 scenarios described in this report are available from the ScienceBase online repository. Each scenario includes an SQLite database (SyncroSim ".ssim" file) and a compressed folder with all spatial output. Tabular output are contained entirely within each SQLite database. Each database file is ~36 GB and the corresponding compressed spatial output maps are an additional ~18 GB. The entire library is ~1.7 Tb. Given the large volume of data, several intermediate products were generated from which all results present in the paper were derived.
+
+Ecoregion Tabular Summaries
+
+* State Class Area by Ecoregion and Scenario (Mean and 95% Confidence Intervals)
+* Transition Area by Ecoregion and Scenario (Mean and 95% Confidence Intervals)
+* Carbon Stocks by Ecoregion and Scenario (Mean and 95% Confidence Intervals)
+* Carbon Fluxes by Ecoregion and Scenario (Mean and 95% Confidence Intervals)
+
+State Tabular Summaries
+
+* State Class Area by Scenario (Mean and 95% Confidence Intervals)
+* Transition Area by Scenario (Mean and 95% Confidence Intervals)
+* Carbon Stocks by Scenario (Mean and 95% Confidence Intervals)
+* Carbon Fluxes by Scenario (Mean and 95% Confidence Intervals)
+
+This paper was compiled using R Markdown. All results, including tables, figures, and values presented within text can be auto-generated by downloading and running the R Markdown file including in the data repository. The data used within the R Markdown file is dependent upon a number of data summaries which were generated and written to disk and are stored in the "Data > Report_Tables" folder.
+
+### Funding
+Funding for this research was provided by the U.S. Geological Survey’s Biological Carbon Sequestration Program and Climate and Land Use Research & Development Program. Additional funding was provided by The Nature Conservancy (Grant #18WSZL00TNC201802). This work used the Extreme Science and Engineering Discovery Environment (XSEDE), which is supported by National Science Foundation grant number ACI-1548562. 
+
+# References
+<div id="refs"></div>

@@ -1,0 +1,545 @@
+LUC,GCM,RCP,Flow,FlowPrimary,FromStock,Mean,Lower,Upper
+BAU,CanESM2,rcp45,Deadfall,Deadfall,Standing Dead,172322.2,172322.2,172322.2
+BAU,CanESM2,rcp45,Decay,Decay,Down Dead,173250.5,173250.5,173250.5
+BAU,CanESM2,rcp45,Decomposition,Decomposition,Litter,514443.8,514443.8,514443.8
+BAU,CanESM2,rcp45,Emission,Emission,Living Biomass,75919.3,75919.3,75919.3
+BAU,CanESM2,rcp45,Emission (biomass),Emission,Living Biomass,61150.2,61150.2,61150.2
+BAU,CanESM2,rcp45,Emission (litter),Emission,Litter,494168.1,494168.1,494168.1
+BAU,CanESM2,rcp45,Emission (soil),Emission,Soil,503916.2,503916.2,503916.2
+BAU,CanESM2,rcp45,Growth,Growth,Atmosphere,1285285.3,1285285.3,1285285.3
+BAU,CanESM2,rcp45,Harvest,Harvest,Living Biomass,34334.1,34334.1,34334.1
+BAU,CanESM2,rcp45,Harvest (grain),Harvest,Living Biomass,80869.5,80869.5,80869.5
+BAU,CanESM2,rcp45,Harvest (straw),Harvest,Living Biomass,49228.6,49228.6,49228.6
+BAU,CanESM2,rcp45,Leaching,Leaching,Soil,19007.5,19007.5,19007.5
+BAU,CanESM2,rcp45,Litterfall,Litterfall,Living Biomass,844880.6,844880.6,844880.6
+BAU,CanESM2,rcp45,Mortality,Mortality,Living Biomass,102066.4,102066.4,102066.4
+BAU,CanESM2,rcp45,Mortality (insects high),Mortality,Living Biomass,55460.3,55460.3,55460.3
+BAU,CanESM2,rcp45,Mortality (insects low),Mortality,Living Biomass,31893.6,31893.6,31893.6
+BAU,CanESM2,rcp45,Mortality (insects medium),Mortality,Living Biomass,12156,12156,12156
+BAU,CanESM2,rcp85,Deadfall,Deadfall,Standing Dead,181811.1,181811.1,181811.1
+BAU,CanESM2,rcp85,Decay,Decay,Down Dead,182139.9,182139.9,182139.9
+BAU,CanESM2,rcp85,Decomposition,Decomposition,Litter,545311.9,545311.9,545311.9
+BAU,CanESM2,rcp85,Emission,Emission,Living Biomass,83892.3,83892.3,83892.3
+BAU,CanESM2,rcp85,Emission (biomass),Emission,Living Biomass,59795.4,59795.4,59795.4
+BAU,CanESM2,rcp85,Emission (litter),Emission,Litter,544321,544321,544321
+BAU,CanESM2,rcp85,Emission (soil),Emission,Soil,544887.5,544887.5,544887.5
+BAU,CanESM2,rcp85,Growth,Growth,Atmosphere,1404798.4,1404798.4,1404798.4
+BAU,CanESM2,rcp85,Harvest,Harvest,Living Biomass,34181.1,34181.1,34181.1
+BAU,CanESM2,rcp85,Harvest (grain),Harvest,Living Biomass,87865.2,87865.2,87865.2
+BAU,CanESM2,rcp85,Harvest (straw),Harvest,Living Biomass,55019.8,55019.8,55019.8
+BAU,CanESM2,rcp85,Leaching,Leaching,Soil,18626.9,18626.9,18626.9
+BAU,CanESM2,rcp85,Litterfall,Litterfall,Living Biomass,910163.1,910163.1,910163.1
+BAU,CanESM2,rcp85,Mortality,Mortality,Living Biomass,105628,105628,105628
+BAU,CanESM2,rcp85,Mortality (insects high),Mortality,Living Biomass,62634.9,62634.9,62634.9
+BAU,CanESM2,rcp85,Mortality (insects low),Mortality,Living Biomass,30985.5,30985.5,30985.5
+BAU,CanESM2,rcp85,Mortality (insects medium),Mortality,Living Biomass,13348,13348,13348
+BAU,CNRM-CM5,rcp45,Deadfall,Deadfall,Standing Dead,173689.1,173689.1,173689.1
+BAU,CNRM-CM5,rcp45,Decay,Decay,Down Dead,173483.2,173483.2,173483.2
+BAU,CNRM-CM5,rcp45,Decomposition,Decomposition,Litter,547761.4,547761.4,547761.4
+BAU,CNRM-CM5,rcp45,Emission,Emission,Living Biomass,82014.8,82014.8,82014.8
+BAU,CNRM-CM5,rcp45,Emission (biomass),Emission,Living Biomass,65818.3,65818.3,65818.3
+BAU,CNRM-CM5,rcp45,Emission (litter),Emission,Litter,518148.6,518148.6,518148.6
+BAU,CNRM-CM5,rcp45,Emission (soil),Emission,Soil,520070.9,520070.9,520070.9
+BAU,CNRM-CM5,rcp45,Growth,Growth,Atmosphere,1377709.5,1377709.5,1377709.5
+BAU,CNRM-CM5,rcp45,Harvest,Harvest,Living Biomass,36339.5,36339.5,36339.5
+BAU,CNRM-CM5,rcp45,Harvest (grain),Harvest,Living Biomass,89205.5,89205.5,89205.5
+BAU,CNRM-CM5,rcp45,Harvest (straw),Harvest,Living Biomass,56074.3,56074.3,56074.3
+BAU,CNRM-CM5,rcp45,Leaching,Leaching,Soil,19668,19668,19668
+BAU,CNRM-CM5,rcp45,Litterfall,Litterfall,Living Biomass,905412.2,905412.2,905412.2
+BAU,CNRM-CM5,rcp45,Mortality,Mortality,Living Biomass,107312.5,107312.5,107312.5
+BAU,CNRM-CM5,rcp45,Mortality (insects high),Mortality,Living Biomass,53534,53534,53534
+BAU,CNRM-CM5,rcp45,Mortality (insects low),Mortality,Living Biomass,33510.1,33510.1,33510.1
+BAU,CNRM-CM5,rcp45,Mortality (insects medium),Mortality,Living Biomass,11477.8,11477.8,11477.8
+BAU,CNRM-CM5,rcp85,Deadfall,Deadfall,Standing Dead,175054.6,175054.6,175054.6
+BAU,CNRM-CM5,rcp85,Decay,Decay,Down Dead,175159.7,175159.7,175159.7
+BAU,CNRM-CM5,rcp85,Decomposition,Decomposition,Litter,544464,544464,544464
+BAU,CNRM-CM5,rcp85,Emission,Emission,Living Biomass,77511.6,77511.6,77511.6
+BAU,CNRM-CM5,rcp85,Emission (biomass),Emission,Living Biomass,65988.7,65988.7,65988.7
+BAU,CNRM-CM5,rcp85,Emission (litter),Emission,Litter,529746.8,529746.8,529746.8
+BAU,CNRM-CM5,rcp85,Emission (soil),Emission,Soil,534734.2,534734.2,534734.2
+BAU,CNRM-CM5,rcp85,Growth,Growth,Atmosphere,1386262,1386262,1386262
+BAU,CNRM-CM5,rcp85,Harvest,Harvest,Living Biomass,36588.2,36588.2,36588.2
+BAU,CNRM-CM5,rcp85,Harvest (grain),Harvest,Living Biomass,87334.8,87334.8,87334.8
+BAU,CNRM-CM5,rcp85,Harvest (straw),Harvest,Living Biomass,54529.6,54529.6,54529.6
+BAU,CNRM-CM5,rcp85,Leaching,Leaching,Soil,19260.3,19260.3,19260.3
+BAU,CNRM-CM5,rcp85,Litterfall,Litterfall,Living Biomass,904326,904326,904326
+BAU,CNRM-CM5,rcp85,Mortality,Mortality,Living Biomass,107167.8,107167.8,107167.8
+BAU,CNRM-CM5,rcp85,Mortality (insects high),Mortality,Living Biomass,56074.4,56074.4,56074.4
+BAU,CNRM-CM5,rcp85,Mortality (insects low),Mortality,Living Biomass,33183.8,33183.8,33183.8
+BAU,CNRM-CM5,rcp85,Mortality (insects medium),Mortality,Living Biomass,12483.8,12483.8,12483.8
+BAU,HadGEM2-ES,rcp45,Deadfall,Deadfall,Standing Dead,163166,163166,163166
+BAU,HadGEM2-ES,rcp45,Decay,Decay,Down Dead,162497.6,162497.6,162497.6
+BAU,HadGEM2-ES,rcp45,Decomposition,Decomposition,Litter,478349.7,478349.7,478349.7
+BAU,HadGEM2-ES,rcp45,Emission,Emission,Living Biomass,72833.4,72833.4,72833.4
+BAU,HadGEM2-ES,rcp45,Emission (biomass),Emission,Living Biomass,57361.5,57361.5,57361.5
+BAU,HadGEM2-ES,rcp45,Emission (litter),Emission,Litter,458234.3,458234.3,458234.3
+BAU,HadGEM2-ES,rcp45,Emission (soil),Emission,Soil,485516.7,485516.7,485516.7
+BAU,HadGEM2-ES,rcp45,Growth,Growth,Atmosphere,1189648.1,1189648.1,1189648.1
+BAU,HadGEM2-ES,rcp45,Harvest,Harvest,Living Biomass,32635.8,32635.8,32635.8
+BAU,HadGEM2-ES,rcp45,Harvest (grain),Harvest,Living Biomass,76650.4,76650.4,76650.4
+BAU,HadGEM2-ES,rcp45,Harvest (straw),Harvest,Living Biomass,45763.1,45763.1,45763.1
+BAU,HadGEM2-ES,rcp45,Leaching,Leaching,Soil,18545.2,18545.2,18545.2
+BAU,HadGEM2-ES,rcp45,Litterfall,Litterfall,Living Biomass,784494.2,784494.2,784494.2
+BAU,HadGEM2-ES,rcp45,Mortality,Mortality,Living Biomass,96682.6,96682.6,96682.6
+BAU,HadGEM2-ES,rcp45,Mortality (insects high),Mortality,Living Biomass,59514.1,59514.1,59514.1
+BAU,HadGEM2-ES,rcp45,Mortality (insects low),Mortality,Living Biomass,30509.6,30509.6,30509.6
+BAU,HadGEM2-ES,rcp45,Mortality (insects medium),Mortality,Living Biomass,12751.7,12751.7,12751.7
+BAU,HadGEM2-ES,rcp85,Deadfall,Deadfall,Standing Dead,170670.6,170670.6,170670.6
+BAU,HadGEM2-ES,rcp85,Decay,Decay,Down Dead,169124,169124,169124
+BAU,HadGEM2-ES,rcp85,Decomposition,Decomposition,Litter,475185.9,475185.9,475185.9
+BAU,HadGEM2-ES,rcp85,Emission,Emission,Living Biomass,69854.1,69854.1,69854.1
+BAU,HadGEM2-ES,rcp85,Emission (biomass),Emission,Living Biomass,57748.4,57748.4,57748.4
+BAU,HadGEM2-ES,rcp85,Emission (litter),Emission,Litter,470531,470531,470531
+BAU,HadGEM2-ES,rcp85,Emission (soil),Emission,Soil,504827.6,504827.6,504827.6
+BAU,HadGEM2-ES,rcp85,Growth,Growth,Atmosphere,1187839.8,1187839.8,1187839.8
+BAU,HadGEM2-ES,rcp85,Harvest,Harvest,Living Biomass,33516.3,33516.3,33516.3
+BAU,HadGEM2-ES,rcp85,Harvest (grain),Harvest,Living Biomass,76101.1,76101.1,76101.1
+BAU,HadGEM2-ES,rcp85,Harvest (straw),Harvest,Living Biomass,45320.8,45320.8,45320.8
+BAU,HadGEM2-ES,rcp85,Leaching,Leaching,Soil,18056,18056,18056
+BAU,HadGEM2-ES,rcp85,Litterfall,Litterfall,Living Biomass,778153.4,778153.4,778153.4
+BAU,HadGEM2-ES,rcp85,Mortality,Mortality,Living Biomass,96337.8,96337.8,96337.8
+BAU,HadGEM2-ES,rcp85,Mortality (insects high),Mortality,Living Biomass,58577.8,58577.8,58577.8
+BAU,HadGEM2-ES,rcp85,Mortality (insects low),Mortality,Living Biomass,30997.5,30997.5,30997.5
+BAU,HadGEM2-ES,rcp85,Mortality (insects medium),Mortality,Living Biomass,12552,12552,12552
+BAU,MIROC5,rcp45,Deadfall,Deadfall,Standing Dead,155520,155520,155520
+BAU,MIROC5,rcp45,Decay,Decay,Down Dead,154065.5,154065.5,154065.5
+BAU,MIROC5,rcp45,Decomposition,Decomposition,Litter,468235.9,468235.9,468235.9
+BAU,MIROC5,rcp45,Emission,Emission,Living Biomass,71000.7,71000.7,71000.7
+BAU,MIROC5,rcp45,Emission (biomass),Emission,Living Biomass,60765,60765,60765
+BAU,MIROC5,rcp45,Emission (litter),Emission,Litter,440971.7,440971.7,440971.7
+BAU,MIROC5,rcp45,Emission (soil),Emission,Soil,474218.3,474218.3,474218.3
+BAU,MIROC5,rcp45,Growth,Growth,Atmosphere,1146297.4,1146297.4,1146297.4
+BAU,MIROC5,rcp45,Harvest,Harvest,Living Biomass,33790,33790,33790
+BAU,MIROC5,rcp45,Harvest (grain),Harvest,Living Biomass,73569.5,73569.5,73569.5
+BAU,MIROC5,rcp45,Harvest (straw),Harvest,Living Biomass,43206.1,43206.1,43206.1
+BAU,MIROC5,rcp45,Leaching,Leaching,Soil,18930.4,18930.4,18930.4
+BAU,MIROC5,rcp45,Litterfall,Litterfall,Living Biomass,764636.9,764636.9,764636.9
+BAU,MIROC5,rcp45,Mortality,Mortality,Living Biomass,99773.7,99773.7,99773.7
+BAU,MIROC5,rcp45,Mortality (insects high),Mortality,Living Biomass,57361.4,57361.4,57361.4
+BAU,MIROC5,rcp45,Mortality (insects low),Mortality,Living Biomass,32222.5,32222.5,32222.5
+BAU,MIROC5,rcp45,Mortality (insects medium),Mortality,Living Biomass,12609.7,12609.7,12609.7
+BAU,MIROC5,rcp85,Deadfall,Deadfall,Standing Dead,166854.6,166854.6,166854.6
+BAU,MIROC5,rcp85,Decay,Decay,Down Dead,168222,168222,168222
+BAU,MIROC5,rcp85,Decomposition,Decomposition,Litter,471157.5,471157.5,471157.5
+BAU,MIROC5,rcp85,Emission,Emission,Living Biomass,64686.1,64686.1,64686.1
+BAU,MIROC5,rcp85,Emission (biomass),Emission,Living Biomass,55474.1,55474.1,55474.1
+BAU,MIROC5,rcp85,Emission (litter),Emission,Litter,452986.9,452986.9,452986.9
+BAU,MIROC5,rcp85,Emission (soil),Emission,Soil,486803.8,486803.8,486803.8
+BAU,MIROC5,rcp85,Growth,Growth,Atmosphere,1143687,1143687,1143687
+BAU,MIROC5,rcp85,Harvest,Harvest,Living Biomass,31784.3,31784.3,31784.3
+BAU,MIROC5,rcp85,Harvest (grain),Harvest,Living Biomass,73351,73351,73351
+BAU,MIROC5,rcp85,Harvest (straw),Harvest,Living Biomass,43048.3,43048.3,43048.3
+BAU,MIROC5,rcp85,Leaching,Leaching,Soil,18772.2,18772.2,18772.2
+BAU,MIROC5,rcp85,Litterfall,Litterfall,Living Biomass,758765.9,758765.9,758765.9
+BAU,MIROC5,rcp85,Mortality,Mortality,Living Biomass,91637.8,91637.8,91637.8
+BAU,MIROC5,rcp85,Mortality (insects high),Mortality,Living Biomass,67141.4,67141.4,67141.4
+BAU,MIROC5,rcp85,Mortality (insects low),Mortality,Living Biomass,29908.3,29908.3,29908.3
+BAU,MIROC5,rcp85,Mortality (insects medium),Mortality,Living Biomass,13996.1,13996.1,13996.1
+High,CanESM2,rcp45,Deadfall,Deadfall,Standing Dead,169886.8,169886.8,169886.8
+High,CanESM2,rcp45,Decay,Decay,Down Dead,173024.3,173024.3,173024.3
+High,CanESM2,rcp45,Decomposition,Decomposition,Litter,512331.5,512331.5,512331.5
+High,CanESM2,rcp45,Emission,Emission,Living Biomass,77761.2,77761.2,77761.2
+High,CanESM2,rcp45,Emission (biomass),Emission,Living Biomass,59195.6,59195.6,59195.6
+High,CanESM2,rcp45,Emission (litter),Emission,Litter,492206.3,492206.3,492206.3
+High,CanESM2,rcp45,Emission (soil),Emission,Soil,502304.9,502304.9,502304.9
+High,CanESM2,rcp45,Growth,Growth,Atmosphere,1296108.4,1296108.4,1296108.4
+High,CanESM2,rcp45,Harvest,Harvest,Living Biomass,40280.1,40280.1,40280.1
+High,CanESM2,rcp45,Harvest (grain),Harvest,Living Biomass,88827.3,88827.3,88827.3
+High,CanESM2,rcp45,Harvest (straw),Harvest,Living Biomass,54448.5,54448.5,54448.5
+High,CanESM2,rcp45,Leaching,Leaching,Soil,18880.4,18880.4,18880.4
+High,CanESM2,rcp45,Litterfall,Litterfall,Living Biomass,841124.8,841124.8,841124.8
+High,CanESM2,rcp45,Mortality,Mortality,Living Biomass,101853.2,101853.2,101853.2
+High,CanESM2,rcp45,Mortality (insects high),Mortality,Living Biomass,55413.4,55413.4,55413.4
+High,CanESM2,rcp45,Mortality (insects low),Mortality,Living Biomass,31548,31548,31548
+High,CanESM2,rcp45,Mortality (insects medium),Mortality,Living Biomass,12107.3,12107.3,12107.3
+High,CanESM2,rcp85,Deadfall,Deadfall,Standing Dead,180030.8,180030.8,180030.8
+High,CanESM2,rcp85,Decay,Decay,Down Dead,182440.9,182440.9,182440.9
+High,CanESM2,rcp85,Decomposition,Decomposition,Litter,543550.8,543550.8,543550.8
+High,CanESM2,rcp85,Emission,Emission,Living Biomass,85731.5,85731.5,85731.5
+High,CanESM2,rcp85,Emission (biomass),Emission,Living Biomass,57445.9,57445.9,57445.9
+High,CanESM2,rcp85,Emission (litter),Emission,Litter,542737.3,542737.3,542737.3
+High,CanESM2,rcp85,Emission (soil),Emission,Soil,543400.5,543400.5,543400.5
+High,CanESM2,rcp85,Growth,Growth,Atmosphere,1417714.3,1417714.3,1417714.3
+High,CanESM2,rcp85,Harvest,Harvest,Living Biomass,39647.1,39647.1,39647.1
+High,CanESM2,rcp85,Harvest (grain),Harvest,Living Biomass,97092.7,97092.7,97092.7
+High,CanESM2,rcp85,Harvest (straw),Harvest,Living Biomass,61303.5,61303.5,61303.5
+High,CanESM2,rcp85,Leaching,Leaching,Soil,18510.8,18510.8,18510.8
+High,CanESM2,rcp85,Litterfall,Litterfall,Living Biomass,906554.6,906554.6,906554.6
+High,CanESM2,rcp85,Mortality,Mortality,Living Biomass,104582.8,104582.8,104582.8
+High,CanESM2,rcp85,Mortality (insects high),Mortality,Living Biomass,63912.9,63912.9,63912.9
+High,CanESM2,rcp85,Mortality (insects low),Mortality,Living Biomass,30575.6,30575.6,30575.6
+High,CanESM2,rcp85,Mortality (insects medium),Mortality,Living Biomass,13351.8,13351.8,13351.8
+High,CNRM-CM5,rcp45,Deadfall,Deadfall,Standing Dead,170109.1,170109.1,170109.1
+High,CNRM-CM5,rcp45,Decay,Decay,Down Dead,172591.5,172591.5,172591.5
+High,CNRM-CM5,rcp45,Decomposition,Decomposition,Litter,545984.4,545984.4,545984.4
+High,CNRM-CM5,rcp45,Emission,Emission,Living Biomass,84267.9,84267.9,84267.9
+High,CNRM-CM5,rcp45,Emission (biomass),Emission,Living Biomass,64149.2,64149.2,64149.2
+High,CNRM-CM5,rcp45,Emission (litter),Emission,Litter,516515.9,516515.9,516515.9
+High,CNRM-CM5,rcp45,Emission (soil),Emission,Soil,518861.6,518861.6,518861.6
+High,CNRM-CM5,rcp45,Growth,Growth,Atmosphere,1391664.6,1391664.6,1391664.6
+High,CNRM-CM5,rcp45,Harvest,Harvest,Living Biomass,42570.1,42570.1,42570.1
+High,CNRM-CM5,rcp45,Harvest (grain),Harvest,Living Biomass,97665.1,97665.1,97665.1
+High,CNRM-CM5,rcp45,Harvest (straw),Harvest,Living Biomass,61765.2,61765.2,61765.2
+High,CNRM-CM5,rcp45,Leaching,Leaching,Soil,19535.8,19535.8,19535.8
+High,CNRM-CM5,rcp45,Litterfall,Litterfall,Living Biomass,903064.3,903064.3,903064.3
+High,CNRM-CM5,rcp45,Mortality,Mortality,Living Biomass,107618,107618,107618
+High,CNRM-CM5,rcp45,Mortality (insects high),Mortality,Living Biomass,52016,52016,52016
+High,CNRM-CM5,rcp45,Mortality (insects low),Mortality,Living Biomass,32829.9,32829.9,32829.9
+High,CNRM-CM5,rcp45,Mortality (insects medium),Mortality,Living Biomass,11458.9,11458.9,11458.9
+High,CNRM-CM5,rcp85,Deadfall,Deadfall,Standing Dead,172186.8,172186.8,172186.8
+High,CNRM-CM5,rcp85,Decay,Decay,Down Dead,174739.4,174739.4,174739.4
+High,CNRM-CM5,rcp85,Decomposition,Decomposition,Litter,542658.2,542658.2,542658.2
+High,CNRM-CM5,rcp85,Emission,Emission,Living Biomass,79695.7,79695.7,79695.7
+High,CNRM-CM5,rcp85,Emission (biomass),Emission,Living Biomass,63967.8,63967.8,63967.8
+High,CNRM-CM5,rcp85,Emission (litter),Emission,Litter,528102.8,528102.8,528102.8
+High,CNRM-CM5,rcp85,Emission (soil),Emission,Soil,533309.3,533309.3,533309.3
+High,CNRM-CM5,rcp85,Growth,Growth,Atmosphere,1399574,1399574,1399574
+High,CNRM-CM5,rcp85,Harvest,Harvest,Living Biomass,42720.2,42720.2,42720.2
+High,CNRM-CM5,rcp85,Harvest (grain),Harvest,Living Biomass,96193.2,96193.2,96193.2
+High,CNRM-CM5,rcp85,Harvest (straw),Harvest,Living Biomass,60599,60599,60599
+High,CNRM-CM5,rcp85,Leaching,Leaching,Soil,19135,19135,19135
+High,CNRM-CM5,rcp85,Litterfall,Litterfall,Living Biomass,901462.7,901462.7,901462.7
+High,CNRM-CM5,rcp85,Mortality,Mortality,Living Biomass,107113.3,107113.3,107113.3
+High,CNRM-CM5,rcp85,Mortality (insects high),Mortality,Living Biomass,55890.2,55890.2,55890.2
+High,CNRM-CM5,rcp85,Mortality (insects low),Mortality,Living Biomass,32803.5,32803.5,32803.5
+High,CNRM-CM5,rcp85,Mortality (insects medium),Mortality,Living Biomass,12234.2,12234.2,12234.2
+High,HadGEM2-ES,rcp45,Deadfall,Deadfall,Standing Dead,160835.8,160835.8,160835.8
+High,HadGEM2-ES,rcp45,Decay,Decay,Down Dead,162430.9,162430.9,162430.9
+High,HadGEM2-ES,rcp45,Decomposition,Decomposition,Litter,476280.7,476280.7,476280.7
+High,HadGEM2-ES,rcp45,Emission,Emission,Living Biomass,74763.4,74763.4,74763.4
+High,HadGEM2-ES,rcp45,Emission (biomass),Emission,Living Biomass,55470.5,55470.5,55470.5
+High,HadGEM2-ES,rcp45,Emission (litter),Emission,Litter,456317.6,456317.6,456317.6
+High,HadGEM2-ES,rcp45,Emission (soil),Emission,Soil,483884.2,483884.2,483884.2
+High,HadGEM2-ES,rcp45,Growth,Growth,Atmosphere,1200073.6,1200073.6,1200073.6
+High,HadGEM2-ES,rcp45,Harvest,Harvest,Living Biomass,38186.3,38186.3,38186.3
+High,HadGEM2-ES,rcp45,Harvest (grain),Harvest,Living Biomass,84241.1,84241.1,84241.1
+High,HadGEM2-ES,rcp45,Harvest (straw),Harvest,Living Biomass,50763.4,50763.4,50763.4
+High,HadGEM2-ES,rcp45,Leaching,Leaching,Soil,18427.9,18427.9,18427.9
+High,HadGEM2-ES,rcp45,Litterfall,Litterfall,Living Biomass,780675.2,780675.2,780675.2
+High,HadGEM2-ES,rcp45,Mortality,Mortality,Living Biomass,96454,96454,96454
+High,HadGEM2-ES,rcp45,Mortality (insects high),Mortality,Living Biomass,59282.1,59282.1,59282.1
+High,HadGEM2-ES,rcp45,Mortality (insects low),Mortality,Living Biomass,30046.8,30046.8,30046.8
+High,HadGEM2-ES,rcp45,Mortality (insects medium),Mortality,Living Biomass,12585.9,12585.9,12585.9
+High,HadGEM2-ES,rcp85,Deadfall,Deadfall,Standing Dead,166602.9,166602.9,166602.9
+High,HadGEM2-ES,rcp85,Decay,Decay,Down Dead,167643.1,167643.1,167643.1
+High,HadGEM2-ES,rcp85,Decomposition,Decomposition,Litter,473285,473285,473285
+High,HadGEM2-ES,rcp85,Emission,Emission,Living Biomass,71720.6,71720.6,71720.6
+High,HadGEM2-ES,rcp85,Emission (biomass),Emission,Living Biomass,56329.9,56329.9,56329.9
+High,HadGEM2-ES,rcp85,Emission (litter),Emission,Litter,468693.9,468693.9,468693.9
+High,HadGEM2-ES,rcp85,Emission (soil),Emission,Soil,503411.3,503411.3,503411.3
+High,HadGEM2-ES,rcp85,Growth,Growth,Atmosphere,1199484.9,1199484.9,1199484.9
+High,HadGEM2-ES,rcp85,Harvest,Harvest,Living Biomass,39270.5,39270.5,39270.5
+High,HadGEM2-ES,rcp85,Harvest (grain),Harvest,Living Biomass,83520.8,83520.8,83520.8
+High,HadGEM2-ES,rcp85,Harvest (straw),Harvest,Living Biomass,50150.9,50150.9,50150.9
+High,HadGEM2-ES,rcp85,Leaching,Leaching,Soil,17938.2,17938.2,17938.2
+High,HadGEM2-ES,rcp85,Litterfall,Litterfall,Living Biomass,776028.1,776028.1,776028.1
+High,HadGEM2-ES,rcp85,Mortality,Mortality,Living Biomass,96909.2,96909.2,96909.2
+High,HadGEM2-ES,rcp85,Mortality (insects high),Mortality,Living Biomass,56780.8,56780.8,56780.8
+High,HadGEM2-ES,rcp85,Mortality (insects low),Mortality,Living Biomass,30226.5,30226.5,30226.5
+High,HadGEM2-ES,rcp85,Mortality (insects medium),Mortality,Living Biomass,12278.6,12278.6,12278.6
+High,MIROC5,rcp45,Deadfall,Deadfall,Standing Dead,152614.6,152614.6,152614.6
+High,MIROC5,rcp45,Decay,Decay,Down Dead,153562,153562,153562
+High,MIROC5,rcp45,Decomposition,Decomposition,Litter,466058.4,466058.4,466058.4
+High,MIROC5,rcp45,Emission,Emission,Living Biomass,72651.2,72651.2,72651.2
+High,MIROC5,rcp45,Emission (biomass),Emission,Living Biomass,59099.1,59099.1,59099.1
+High,MIROC5,rcp45,Emission (litter),Emission,Litter,438974.2,438974.2,438974.2
+High,MIROC5,rcp45,Emission (soil),Emission,Soil,472667.5,472667.5,472667.5
+High,MIROC5,rcp45,Growth,Growth,Atmosphere,1156196.7,1156196.7,1156196.7
+High,MIROC5,rcp45,Harvest,Harvest,Living Biomass,39548.6,39548.6,39548.6
+High,MIROC5,rcp45,Harvest (grain),Harvest,Living Biomass,80621.4,80621.4,80621.4
+High,MIROC5,rcp45,Harvest (straw),Harvest,Living Biomass,47752.7,47752.7,47752.7
+High,MIROC5,rcp45,Leaching,Leaching,Soil,18807.3,18807.3,18807.3
+High,MIROC5,rcp45,Litterfall,Litterfall,Living Biomass,761045.8,761045.8,761045.8
+High,MIROC5,rcp45,Mortality,Mortality,Living Biomass,99939.7,99939.7,99939.7
+High,MIROC5,rcp45,Mortality (insects high),Mortality,Living Biomass,55472.2,55472.2,55472.2
+High,MIROC5,rcp45,Mortality (insects low),Mortality,Living Biomass,31798.2,31798.2,31798.2
+High,MIROC5,rcp45,Mortality (insects medium),Mortality,Living Biomass,12253.2,12253.2,12253.2
+High,MIROC5,rcp85,Deadfall,Deadfall,Standing Dead,164882.6,164882.6,164882.6
+High,MIROC5,rcp85,Decay,Decay,Down Dead,168458.9,168458.9,168458.9
+High,MIROC5,rcp85,Decomposition,Decomposition,Litter,468973.5,468973.5,468973.5
+High,MIROC5,rcp85,Emission,Emission,Living Biomass,66428.1,66428.1,66428.1
+High,MIROC5,rcp85,Emission (biomass),Emission,Living Biomass,53434.5,53434.5,53434.5
+High,MIROC5,rcp85,Emission (litter),Emission,Litter,451009.8,451009.8,451009.8
+High,MIROC5,rcp85,Emission (soil),Emission,Soil,485140.3,485140.3,485140.3
+High,MIROC5,rcp85,Growth,Growth,Atmosphere,1152087,1152087,1152087
+High,MIROC5,rcp85,Harvest,Harvest,Living Biomass,37026.1,37026.1,37026.1
+High,MIROC5,rcp85,Harvest (grain),Harvest,Living Biomass,80389,80389,80389
+High,MIROC5,rcp85,Harvest (straw),Harvest,Living Biomass,47593.1,47593.1,47593.1
+High,MIROC5,rcp85,Leaching,Leaching,Soil,18655.9,18655.9,18655.9
+High,MIROC5,rcp85,Litterfall,Litterfall,Living Biomass,754470.1,754470.1,754470.1
+High,MIROC5,rcp85,Mortality,Mortality,Living Biomass,91301.7,91301.7,91301.7
+High,MIROC5,rcp85,Mortality (insects high),Mortality,Living Biomass,67027.3,67027.3,67027.3
+High,MIROC5,rcp85,Mortality (insects low),Mortality,Living Biomass,29315.5,29315.5,29315.5
+High,MIROC5,rcp85,Mortality (insects medium),Mortality,Living Biomass,14417.7,14417.7,14417.7
+Low,CanESM2,rcp45,Deadfall,Deadfall,Standing Dead,177015.8,177015.8,177015.8
+Low,CanESM2,rcp45,Decay,Decay,Down Dead,174226.6,174226.6,174226.6
+Low,CanESM2,rcp45,Decomposition,Decomposition,Litter,525349.2,525349.2,525349.2
+Low,CanESM2,rcp45,Emission,Emission,Living Biomass,64646.7,64646.7,64646.7
+Low,CanESM2,rcp45,Emission (biomass),Emission,Living Biomass,63630.5,63630.5,63630.5
+Low,CanESM2,rcp45,Emission (litter),Emission,Litter,504916.2,504916.2,504916.2
+Low,CanESM2,rcp45,Emission (soil),Emission,Soil,513823.8,513823.8,513823.8
+Low,CanESM2,rcp45,Growth,Growth,Atmosphere,1309918,1309918,1309918
+Low,CanESM2,rcp45,Harvest,Harvest,Living Biomass,24712.5,24712.5,24712.5
+Low,CanESM2,rcp45,Harvest (grain),Harvest,Living Biomass,83180.3,83180.3,83180.3
+Low,CanESM2,rcp45,Harvest (straw),Harvest,Living Biomass,51782.7,51782.7,51782.7
+Low,CanESM2,rcp45,Leaching,Leaching,Soil,19156.9,19156.9,19156.9
+Low,CanESM2,rcp45,Litterfall,Litterfall,Living Biomass,865635.7,865635.7,865635.7
+Low,CanESM2,rcp45,Mortality,Mortality,Living Biomass,101688.8,101688.8,101688.8
+Low,CanESM2,rcp45,Mortality (insects high),Mortality,Living Biomass,56966.5,56966.5,56966.5
+Low,CanESM2,rcp45,Mortality (insects low),Mortality,Living Biomass,32626.8,32626.8,32626.8
+Low,CanESM2,rcp45,Mortality (insects medium),Mortality,Living Biomass,12263.2,12263.2,12263.2
+Low,CanESM2,rcp85,Deadfall,Deadfall,Standing Dead,186656.4,186656.4,186656.4
+Low,CanESM2,rcp85,Decay,Decay,Down Dead,183425,183425,183425
+Low,CanESM2,rcp85,Decomposition,Decomposition,Litter,557335,557335,557335
+Low,CanESM2,rcp85,Emission,Emission,Living Biomass,71720.3,71720.3,71720.3
+Low,CanESM2,rcp85,Emission (biomass),Emission,Living Biomass,62245,62245,62245
+Low,CanESM2,rcp85,Emission (litter),Emission,Litter,556811.6,556811.6,556811.6
+Low,CanESM2,rcp85,Emission (soil),Emission,Soil,556242.4,556242.4,556242.4
+Low,CanESM2,rcp85,Growth,Growth,Atmosphere,1433522.1,1433522.1,1433522.1
+Low,CanESM2,rcp85,Harvest,Harvest,Living Biomass,24684.9,24684.9,24684.9
+Low,CanESM2,rcp85,Harvest (grain),Harvest,Living Biomass,90835.3,90835.3,90835.3
+Low,CanESM2,rcp85,Harvest (straw),Harvest,Living Biomass,58094.9,58094.9,58094.9
+Low,CanESM2,rcp85,Leaching,Leaching,Soil,18776.8,18776.8,18776.8
+Low,CanESM2,rcp85,Litterfall,Litterfall,Living Biomass,933190.3,933190.3,933190.3
+Low,CanESM2,rcp85,Mortality,Mortality,Living Biomass,105387.1,105387.1,105387.1
+Low,CanESM2,rcp85,Mortality (insects high),Mortality,Living Biomass,64112.3,64112.3,64112.3
+Low,CanESM2,rcp85,Mortality (insects low),Mortality,Living Biomass,31740.4,31740.4,31740.4
+Low,CanESM2,rcp85,Mortality (insects medium),Mortality,Living Biomass,13593.7,13593.7,13593.7
+Low,CNRM-CM5,rcp45,Deadfall,Deadfall,Standing Dead,177617.9,177617.9,177617.9
+Low,CNRM-CM5,rcp45,Decay,Decay,Down Dead,173766,173766,173766
+Low,CNRM-CM5,rcp45,Decomposition,Decomposition,Litter,559959.6,559959.6,559959.6
+Low,CNRM-CM5,rcp45,Emission,Emission,Living Biomass,68856.8,68856.8,68856.8
+Low,CNRM-CM5,rcp45,Emission (biomass),Emission,Living Biomass,68974.1,68974.1,68974.1
+Low,CNRM-CM5,rcp45,Emission (litter),Emission,Litter,529919.1,529919.1,529919.1
+Low,CNRM-CM5,rcp45,Emission (soil),Emission,Soil,531136.7,531136.7,531136.7
+Low,CNRM-CM5,rcp45,Growth,Growth,Atmosphere,1405732.2,1405732.2,1405732.2
+Low,CNRM-CM5,rcp45,Harvest,Harvest,Living Biomass,25914.8,25914.8,25914.8
+Low,CNRM-CM5,rcp45,Harvest (grain),Harvest,Living Biomass,91723.8,91723.8,91723.8
+Low,CNRM-CM5,rcp45,Harvest (straw),Harvest,Living Biomass,58842.2,58842.2,58842.2
+Low,CNRM-CM5,rcp45,Leaching,Leaching,Soil,19842.5,19842.5,19842.5
+Low,CNRM-CM5,rcp45,Litterfall,Litterfall,Living Biomass,929013.7,929013.7,929013.7
+Low,CNRM-CM5,rcp45,Mortality,Mortality,Living Biomass,107061.1,107061.1,107061.1
+Low,CNRM-CM5,rcp45,Mortality (insects high),Mortality,Living Biomass,53973.4,53973.4,53973.4
+Low,CNRM-CM5,rcp45,Mortality (insects low),Mortality,Living Biomass,33886.7,33886.7,33886.7
+Low,CNRM-CM5,rcp45,Mortality (insects medium),Mortality,Living Biomass,11791.7,11791.7,11791.7
+Low,CNRM-CM5,rcp85,Deadfall,Deadfall,Standing Dead,180068.5,180068.5,180068.5
+Low,CNRM-CM5,rcp85,Decay,Decay,Down Dead,176085.8,176085.8,176085.8
+Low,CNRM-CM5,rcp85,Decomposition,Decomposition,Litter,556384.4,556384.4,556384.4
+Low,CNRM-CM5,rcp85,Emission,Emission,Living Biomass,65141.6,65141.6,65141.6
+Low,CNRM-CM5,rcp85,Emission (biomass),Emission,Living Biomass,68803.8,68803.8,68803.8
+Low,CNRM-CM5,rcp85,Emission (litter),Emission,Litter,541771,541771,541771
+Low,CNRM-CM5,rcp85,Emission (soil),Emission,Soil,545819.8,545819.8,545819.8
+Low,CNRM-CM5,rcp85,Growth,Growth,Atmosphere,1414286.6,1414286.6,1414286.6
+Low,CNRM-CM5,rcp85,Harvest,Harvest,Living Biomass,26030.4,26030.4,26030.4
+Low,CNRM-CM5,rcp85,Harvest (grain),Harvest,Living Biomass,90130.1,90130.1,90130.1
+Low,CNRM-CM5,rcp85,Harvest (straw),Harvest,Living Biomass,57509.1,57509.1,57509.1
+Low,CNRM-CM5,rcp85,Leaching,Leaching,Soil,19415.4,19415.4,19415.4
+Low,CNRM-CM5,rcp85,Litterfall,Litterfall,Living Biomass,927268,927268,927268
+Low,CNRM-CM5,rcp85,Mortality,Mortality,Living Biomass,106689.5,106689.5,106689.5
+Low,CNRM-CM5,rcp85,Mortality (insects high),Mortality,Living Biomass,57454.2,57454.2,57454.2
+Low,CNRM-CM5,rcp85,Mortality (insects low),Mortality,Living Biomass,34314.7,34314.7,34314.7
+Low,CNRM-CM5,rcp85,Mortality (insects medium),Mortality,Living Biomass,12635.5,12635.5,12635.5
+Low,HadGEM2-ES,rcp45,Deadfall,Deadfall,Standing Dead,167783.4,167783.4,167783.4
+Low,HadGEM2-ES,rcp45,Decay,Decay,Down Dead,163549.3,163549.3,163549.3
+Low,HadGEM2-ES,rcp45,Decomposition,Decomposition,Litter,488727.1,488727.1,488727.1
+Low,HadGEM2-ES,rcp45,Emission,Emission,Living Biomass,62094.4,62094.4,62094.4
+Low,HadGEM2-ES,rcp45,Emission (biomass),Emission,Living Biomass,59837.4,59837.4,59837.4
+Low,HadGEM2-ES,rcp45,Emission (litter),Emission,Litter,468460.7,468460.7,468460.7
+Low,HadGEM2-ES,rcp45,Emission (soil),Emission,Soil,495182.9,495182.9,495182.9
+Low,HadGEM2-ES,rcp45,Growth,Growth,Atmosphere,1213853.6,1213853.6,1213853.6
+Low,HadGEM2-ES,rcp45,Harvest,Harvest,Living Biomass,23343.8,23343.8,23343.8
+Low,HadGEM2-ES,rcp45,Harvest (grain),Harvest,Living Biomass,78764.2,78764.2,78764.2
+Low,HadGEM2-ES,rcp45,Harvest (straw),Harvest,Living Biomass,48182.1,48182.1,48182.1
+Low,HadGEM2-ES,rcp45,Leaching,Leaching,Soil,18693.4,18693.4,18693.4
+Low,HadGEM2-ES,rcp45,Litterfall,Litterfall,Living Biomass,804224.4,804224.4,804224.4
+Low,HadGEM2-ES,rcp45,Mortality,Mortality,Living Biomass,96220.8,96220.8,96220.8
+Low,HadGEM2-ES,rcp45,Mortality (insects high),Mortality,Living Biomass,60521.7,60521.7,60521.7
+Low,HadGEM2-ES,rcp45,Mortality (insects low),Mortality,Living Biomass,31620.7,31620.7,31620.7
+Low,HadGEM2-ES,rcp45,Mortality (insects medium),Mortality,Living Biomass,13035.5,13035.5,13035.5
+Low,HadGEM2-ES,rcp85,Deadfall,Deadfall,Standing Dead,175259.1,175259.1,175259.1
+Low,HadGEM2-ES,rcp85,Decay,Decay,Down Dead,170049.8,170049.8,170049.8
+Low,HadGEM2-ES,rcp85,Decomposition,Decomposition,Litter,485625.8,485625.8,485625.8
+Low,HadGEM2-ES,rcp85,Emission,Emission,Living Biomass,59379.6,59379.6,59379.6
+Low,HadGEM2-ES,rcp85,Emission (biomass),Emission,Living Biomass,60281.9,60281.9,60281.9
+Low,HadGEM2-ES,rcp85,Emission (litter),Emission,Litter,481282.4,481282.4,481282.4
+Low,HadGEM2-ES,rcp85,Emission (soil),Emission,Soil,515118.2,515118.2,515118.2
+Low,HadGEM2-ES,rcp85,Growth,Growth,Atmosphere,1211926.6,1211926.6,1211926.6
+Low,HadGEM2-ES,rcp85,Harvest,Harvest,Living Biomass,24019.1,24019.1,24019.1
+Low,HadGEM2-ES,rcp85,Harvest (grain),Harvest,Living Biomass,78142.8,78142.8,78142.8
+Low,HadGEM2-ES,rcp85,Harvest (straw),Harvest,Living Biomass,47611.9,47611.9,47611.9
+Low,HadGEM2-ES,rcp85,Leaching,Leaching,Soil,18200.8,18200.8,18200.8
+Low,HadGEM2-ES,rcp85,Litterfall,Litterfall,Living Biomass,798383.3,798383.3,798383.3
+Low,HadGEM2-ES,rcp85,Mortality,Mortality,Living Biomass,95975.8,95975.8,95975.8
+Low,HadGEM2-ES,rcp85,Mortality (insects high),Mortality,Living Biomass,59730.9,59730.9,59730.9
+Low,HadGEM2-ES,rcp85,Mortality (insects low),Mortality,Living Biomass,31653.3,31653.3,31653.3
+Low,HadGEM2-ES,rcp85,Mortality (insects medium),Mortality,Living Biomass,12939.8,12939.8,12939.8
+Low,MIROC5,rcp45,Deadfall,Deadfall,Standing Dead,159899.9,159899.9,159899.9
+Low,MIROC5,rcp45,Decay,Decay,Down Dead,154560.6,154560.6,154560.6
+Low,MIROC5,rcp45,Decomposition,Decomposition,Litter,478317.7,478317.7,478317.7
+Low,MIROC5,rcp45,Emission,Emission,Living Biomass,60406.3,60406.3,60406.3
+Low,MIROC5,rcp45,Emission (biomass),Emission,Living Biomass,63402.3,63402.3,63402.3
+Low,MIROC5,rcp45,Emission (litter),Emission,Litter,450711.6,450711.6,450711.6
+Low,MIROC5,rcp45,Emission (soil),Emission,Soil,483561.7,483561.7,483561.7
+Low,MIROC5,rcp45,Growth,Growth,Atmosphere,1168889.3,1168889.3,1168889.3
+Low,MIROC5,rcp45,Harvest,Harvest,Living Biomass,23910.3,23910.3,23910.3
+Low,MIROC5,rcp45,Harvest (grain),Harvest,Living Biomass,75490.4,75490.4,75490.4
+Low,MIROC5,rcp45,Harvest (straw),Harvest,Living Biomass,45468.8,45468.8,45468.8
+Low,MIROC5,rcp45,Leaching,Leaching,Soil,19083.9,19083.9,19083.9
+Low,MIROC5,rcp45,Litterfall,Litterfall,Living Biomass,784035.9,784035.9,784035.9
+Low,MIROC5,rcp45,Mortality,Mortality,Living Biomass,99223.7,99223.7,99223.7
+Low,MIROC5,rcp45,Mortality (insects high),Mortality,Living Biomass,59059.1,59059.1,59059.1
+Low,MIROC5,rcp45,Mortality (insects low),Mortality,Living Biomass,32937.3,32937.3,32937.3
+Low,MIROC5,rcp45,Mortality (insects medium),Mortality,Living Biomass,12924,12924,12924
+Low,MIROC5,rcp85,Deadfall,Deadfall,Standing Dead,171917.8,171917.8,171917.8
+Low,MIROC5,rcp85,Decay,Decay,Down Dead,169791,169791,169791
+Low,MIROC5,rcp85,Decomposition,Decomposition,Litter,481005.8,481005.8,481005.8
+Low,MIROC5,rcp85,Emission,Emission,Living Biomass,54279.2,54279.2,54279.2
+Low,MIROC5,rcp85,Emission (biomass),Emission,Living Biomass,57521.7,57521.7,57521.7
+Low,MIROC5,rcp85,Emission (litter),Emission,Litter,462825,462825,462825
+Low,MIROC5,rcp85,Emission (soil),Emission,Soil,496381.2,496381.2,496381.2
+Low,MIROC5,rcp85,Growth,Growth,Atmosphere,1164946.5,1164946.5,1164946.5
+Low,MIROC5,rcp85,Harvest,Harvest,Living Biomass,22553.5,22553.5,22553.5
+Low,MIROC5,rcp85,Harvest (grain),Harvest,Living Biomass,75210.6,75210.6,75210.6
+Low,MIROC5,rcp85,Harvest (straw),Harvest,Living Biomass,45254.4,45254.4,45254.4
+Low,MIROC5,rcp85,Leaching,Leaching,Soil,18922.5,18922.5,18922.5
+Low,MIROC5,rcp85,Litterfall,Litterfall,Living Biomass,776814.9,776814.9,776814.9
+Low,MIROC5,rcp85,Mortality,Mortality,Living Biomass,90762.2,90762.2,90762.2
+Low,MIROC5,rcp85,Mortality (insects high),Mortality,Living Biomass,69223.3,69223.3,69223.3
+Low,MIROC5,rcp85,Mortality (insects low),Mortality,Living Biomass,30493.3,30493.3,30493.3
+Low,MIROC5,rcp85,Mortality (insects medium),Mortality,Living Biomass,14787.2,14787.2,14787.2
+Medium,CanESM2,rcp45,Deadfall,Deadfall,Standing Dead,172572.2,172572.2,172572.2
+Medium,CanESM2,rcp45,Decay,Decay,Down Dead,173590.5,173590.5,173590.5
+Medium,CanESM2,rcp45,Decomposition,Decomposition,Litter,517107.8,517107.8,517107.8
+Medium,CanESM2,rcp45,Emission,Emission,Living Biomass,71166.9,71166.9,71166.9
+Medium,CanESM2,rcp45,Emission (biomass),Emission,Living Biomass,61007.2,61007.2,61007.2
+Medium,CanESM2,rcp45,Emission (litter),Emission,Litter,496889.7,496889.7,496889.7
+Medium,CanESM2,rcp45,Emission (soil),Emission,Soil,506557.3,506557.3,506557.3
+Medium,CanESM2,rcp45,Growth,Growth,Atmosphere,1293757.3,1293757.3,1293757.3
+Medium,CanESM2,rcp45,Harvest,Harvest,Living Biomass,34129.7,34129.7,34129.7
+Medium,CanESM2,rcp45,Harvest (grain),Harvest,Living Biomass,82617.5,82617.5,82617.5
+Medium,CanESM2,rcp45,Harvest (straw),Harvest,Living Biomass,50149.6,50149.6,50149.6
+Medium,CanESM2,rcp45,Leaching,Leaching,Soil,19030.4,19030.4,19030.4
+Medium,CanESM2,rcp45,Litterfall,Litterfall,Living Biomass,849925.7,849925.7,849925.7
+Medium,CanESM2,rcp45,Mortality,Mortality,Living Biomass,101959,101959,101959
+Medium,CanESM2,rcp45,Mortality (insects high),Mortality,Living Biomass,56482.8,56482.8,56482.8
+Medium,CanESM2,rcp45,Mortality (insects low),Mortality,Living Biomass,31529.1,31529.1,31529.1
+Medium,CanESM2,rcp45,Mortality (insects medium),Mortality,Living Biomass,11933.7,11933.7,11933.7
+Medium,CanESM2,rcp85,Deadfall,Deadfall,Standing Dead,182354.8,182354.8,182354.8
+Medium,CanESM2,rcp85,Decay,Decay,Down Dead,182652.7,182652.7,182652.7
+Medium,CanESM2,rcp85,Decomposition,Decomposition,Litter,548961,548961,548961
+Medium,CanESM2,rcp85,Emission,Emission,Living Biomass,78671,78671,78671
+Medium,CanESM2,rcp85,Emission (biomass),Emission,Living Biomass,59923,59923,59923
+Medium,CanESM2,rcp85,Emission (litter),Emission,Litter,548235.1,548235.1,548235.1
+Medium,CanESM2,rcp85,Emission (soil),Emission,Soil,548562.9,548562.9,548562.9
+Medium,CanESM2,rcp85,Growth,Growth,Atmosphere,1416812.6,1416812.6,1416812.6
+Medium,CanESM2,rcp85,Harvest,Harvest,Living Biomass,33715.8,33715.8,33715.8
+Medium,CanESM2,rcp85,Harvest (grain),Harvest,Living Biomass,90009.6,90009.6,90009.6
+Medium,CanESM2,rcp85,Harvest (straw),Harvest,Living Biomass,56270.3,56270.3,56270.3
+Medium,CanESM2,rcp85,Leaching,Leaching,Soil,18658.5,18658.5,18658.5
+Medium,CanESM2,rcp85,Litterfall,Litterfall,Living Biomass,917133.9,917133.9,917133.9
+Medium,CanESM2,rcp85,Mortality,Mortality,Living Biomass,105672.3,105672.3,105672.3
+Medium,CanESM2,rcp85,Mortality (insects high),Mortality,Living Biomass,62956.3,62956.3,62956.3
+Medium,CanESM2,rcp85,Mortality (insects low),Mortality,Living Biomass,31089.2,31089.2,31089.2
+Medium,CanESM2,rcp85,Mortality (insects medium),Mortality,Living Biomass,13327.5,13327.5,13327.5
+Medium,CNRM-CM5,rcp45,Deadfall,Deadfall,Standing Dead,173375.9,173375.9,173375.9
+Medium,CNRM-CM5,rcp45,Decay,Decay,Down Dead,173264.3,173264.3,173264.3
+Medium,CNRM-CM5,rcp45,Decomposition,Decomposition,Litter,551558.8,551558.8,551558.8
+Medium,CNRM-CM5,rcp45,Emission,Emission,Living Biomass,76700,76700,76700
+Medium,CNRM-CM5,rcp45,Emission (biomass),Emission,Living Biomass,66271.7,66271.7,66271.7
+Medium,CNRM-CM5,rcp45,Emission (litter),Emission,Litter,521881.6,521881.6,521881.6
+Medium,CNRM-CM5,rcp45,Emission (soil),Emission,Soil,523798.6,523798.6,523798.6
+Medium,CNRM-CM5,rcp45,Growth,Growth,Atmosphere,1390259.1,1390259.1,1390259.1
+Medium,CNRM-CM5,rcp45,Harvest,Harvest,Living Biomass,35474.4,35474.4,35474.4
+Medium,CNRM-CM5,rcp45,Harvest (grain),Harvest,Living Biomass,91281.4,91281.4,91281.4
+Medium,CNRM-CM5,rcp45,Harvest (straw),Harvest,Living Biomass,57291.9,57291.9,57291.9
+Medium,CNRM-CM5,rcp45,Leaching,Leaching,Soil,19707.9,19707.9,19707.9
+Medium,CNRM-CM5,rcp45,Litterfall,Litterfall,Living Biomass,913211.6,913211.6,913211.6
+Medium,CNRM-CM5,rcp45,Mortality,Mortality,Living Biomass,107686,107686,107686
+Medium,CNRM-CM5,rcp45,Mortality (insects high),Mortality,Living Biomass,52965.5,52965.5,52965.5
+Medium,CNRM-CM5,rcp45,Mortality (insects low),Mortality,Living Biomass,33023.8,33023.8,33023.8
+Medium,CNRM-CM5,rcp45,Mortality (insects medium),Mortality,Living Biomass,11509.2,11509.2,11509.2
+Medium,CNRM-CM5,rcp85,Deadfall,Deadfall,Standing Dead,175756.2,175756.2,175756.2
+Medium,CNRM-CM5,rcp85,Decay,Decay,Down Dead,175828.4,175828.4,175828.4
+Medium,CNRM-CM5,rcp85,Decomposition,Decomposition,Litter,548156,548156,548156
+Medium,CNRM-CM5,rcp85,Emission,Emission,Living Biomass,72554.2,72554.2,72554.2
+Medium,CNRM-CM5,rcp85,Emission (biomass),Emission,Living Biomass,66118.6,66118.6,66118.6
+Medium,CNRM-CM5,rcp85,Emission (litter),Emission,Litter,533599.7,533599.7,533599.7
+Medium,CNRM-CM5,rcp85,Emission (soil),Emission,Soil,538327.7,538327.7,538327.7
+Medium,CNRM-CM5,rcp85,Growth,Growth,Atmosphere,1399095.3,1399095.3,1399095.3
+Medium,CNRM-CM5,rcp85,Harvest,Harvest,Living Biomass,35971.6,35971.6,35971.6
+Medium,CNRM-CM5,rcp85,Harvest (grain),Harvest,Living Biomass,89793.4,89793.4,89793.4
+Medium,CNRM-CM5,rcp85,Harvest (straw),Harvest,Living Biomass,56126.5,56126.5,56126.5
+Medium,CNRM-CM5,rcp85,Leaching,Leaching,Soil,19290.5,19290.5,19290.5
+Medium,CNRM-CM5,rcp85,Litterfall,Litterfall,Living Biomass,911246.1,911246.1,911246.1
+Medium,CNRM-CM5,rcp85,Mortality,Mortality,Living Biomass,107353.1,107353.1,107353.1
+Medium,CNRM-CM5,rcp85,Mortality (insects high),Mortality,Living Biomass,55913.6,55913.6,55913.6
+Medium,CNRM-CM5,rcp85,Mortality (insects low),Mortality,Living Biomass,33513.7,33513.7,33513.7
+Medium,CNRM-CM5,rcp85,Mortality (insects medium),Mortality,Living Biomass,12339.8,12339.8,12339.8
+Medium,HadGEM2-ES,rcp45,Deadfall,Deadfall,Standing Dead,163807.3,163807.3,163807.3
+Medium,HadGEM2-ES,rcp45,Decay,Decay,Down Dead,163282.2,163282.2,163282.2
+Medium,HadGEM2-ES,rcp45,Decomposition,Decomposition,Litter,481116.2,481116.2,481116.2
+Medium,HadGEM2-ES,rcp45,Emission,Emission,Living Biomass,68460.5,68460.5,68460.5
+Medium,HadGEM2-ES,rcp45,Emission (biomass),Emission,Living Biomass,57272.4,57272.4,57272.4
+Medium,HadGEM2-ES,rcp45,Emission (litter),Emission,Litter,461075.1,461075.1,461075.1
+Medium,HadGEM2-ES,rcp45,Emission (soil),Emission,Soil,488343.8,488343.8,488343.8
+Medium,HadGEM2-ES,rcp45,Growth,Growth,Atmosphere,1199105.2,1199105.2,1199105.2
+Medium,HadGEM2-ES,rcp45,Harvest,Harvest,Living Biomass,32118.8,32118.8,32118.8
+Medium,HadGEM2-ES,rcp45,Harvest (grain),Harvest,Living Biomass,78567.4,78567.4,78567.4
+Medium,HadGEM2-ES,rcp45,Harvest (straw),Harvest,Living Biomass,46912.7,46912.7,46912.7
+Medium,HadGEM2-ES,rcp45,Leaching,Leaching,Soil,18576.4,18576.4,18576.4
+Medium,HadGEM2-ES,rcp45,Litterfall,Litterfall,Living Biomass,789416.2,789416.2,789416.2
+Medium,HadGEM2-ES,rcp45,Mortality,Mortality,Living Biomass,96541,96541,96541
+Medium,HadGEM2-ES,rcp45,Mortality (insects high),Mortality,Living Biomass,59846.8,59846.8,59846.8
+Medium,HadGEM2-ES,rcp45,Mortality (insects low),Mortality,Living Biomass,30276,30276,30276
+Medium,HadGEM2-ES,rcp45,Mortality (insects medium),Mortality,Living Biomass,12778.2,12778.2,12778.2
+Medium,HadGEM2-ES,rcp85,Deadfall,Deadfall,Standing Dead,170919.2,170919.2,170919.2
+Medium,HadGEM2-ES,rcp85,Decay,Decay,Down Dead,169433.1,169433.1,169433.1
+Medium,HadGEM2-ES,rcp85,Decomposition,Decomposition,Litter,477903.1,477903.1,477903.1
+Medium,HadGEM2-ES,rcp85,Emission,Emission,Living Biomass,65699.8,65699.8,65699.8
+Medium,HadGEM2-ES,rcp85,Emission (biomass),Emission,Living Biomass,57862.8,57862.8,57862.8
+Medium,HadGEM2-ES,rcp85,Emission (litter),Emission,Litter,473449.5,473449.5,473449.5
+Medium,HadGEM2-ES,rcp85,Emission (soil),Emission,Soil,507814.7,507814.7,507814.7
+Medium,HadGEM2-ES,rcp85,Growth,Growth,Atmosphere,1197253,1197253,1197253
+Medium,HadGEM2-ES,rcp85,Harvest,Harvest,Living Biomass,33019.4,33019.4,33019.4
+Medium,HadGEM2-ES,rcp85,Harvest (grain),Harvest,Living Biomass,77829.7,77829.7,77829.7
+Medium,HadGEM2-ES,rcp85,Harvest (straw),Harvest,Living Biomass,46255.8,46255.8,46255.8
+Medium,HadGEM2-ES,rcp85,Leaching,Leaching,Soil,18082.7,18082.7,18082.7
+Medium,HadGEM2-ES,rcp85,Litterfall,Litterfall,Living Biomass,783550.8,783550.8,783550.8
+Medium,HadGEM2-ES,rcp85,Mortality,Mortality,Living Biomass,96577.1,96577.1,96577.1
+Medium,HadGEM2-ES,rcp85,Mortality (insects high),Mortality,Living Biomass,58548,58548,58548
+Medium,HadGEM2-ES,rcp85,Mortality (insects low),Mortality,Living Biomass,30757.2,30757.2,30757.2
+Medium,HadGEM2-ES,rcp85,Mortality (insects medium),Mortality,Living Biomass,12667,12667,12667
+Medium,MIROC5,rcp45,Deadfall,Deadfall,Standing Dead,155927.2,155927.2,155927.2
+Medium,MIROC5,rcp45,Decay,Decay,Down Dead,154282.7,154282.7,154282.7
+Medium,MIROC5,rcp45,Decomposition,Decomposition,Litter,470804.3,470804.3,470804.3
+Medium,MIROC5,rcp45,Emission,Emission,Living Biomass,66661.4,66661.4,66661.4
+Medium,MIROC5,rcp45,Emission (biomass),Emission,Living Biomass,61006.4,61006.4,61006.4
+Medium,MIROC5,rcp45,Emission (litter),Emission,Litter,443508.3,443508.3,443508.3
+Medium,MIROC5,rcp45,Emission (soil),Emission,Soil,476900.8,476900.8,476900.8
+Medium,MIROC5,rcp45,Growth,Growth,Atmosphere,1154991.2,1154991.2,1154991.2
+Medium,MIROC5,rcp45,Harvest,Harvest,Living Biomass,33146.8,33146.8,33146.8
+Medium,MIROC5,rcp45,Harvest (grain),Harvest,Living Biomass,75314.1,75314.1,75314.1
+Medium,MIROC5,rcp45,Harvest (straw),Harvest,Living Biomass,44185.7,44185.7,44185.7
+Medium,MIROC5,rcp45,Leaching,Leaching,Soil,18961.1,18961.1,18961.1
+Medium,MIROC5,rcp45,Litterfall,Litterfall,Living Biomass,769569,769569,769569
+Medium,MIROC5,rcp45,Mortality,Mortality,Living Biomass,99970.5,99970.5,99970.5
+Medium,MIROC5,rcp45,Mortality (insects high),Mortality,Living Biomass,57436.6,57436.6,57436.6
+Medium,MIROC5,rcp45,Mortality (insects low),Mortality,Living Biomass,32345,32345,32345
+Medium,MIROC5,rcp45,Mortality (insects medium),Mortality,Living Biomass,12437.6,12437.6,12437.6
+Medium,MIROC5,rcp85,Deadfall,Deadfall,Standing Dead,167961.4,167961.4,167961.4
+Medium,MIROC5,rcp85,Decay,Decay,Down Dead,169356.5,169356.5,169356.5
+Medium,MIROC5,rcp85,Decomposition,Decomposition,Litter,473489.9,473489.9,473489.9
+Medium,MIROC5,rcp85,Emission,Emission,Living Biomass,60488.7,60488.7,60488.7
+Medium,MIROC5,rcp85,Emission (biomass),Emission,Living Biomass,55032,55032,55032
+Medium,MIROC5,rcp85,Emission (litter),Emission,Litter,455472.7,455472.7,455472.7
+Medium,MIROC5,rcp85,Emission (soil),Emission,Soil,489454.2,489454.2,489454.2
+Medium,MIROC5,rcp85,Growth,Growth,Atmosphere,1150695.5,1150695.5,1150695.5
+Medium,MIROC5,rcp85,Harvest,Harvest,Living Biomass,31260.8,31260.8,31260.8
+Medium,MIROC5,rcp85,Harvest (grain),Harvest,Living Biomass,75012.3,75012.3,75012.3
+Medium,MIROC5,rcp85,Harvest (straw),Harvest,Living Biomass,43922.4,43922.4,43922.4
+Medium,MIROC5,rcp85,Leaching,Leaching,Soil,18803.4,18803.4,18803.4
+Medium,MIROC5,rcp85,Litterfall,Litterfall,Living Biomass,762442.9,762442.9,762442.9
+Medium,MIROC5,rcp85,Mortality,Mortality,Living Biomass,91241.6,91241.6,91241.6
+Medium,MIROC5,rcp85,Mortality (insects high),Mortality,Living Biomass,67994.5,67994.5,67994.5
+Medium,MIROC5,rcp85,Mortality (insects low),Mortality,Living Biomass,29637.4,29637.4,29637.4
+Medium,MIROC5,rcp85,Mortality (insects medium),Mortality,Living Biomass,14351.9,14351.9,14351.9

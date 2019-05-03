@@ -1,0 +1,25 @@
+TransitionGroup,Flow,FromStock,ToStock,Mean,Min,Max
+Automatic Flows,Growth,Atmosphere,Living Biomass,145.2,63.5,209.8
+Automatic Flows,Litterfall,Living Biomass,Litter,105,87.2,118.1
+Automatic Flows,Mortality,Living Biomass,Standing Deadwood,10.6,9.9,11
+Automatic Flows,Deadfall,Standing Deadwood,Down Deadwood,13.2,12.5,14.3
+Automatic Flows,Decay,Down Deadwood,Litter,14.1,13.6,14.4
+Automatic Flows,Decomposition,Litter,Soil,62.2,56.2,66.5
+Automatic Flows,Emission (biomass),Living Biomass,Atmosphere,9.2,8.7,9.5
+Automatic Flows,Emission (litter),Litter,Atmosphere,58.1,51.3,62.1
+Automatic Flows,Emission (soil),Soil,Atmosphere,62.3,57.3,67.1
+Automatic Flows,Leaching,Soil,Aquatic,2.3,2.3,2.3
+Automatic Flows,Harvest (grain),Living Biomass,Ag Products,9.8,6.4,13.9
+Automatic Flows,Harvest (straw),Living Biomass,Ag Products,6.9,3.8,10
+Ag Expansion,Emission,All Pools,Atmosphere,0.5,0.1,0.9
+Ag Expansion,Harvest,Living Biomass,Wood Products,0.1,0,0.2
+Urbanization,Emission,All Pools,Atmosphere,0.7,0.2,1.8
+Urbanization,Harvest,Living Biomass,Wood Products,0.1,0,0.4
+Clearcut Harvest,Emission,All Pools,Atmosphere,0.4,0.1,0.7
+Clearcut Harvest,Harvest,Living Biomass,Wood Products,3.2,0.9,5.6
+Clearcut Harvest,Mortality,Living Biomass,Deadwood,1.6,0.4,2.8
+Selection Harvest,Harvest,Living Biomass,Wood Products,0.7,0.1,1.3
+Orchard Removal,Emission,All Pools,Atmosphere,0.5,0,2.2
+Fire,Emission,All Pools,Atmosphere,4,0.3,15.2
+Fire,Mortality,Living Biomass,Deadwood,2.7,0.2,11
+Drought,Mortality,Living Biomass,Deadwood,3.2,0.6,17.3

@@ -1,0 +1,404 @@
+---
+title: Effects of 21st century climate, land use, and disturbances on ecosystem carbon balance in California
+bibliography: references.bib
+csl: apa.csl
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+  word_document: default
+  md_document: github_document
+always_allow_html: yes
+fontsize: 12pt
+mainfont: Times New Roman
+header-includes:
+- \usepackage[left]{lineno}
+- \linenumbers
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage[table]{xcolor}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \floatplacement{figure}{H}
+- \usepackage{setspace}\doublespacing
+---
+
+```{r Load Packages, include=FALSE}
+library(raster)
+library(rgdal)
+library(cowplot)
+library(readr)
+library(tidyverse)
+library(knitr)
+library(zoo)
+library(ggthemes)
+library(extrafont)
+library(kableExtra)
+```
+```{r Read Inputs, cache=FALSE, include=FALSE}
+path = "Data/Report_Tables/"
+files = list.files(path = path, pattern = "*.csv")
+
+for(file in files)
+{
+  perpos <- which(strsplit(file, "")[[1]]==".")
+  assign(
+    gsub(" ","",substr(file, 1, perpos-1)), 
+    read_csv(paste(path,file,sep="")))
+}
+
+eco_short_names = tibble(EcoregionID = c(1,4,5,6,7,8,9,13,14,78,80,81),
+                         Name = c("Coast Range", "Cascades", "Sierra Nevada", 
+                                  "Oak Woodlands", "Central Valley", "SoCal. Mtns.", 
+                                  "East Cascades", "Central Basin", "Mojave Basin", "Klamath Mtns.", "Northern Basin", "Sonoran Basin"))
+```
+# Supplemental Material
+Running Title: Ecosystem carbon balance in California
+
+Benjamin M. Sleeter^1^*, David C. Marvin^2^, D. Richard Cameron^2^, Paul C. Selmants^3^, LeRoy Westerling^4^, Jason Kreitler^5^, Colin J. Daniel^6^, Jinxun Liu^3^, Tamara S. Wilson^3^
+
+#### Affiliations 
+^1^U.S. Geological Survey, Seattle, WA, USA; bsleeter@usgs.gov; (253) 343-3363  
+^2^The Nature Conservancy, San Francisco, CA, USA  
+^3^U.S. Geological Survey, Menlo Park, CA, USA  
+^4^University of California Merced, California, USA  
+^5^U.S. Geological Survey, Boise, ID, USA  
+^6^Apex Resource Management Solutions Ltd., Ottawa, Alberta, CAN
+
+**Keywords:** land use, climate change, carbon balance, California, scenarios, disturbance    
+
+**Date:** `r format(Sys.time(), '%B %d, %Y')`   
+
+# Supplemental Methods
+### Wildfire submodel
+For each timestep between 2001 and 2016, wildfire was estimated deterministically using annual burn perimeters from a state fire database (FRAP) [@calfire2018frap]. Over the historical period, fire severity was modeled based on the relative proportion of each severity class (low, medium, and high) calculated from an analysis of annual burn severity maps (1985-2014) from the Monitoring Trends in Burn Severity (MTBS) database [@eidenshink2007project]. Between 2017-2100, burn area was estimated for each climate model (GCM) and radiative forcing scenario (RCP) based on a statistical model of wildfire which considered the effects of climate, vegetation, population density, and fire history [@westerlingwildfire]. The exogenous statistical fire model was used to derive burn area projections for each climate model, radiative forcing scenario, and land-use scenario [@sleeter2017future]. For each scenario, 100 stochastic simulations were run and summarized to produce a time series of maps where each 1/16 degree cell had a projected mean burned area. The spatial maps were then summarized to provide a mean and standard deviation of total burn area for each ecoregion considered in this study.
+
+The LUCAS model simulated individual fire events which spread across the landscape within a timestep. Fire events are projected based on 1) the expected annual burn area within an ecoregion, 2) the relative probability of an individual cell experiencing a fire, 3) the distribution of fire size, and 4) the distribution of fire severity classes. Within each ecoregion, the annual burn area was sampled, with replacement, from the distribution of burn area based on the statistical fire model. To preserve the spatial pattern of fire projected by the statistical model, we calculated the relative probability of fire for each 1/16 degree cell based on the mean estimated burn area in each timestep. Both fire size and severity were assumed to be stationary and were sampled based on historical data from FRAP and MTBS, respectively. Carbon fluxes associated with fire were based on @sleeter2018effects. 
+
+### Drought-induced tree mortality submodel
+To estimate the effects of climate on forest carbon we developed a model of drought-induced tree mortality. We used annual forest mortality data coinciding with two multi-year extreme drought periods that peaked in 2004 and 2016 and resulted in widespread tree mortality, especially for the latter drought period [@stephens2018drought]. We used the US Forest Service Aerial Detection Survey [@aerial2016survey] annual tree mortality data, partitioned into low, medium, and high tree mortality classes (1-10, 11-20, and >20 trees per acre, respectively). We used the 60-month Standardized Precipitation Evapotranspiration Index (SPEI) [@vicente2010multiscalar] to track long-term drought annually across California using PRISM [@prism2011prism] 4-km historical climate data for monthly temperature and precipitation inputs, using the Thornwaite method to calculate potential evapotranspiration. We fit a binomial GLM model for each of the three mortality classes, using SPEI as a single predictor in the model. We used these models to spatially predict future drought-induced mortality for each climate model and radiative forcing scenario on an annual timestep. We estimated the annual mortality area for each ecoregion from the model outputs and sampled, with replacement, from a Gaussian distribution created from these annual ecoregional means and an assumed 50% standard deviation. We constructed annual relative probability maps from the spatial predictions and used this to constrain the pattern of disturbance. See SI Methods for more detail. We sampled from a uniform distribution using proportional carbon flux ranges of 0.01-0.10, 0.10-0.5, and 0.5-1.0 for the low, medium, and high tree mortality classes, respectively. 
+
+### Soil Carbon
+We calculated soil carbon stock at standard intervals using soil organic carbon and bulk density produced for the contiguous U.S. at 100 m spatial resolution [@hengl2014soilgrids1km; @hengl2017soilgrids250m; @ramcharan2018soil], and coarse fragments (>2mm) produced globally at 250 m spatial resolution [@hengl2017soilgrids250m]. We summed the carbon stocks over the depth intervals from 0-100 cm, and re-sampled to 1-km using mean re-sampling. SOC estimates from the SoilGrids 250-m global product explained 69% of the variation in observed data based on 10-fold repeated cross-validation [@hengl2017soilgrids250m]. A separate comparison of multiple SOC estimates from global databases suggested the SoilGrids data product yielded the most accurate results at both global and regional scales [@tifafi2018large].
+
+### Effects of climate variability and change on net primary production (NPP)
+Annual variation in growth was estimated based on an empirical model of NPP [@del2008global] and annual climate model projections of mean annual temperature and total precipitation [@pierce2014statistical] and is described in detail in @sleeter2018effects. The NPP model is based on an empirical relationship between total (above- and below-ground) NPP and mean annual precipitation (MAP) for non-tree dominated ecosystems (shrublands and grasslands); for forest ecosystems the equation includes both MAP and mean annual temperature (MAT) as predictor variables.  Parameters in these equations were optimized by minimizing root mean square error (RMSE) for modeled and observed TNPP, which ensures that the mean predicted TNPP value will be nearly identical to the mean observed value. Regional model estimates of forest TNPP compare well with those derived from satellite data (1% difference) and biogeochemical process models (12% difference) [@cleveland2015comparison]. A spatially explicit stationary growth multiplier was used to scale the growth on individual cells to reflect variations in productivity due to local environmental site conditions. The spatial growth multiplier was estimated by calculating the NPP anomaly for each simulation cell relative to its ecoregional mean based on 30-year climate normals [@prism2011prism].
+
+We chose not to incorporate a CO~2~ fertilization effect (CFE) on NPP into our scenarios. Although many biochemical reaction rates increase in response to increased substrate concentration, there is growing evidence that other factors may limit the effect of rising atmospheric CO~2~ on net carbon assimilation by plants. Satellite-derived estimates of NPP suggest that Earth system models overestimated the CFE by 50% over a 30-year period [@smith2016large], and data from free air carbon dioxide enrichment (FACE) studies indicate the CFE was reduced or disappeared entirely under limitation by water and nutrients [@reich2014plant] or extreme weather conditions (hotter, drier, or wetter) [@obermeier2017reduced]. The magnitude and persistence of a CFE on NPP under future climates is unresolved, so we were unable to parameterize a CFE effect based on available data. 
+
+### Effects of climate warming on heterotrophic respiration (Rh)
+Future warming, and its effect on DOM turnover rates, was represented using climate model temperature projections and a Q10 function. We assumed a Q10 of 2.0 for the decay of down deadwood, decomposition of litter to the soil pool, and gaseous emissions from the soil pool, and a Q10 of 2.65 was assumed for gaseous emissions from the litter pool. These rates are generally consistent with those used in the Carbon Budget Model of the Canadian Forest Sector (CBM-CFS3) [@kurz2009cbm]. The CBM-CFS3 model does not include a Q10 for the decomposition of the slow recalcitrant pool, which might indicate our model overestimates the temperature sensitivity of SOC decay rates. However, a recent whole-profile warming experiment in California determined an effective Q10 for soil CO~2~ efflux to be 2.4 [@pries2017whole], suggesting our estimate of SOC temperature sensitivity may be conservative. Similar to the approach used to estimate temporal and spatial variability in NPP, a stationary spatial multiplier was used to reflect within ecoregion variability in DOM/SOC turnover based on 30-year climate normals. Next, for each GCM and RCP, ecoregion scale non-stationary temporal multipliers were used to reflect changes based on projected temperature. 
+
+### Perennial croplands and age
+We created a custom classification of the location and age of orchard croplands across California using a machine learning algorithm and a stack of satellite images and derivative products. Our training/testing data-set consisted of field-level vector data of crop types obtained from agricultural commissioners from seven broadly representative agricultural counties. To assess orchard age, we used spectral unmixing to create an annual time series of bare ground fractional cover and created a metric to identify the occurrence of new orchard establishment that accounts for background variability in bare ground exposure of agricultural fields.
+
+We created a custom classification of the location and age of perennial croplands across California because of a lack of perennial crop separation from other agricultural types (i.e. NLCD) [@homer2015completion] or the low local accuracy from data-sets like the US Cropland Data Layer (CDL) [@boryan2011monitoring]. Our evaluation of CDL orchards against a field-level California-specific data layer commissioned by the Department of Water Resources (DWR) [@statecrop2017mapping] with 97.4% orchard accuracy, found a statewide accuracy of only 64% for CDL for 2014. We excluded vineyards because of their low above-ground biomass relative to orchards. Our training and testing data-set consisted of county agricultural data from seven broadly representative counties (Butte, Colusa, Fresno, Merced, Monterey, Sonoma, Yolo) using field-level geospatial data from 2010-2011. The final data-set consisted of 10,000 randomly sampled points for orchards and 90,000 randomly sampled points for non-orchards (evenly split among other agriculture classes and natural vegetation). We used predictors composed of Landsat 5 surface reflectance bands for three different seasons in California (December-March, April-August, September-November) broadly corresponding to vegetation responses to precipitation. In addition, we included the NIRv vegetation index [@badgley2017canopy] for each season, fractional land cover using spectral unmixing (shade, bare ground, vegetation, and urban) derived from the Landsat Greenest Pixel data product [@chander2009summary], elevation [@gesch2002national], and slope as predictors. All data were obtained and pre-processed using Google Earth Engine, and re-sampled to 100 meter resolution. We trained a model for 2010 using a gradient boosting machine (GBM) algorithm [@candel2016deep] with 10-fold cross validation and an exhaustive hyperparameter search. The 2010 model had a final validation (using a 10% holdout from the training data) accuracy of 86.8% and reliability of 91.9%. We then applied this model to prediction data from 2001 in order to generate a map of predicted orchards in California for that year. We assume this model is generalizable to previous years as all predictors are derived from the same satellite sensor (Landsat 5), with the exception of the elevation and slope, which are not expected to have changed. There is no available validation data from 2001 to create a statewide assessment for this layer. The map was re-sampled to 1-km using mode re-sampling. 
+
+Existing data layers also lacked orchard age, which is needed to produce refined estimates of orchard carbon stocks. To assess orchard age, we created an annual (1985-2001) fractional land cover using spectral unmixing (shade, bare ground, vegetation, and urban) derived from the Landsat Greenest Pixel data product [@chander2009summary]. For every pixel identified as orchard, we used the bare ground fractional cover layer to find the year where the coefficient of variation across the entire time period crossed below a threshold of 1. We found this metric indicative of one or two years post-orchard removal after extensive manual testing using NAIP imagery as the ground truth. This 30 meter resolution pixel-level age map was passed through a majority filter with a kernel size of 150 meters (close to the minimum field size of 2.25 ha). This smoothed age map was re-sampled to 1-km using mode re-sampling.
+ 
+### Forest Age
+We created a forest age map for the year 2001 using a combination of the Gradient Nearest Neighbor Forest Structure Stand Age (GNN Age) [@ohmann2011mapping; @lemma2018gnn], Monitoring Trends in Burn Severity (MTBS) [@eidenshink2007project], and North American Forest Dynamics (NAFD) [@goward2012nacp]. We clipped all layers to California and re-projected them to the same extent and pixel dimensions. We extracted the high burn severity class from the 1984-2001 MTBS layers, assuming this to be a stand-age resetting event. We converted all the high burn pixels to age since fire using 2001 as the anchor point, and combined them into a single layer by taking the minimum value across all layers. We used the ‘last disturbance year’ NAFD data layer and the GNN stand age layer and converted both to year since disturbance using 2001 as the anchor point. We combined all three of these into a single stand age at 2001 layer taking the minimum value.
+\newpage
+
+# Supplemental Figures
+```{r initial_conditions, cache = FALSE, echo = FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.align="center", fig.cap="Maps of initial conditions and strata used in the LUCAS model. State class type was estimated based methods described in Sleeter et al., 2017. Forest age was estimated based on a gradiant nearest neighbor approach and described in the methods. Ecoregions were based on the U.S. EPA's Level III classification. County boundaries were derived from the U.S. Census Bureau's TIGER boundary files. Ownership was derived from the U.S. Geological Survey's Protected Areas Database"}
+knitr::include_graphics('Data/Figures/sm-initial-conditions.pdf')
+```
+
+```{r initial_stocks, cache = FALSE, echo = FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.align="center", fig.cap="Maps of model initial carbon stocks. Initial stocks were estimated based on the ecoregion, state class type, and age of each simulation cell using a look-up table derived from a dynamic global vegetation model (DGVM). Values were further scaled based on a spatialy explicit growth multiplier calculated using 30-year climate normals and an empirical model of NPP. See the materials and methods section for additional details, as well as Daniel et al., 2018."}
+knitr::include_graphics('Data/Figures/sm-initial-stocks.pdf')
+```
+\newpage
+```{r transition_area, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.5, fig.height=4, dpi=300, fig.align="center", fig.cap="Mean cumulative (2001-2100) transition area for urbanization, agricultural expansion, agricultural contraction, and management transitions considered in this study. Bars show the mean estimated area for each land-use scenario averaged over all model simulations. Colored bar components show the specific from-to transition associated with each conversion type. Error bars show the Monte Carlo confidence intervals for the total cumulative conversion area."}
+##### Create urbanization plot #####
+cal_urb_tot = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("URBANIZATION"))
+cal_urb_tot$LUC = factor(cal_urb_tot$LUC, levels = c("BAU", "High", "Medium", "Low"))
+cal_urb_type = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("URBANIZATION: Annual->Developed [Type]",
+                                                                   "URBANIZATION: Perennial->Developed [Type]",
+                                                                   "URBANIZATION: Forest->Developed [Type]",
+                                                                   "URBANIZATION: Grassland->Developed [Type]",
+                                                                   "URBANIZATION: Shrubland->Developed [Type]",
+                                                                   "URBANIZATION: Wetland->Developed [Type]")) %>%
+  ungroup() %>% mutate_at(vars(TransitionGroup), as.factor)
+cal_urb_type$LUC = factor(cal_urb_type$LUC, levels = c("BAU", "High", "Medium", "Low"))
+
+plot_urb = ggplot() +
+  geom_bar(data = cal_urb_type, aes(x = LUC, y = Mean, fill = TransitionGroup), stat = "identity") +
+  geom_errorbar(data = cal_urb_tot, aes(x = LUC, ymin = Lower, ymax = Upper), width = 0.5, size = 0.2) +
+  scale_fill_manual(name = "Transition", labels = c("Annual Crops to Developed", "Forest to Developed", "Grassland to Developed", 
+                                                    "Perennial Crops to Developed", "Shrubland to Developed", "Wetland to Developed"),
+                    values = c("SandyBrown", "ForestGreen", "Beige", "Sienna", "Tan", "AquaMarine")) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical",
+        legend.justification = "top",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Land Use Scenario", y = expression(km^2), title = "Urbanization") +
+  ylim(0,25000)
+
+
+##### Create Ag Expansion plot #####
+cal_exp_tot = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("AGRICULTURAL EXPANSION"))
+cal_exp_tot$LUC = factor(cal_exp_tot$LUC, levels = c("BAU", "High", "Medium", "Low"))
+cal_exp_type = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("AGRICULTURAL EXPANSION: Forest->Annual [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Grassland->Annual [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Shrubland->Annual [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Wetland->Annual [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Forest->Perennial [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Grassland->Perennial [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Shrubland->Perennial [Type]",
+                                                                   "AGRICULTURAL EXPANSION: Wetland->Perennial [Type]")) %>%
+  ungroup() %>% mutate_at(vars(TransitionGroup), as.factor)
+cal_exp_type$LUC = factor(cal_exp_type$LUC, levels = c("BAU", "High", "Medium", "Low"))
+
+plot_exp = ggplot() +
+  geom_bar(data = cal_exp_type, aes(x = LUC, y = Mean, fill = TransitionGroup), stat = "identity") +
+  geom_errorbar(data = cal_exp_tot, aes(x = LUC, ymin = Lower, ymax = Upper), width = 0.5, size = 0.2) +
+  scale_fill_manual(name = "Transition", labels = c("Forest to Annual Crops", "Forest to Perennial Crops", 
+                                                       "Grassland to Annual Crops", "Grassland to Perennial Crops", 
+                                                       "Shrubland to Annual Crops", "Shrubland to Perennial Crops", 
+                                                       "Wetland to Annual Crops", "Wetland to Perennial Crops"),
+                    values = c("Green3", "Green4", 
+                               "Wheat2", "Wheat3", 
+                               "Tan2", "Tan3",
+                               "AquaMarine2", "AquaMarine3")) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical",
+        legend.justification = "top",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Land Use Scenario", y = expression(km^2), title = "Ag Expansion") +
+  ylim(0,25000)
+
+
+##### Create Ag Contraction plot #####
+cal_cont_tot = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("AGRICULTURAL CONTRACTION"))
+cal_cont_tot$LUC = factor(cal_cont_tot$LUC, levels = c("BAU", "High", "Medium", "Low"))
+cal_cont_type = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("AGRICULTURAL CONTRACTION: Annual->Forest [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Annual->Grassland [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Annual->Shrubland [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Annual->Wetland [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Perennial->Forest [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Perennial->Grassland [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Perennial->Shrubland [Type]",
+                                                                   "AGRICULTURAL CONTRACTION: Perennial->Wetland [Type]")) %>%
+  ungroup() %>% mutate_at(vars(TransitionGroup), as.factor)
+cal_cont_type$LUC = factor(cal_cont_type$LUC, levels = c("BAU", "High", "Medium", "Low"))
+
+plot_cont = ggplot() +
+  geom_bar(data = cal_cont_type, aes(x = LUC, y = Mean, fill = TransitionGroup), stat = "identity") +
+  geom_errorbar(data = cal_cont_tot, aes(x = LUC, ymin = Lower, ymax = Upper), width = 0.5, size = 0.2) +
+  scale_fill_manual(name = "Transition", labels = c("Annual Crops to Forest", "Annual Crops to Grassland", "Annual Crops to Shrubland", "Annual Crops to Wetland",
+                                                       "Perennial Crops to Forest", "Perennial Crops to Grassland", "Perennial Crops to Shrubland", "Perennial Crops to Wetland"),
+                    values = c("Green3", "Wheat2","Tan2","AquaMarine2","Green4","Wheat3","Tan3","AquaMarine3")) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical",
+        legend.justification = "top",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Land Use Scenario", y = expression(km^2), title = "Ag Contraction") +
+  ylim(0,25000)
+
+
+###### Create Management plot #####
+cal_mgmt_type = cal_tgroup_by_luc %>% filter(TransitionGroup %in% c("MANAGEMENT: Forest Clearcut [Type]",
+                                                                    "MANAGEMENT: Forest Thinning [Type]",
+                                                                    "MANAGEMENT: Orchard Removal [Type]")) %>%
+  ungroup() %>% mutate_at(vars(TransitionGroup), as.factor)
+cal_mgmt_type$LUC = factor(cal_mgmt_type$LUC, levels = c("BAU", "High", "Medium", "Low"))
+cal_mgmt_tot = cal_mgmt_type %>% group_by(LUC) %>% summarise(Mean = sum(Mean), Lower = sum(Lower), Upper = sum(Upper)) %>% mutate(TransitionGroup = "MANAGEMENT")
+cal_mgmt_tot$LUC = factor(cal_mgmt_tot$LUC, levels = c("BAU", "High", "Medium", "Low"))
+
+plot_mgmt = ggplot() +
+  geom_bar(data = cal_mgmt_type, aes(x = LUC, y = Mean, fill = TransitionGroup), stat = "identity") +
+  geom_errorbar(data = cal_mgmt_tot, aes(x = LUC, ymin = Lower, ymax = Upper), width = 0.5) +
+  scale_fill_manual(name = "Transition", labels = c("Forest Clearcut", "Forest Selection", "Orchard Removal"),
+                    values = c("Plum3", "Plum4", "PaleVioletRed")) +
+  theme_bw(8) +
+  theme(legend.position = "bottom",
+        legend.direction = "vertical",
+        legend.justification = "top",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Land Use Scenario", y = expression(km^2), title = "Management") +
+  ylim(0,140000)
+
+
+##### Combine the plots #####
+plot_luc_mgmt = plot_grid(plot_urb, plot_exp, plot_cont, plot_mgmt, align = "h", axis = "lrt", ncol = 4)
+plot_luc_mgmt
+```
+\newpage
+```{r state_class_area, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4, dpi=300, fig.align="center", fig.cap="Estimated state class area for each land-use scenario. Lines show the mean estimate and ribbons show the Monte Carlo confidence intervals calculated over all scenario simulations."}
+cal_lulc_by_luc_ts = cal_lulc_by_luc_ts %>%
+  filter(LULC %in% c("Forest", "Agriculture", "Developed", "Grassland", "Shrubland", "Wetland")) %>%
+  ungroup() %>%
+  mutate_at(vars(LULC), as.factor) 
+cal_lulc_by_luc_ts$LULC = factor(cal_lulc_by_luc_ts$LULC, levels = c("Forest","Grassland","Shrubland","Wetland","Agriculture","Developed"))
+cal_lulc_by_luc_ts$LUC = factor(cal_lulc_by_luc_ts$LUC, levels = c("BAU","High","Medium","Low"))
+  
+plot_lulc_area = ggplot(cal_lulc_by_luc_ts, aes(x=Timestep, y=Mean, fill=LUC)) +
+  geom_ribbon(aes(ymin=Lower, ymax=Upper), alpha=0.5) +
+  geom_line(aes(color=LUC), size=0.2) +
+  facet_wrap(~LULC, scales="free_y", ncol=3) +
+  scale_fill_manual(name="Land Use Scenario", values=c("Gray","DarkRed","Orange","ForestGreen")) +
+  scale_color_manual(name="Land Use Scenario", values=c("Gray","DarkRed","Orange","ForestGreen")) +
+  theme_bw(8) +
+  theme(strip.background = element_blank(),
+        legend.position = "bottom",
+        legend.key.height = unit(0.5,"line")) +
+  labs(x="Year", y=expression(km^2))
+plot_lulc_area
+```
+\newpage
+```{r climate_data, cache = FALSE, echo = FALSE, message=FALSE, warning=FALSE, fig.width = 4.5, fig.height = 6, dpi = 300, fig.align="center", fig.cap="Maps show a) historical average annual temperature and c) precipitation based on 30-year climate normals. Plots show projected b) mean annual temperature and d) precipitation for California based on four climate models and two RCP scenarios from the LOCA down-scaled projections. Black lines show historical data based on PRISM. Projected data show the rolling 5-year average for temperature and the rolling 10-year average for precipitation."}
+knitr::include_graphics('Data/Figures/Figure-5-Climate-Data.png')
+```
+\newpage
+```{r disturbance_area, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=7.5, fig.height=5, dpi=300, fig.align="center", fig.cap="Mean annual estimated transition area for wildfire (top) and drought-induced tree mortality (bottom). Estimates are shown for each climate model (GCM; columns) and radiative forcing scenario (RCP; rows)."}
+# Create fire plot
+cal_tgroup_fire = cal_tgroup_by_gcm_rcp_ts %>%
+  filter(TransitionGroup %in% c("FIRE: High Severity", "FIRE: Medium Severity", "FIRE: Low Severity"), Timestep < 2101) %>%
+  ungroup() %>%
+  mutate_at(vars(TransitionGroup), as.factor)
+cal_tgroup_fire$TransitionGroup = factor(cal_tgroup_fire$TransitionGroup, levels = c("FIRE: High Severity", "FIRE: Medium Severity", "FIRE: Low Severity"))
+
+plot_fire = ggplot(cal_tgroup_fire, aes(x = Timestep, y = Mean, fill = TransitionGroup)) +
+  geom_area() +
+  facet_grid(RCP~GCM) +
+  scale_fill_manual(name = "Severity", labels = c("High", "Med", "Low"), values = c("FIRE: High Severity" = "Maroon", "FIRE: Medium Severity" = "IndianRed", "FIRE: Low Severity" = "RosyBrown")) +
+  theme_bw(8) +
+  theme(legend.position = "right",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Year", y = expression(km^2~yr^-1), title = "Wildfire")
+
+
+# Create drought mortality plot
+cal_tgroup_drought = cal_tgroup_by_gcm_rcp_ts %>%
+  filter(TransitionGroup %in% c("INSECTS: High Severity [Type]", "INSECTS: Medium Severity [Type]", "INSECTS: Low Severity [Type]"), Timestep < 2101) %>%
+  ungroup() %>%
+  mutate_at(vars(TransitionGroup), as.factor)
+cal_tgroup_drought$TransitionGroup = factor(cal_tgroup_drought$TransitionGroup, levels = c("INSECTS: High Severity [Type]", "INSECTS: Medium Severity [Type]", "INSECTS: Low Severity [Type]"))
+
+plot_drought = ggplot(cal_tgroup_drought, aes(x = Timestep, y = Mean, fill = TransitionGroup)) +
+  geom_area() +
+  facet_grid(RCP~GCM) +
+  scale_fill_manual(name = "Severity", labels = c("High", "Med", "Low"), values = c("INSECTS: High Severity [Type]" = "Maroon", "INSECTS: Medium Severity [Type]" = "IndianRed", "INSECTS: Low Severity [Type]" = "RosyBrown")) +
+  theme_bw(8) +
+  theme(legend.position = "right",
+        strip.background = element_blank(),
+        legend.key.height = unit(0.5,"line")) +
+  labs(x = "Year", y = expression(km^2~yr^-1), title = "Drought Mortality")
+
+# combine the plots
+plot_disturbances = plot_grid(plot_fire, plot_drought, ncol = 1, align = "v", axis = "lr")
+plot_disturbances
+```
+\newpage
+```{r historical_precip, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=6, dpi=300, fig.align="center", fig.cap="Annual precipitation anomaly for 2010-2015. Base period is from 1981-2010. Data are from the PRISM Climate Group."}
+library(rasterVis)
+precip_anom = stack("Data/Maps/precip_anom_2010_2015.tif")
+
+myTheme = rasterTheme(region=c('#9e0142','#d53e4f','#f46d43','#fdae61','#fee08b','#ffffbf','#e6f598','#abdda4','#66c2a5','#3288bd','#5e4fa2'),n=11)
+my.at = c(0,10,20,30,50,70,90,110,130,150,170,190,210,Inf)
+myColorkey = list(at=my.at, labels=list(at=my.at))
+
+plot_ppt = levelplot(precip_anom, par.settings=myTheme, at=my.at, colorKey=myColorkey, names.attr=c("2010","2011","2012","2013","2014","2015"),
+                     xlab=NULL, ylab=NULL, scales=list(draw=FALSE))
+plot_ppt
+```
+\newpage
+
+```{r npp_comparison, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=7, dpi=300, fig.align="center", fig.cap="Comparison of net primary productivity over the historical and future periods. Panel A shows a historical comparison (2002-2015) between this study and estimates from MODIS. Panel B shows a comparison over future years (2016-2100) shows estimates from this study, compared with estimaates from an Earth System Model for both RCP scenarios. Also included are estimates incorporating a High CFE."}
+
+npp_comparison_hist$Source = factor(npp_comparison_hist$Source, levels=c("LUCAS","MODIS"))
+npp_comp_hist = ggplot(npp_comparison_hist, aes(x=Timestep,y=Mean,color=Source)) +
+  geom_line() +
+  theme_bw() +
+  scale_color_manual(values=c("black","red")) +
+  labs(x="Year",
+       y=expression(NPP~Tg~C~yr^-1)) +
+  theme(legend.position = "right")
+
+npp_comparison_proj_filter = npp_comparison_proj %>% filter(Timestep>=2016)
+npp_comparison_proj_filter$Source = factor(npp_comparison_proj_filter$Source, levels=c("LUCAS","LUCAS CFE","CanESM2"))
+                                                            
+npp_comp_proj = ggplot(npp_comparison_proj_filter, aes(x=Timestep,y=Mean,linetype=Source)) +
+  geom_smooth(method="lm", se=FALSE, color="black") +
+  geom_line(alpha=0.3) +
+  theme_bw() +
+  scale_color_manual(values=c("red","black","DarkSeaGreen")) +
+  facet_wrap(~RCP,ncol=1) +
+  theme_bw() +
+  labs(x="Year",
+       y=expression(NPP~Tg~C~yr^-1)) +
+  theme(legend.position = "right")
+
+npp_plot = plot_grid(npp_comp_hist, npp_comp_proj, ncol = 1, align = "v", axis = "lr", labels=c("A","B"), rel_heights=c(1,1.5))
+npp_plot
+```
+\newpage
+
+```{r fire_comparison, cache = FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=4, dpi=300, fig.align="center", fig.cap=" Comparison of modeled estimates of wildfire emissions in California from this study (LUCAS) and the California Air Resources Board (ARB)."}
+arb_fire = arb_fire_emissions %>% 
+  mutate(TransitionGroup="FIRE", FlowType="Emission", Mean=ARB_CO2/3.67, Source="ARB") %>%
+  select(Timestep, TransitionGroup, FlowType, Source, Mean)
+
+lucas_fire = cal_flows_by_ts %>% filter(Timestep<=2017, TransitionGroup=="Fire", Flow=="Emission") %>%  
+  mutate(Source="LUCAS",TransitionGroup="FIRE") %>% rename("FlowType"="Flow") %>% select(Timestep,TransitionGroup,FlowType,Source,Mean,Lower,Upper)
+
+fire_emission_comparison = bind_rows(arb_fire, lucas_fire) %>% filter(Timestep>=2002,Timestep<=2016)
+
+##### Fire Emissions Comparison #####
+arb_fire = arb_fire_emissions %>% 
+  mutate(TransitionGroup="FIRE", FlowType="Emission", Mean=ARB_CO2, Source="ARB") %>%
+  select(Timestep, TransitionGroup, FlowType, Source, Mean)
+
+lucas_fire = cal_flows_by_ts %>% filter(Timestep<=2017, TransitionGroup=="Fire", Flow=="Emission") %>%  
+  mutate(Source="LUCAS",TransitionGroup="FIRE",Mean=Mean*3.67) %>% rename("FlowType"="Flow") %>% select(Timestep,TransitionGroup,FlowType,Source,Mean)
+
+fire_emission_comparison = bind_rows(arb_fire, lucas_fire) %>% filter(Timestep>=2002,Timestep<=2016) %>% spread(Source,Mean)
+fire_emission_plot = bind_rows(arb_fire, lucas_fire) %>% filter(Timestep>=2002,Timestep<=2016)
+
+fire_plot = ggplot(fire_emission_plot, aes(x=Timestep,y=Mean,fill=Source)) +
+  #geom_errorbar(aes(ymin=Lower, ymax=Upper), width=0.2) +
+  geom_line() +
+  geom_point(shape=22, size=3) +
+  theme_bw() +
+  scale_fill_manual(values=c("gray","red")) +
+  labs(x="Year",
+       y=expression(Tg~CO[2]~yr^-1))
+fire_plot
+```
+
+\newpage
+
+```{r table_comparison, echo=FALSE, cache=FALSE}
+options(knitr.kable.NA = '---')
+literature_stocks_by_state = literature_stocks_by_ecoregion %>% group_by(Source,Variable,Ecosystems) %>%
+  summarise(Mg=sum(Mg), Tg=sum(Tg))
+
+table_6 = literature_stocks_by_state %>% select(-Mg) %>% select(Ecosystems, Variable, Source, Tg) %>%
+  group_by(Source, Variable, Ecosystems) %>% summarise(Tg = sum(Tg)) %>% spread(Variable, Tg)
+
+kable(table_6, digits = 1, escape = F, booktabs = T, linesep = "", caption = "Comparison of carbon stocks from this study to other recent studies. Summaries of each study were based on resampling raster carbon stock maps to match the spatial extent, resolution, and projection of this study. Blackard; Estimates include above-ground live biomass carbon only. Gonzalez; Wildlands follow IPCC classification and include forestland (including shrubland and woodland), grassland, wetlands, and other land, excluding cropland and settlements. Estimates include above-ground live biomass carbon only. Kellendorfer; Estimates include above-ground live biomass carbon only. SSURGO; All valid cell values contained in the SSURGO map were included and were based on estimates to 2-meters depth. Wilson; Estimates of Live include above and below-ground live biomass carbon. DOM includes carbon stored in standing deadwood, down deadwood, and litter pools. This Study; Includes estimates for all lands classified as forest, grassland, shrubland, and agriculture (annual and perennial) but excludes wetlands and settlements. Live estimates include above and below ground carbon. SOC includes carbon stored up to 2-meters depth.") %>%
+  kable_styling(latex_options = c("hold_position"), bootstrap_options = c("striped"), font_size = 10) %>%
+  add_header_above(c(" " = 2, "Tg C" = 3)) 
+
+```
+# References
+<div id="refs"></div>

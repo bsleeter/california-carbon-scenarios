@@ -3,6 +3,7 @@
 Projections of carbon storage and flux in California under 32 alternative futures
 
 *Global Change Biology*: https://onlinelibrary.wiley.com/doi/10.1111/gcb.14677
+
 *USGS Data Releaase*: https://doi.org/10.5066/P9KVF795
 
 #### Authors

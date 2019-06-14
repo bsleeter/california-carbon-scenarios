@@ -6,6 +6,9 @@ Projections of carbon storage and flux in California under 32 alternative future
 
 *USGS Data Releaase*: https://doi.org/10.5066/P9KVF795
 
+<a href="https://zenodo.org/badge/latestdoi/184808021"><img src="https://zenodo.org/badge/184808021.svg" alt="DOI"></a>
+
+
 #### Authors
 Benjamin M. Sleeter<sup>1</sup>*, David C. Marvin<sup>2,3</sup>, D. Richard Cameron<sup>2</sup>, Paul C. Selmants<sup>4</sup>, Leroy Westerling<sup>5</sup>, Jason Kreitler<sup>6</sup>, Colin J. Daniel<sup>7</sup>, Jinxun Liu<sup>4</sup>, Tamara S. Wilson<sup>4</sup>
 
